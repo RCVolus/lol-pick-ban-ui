@@ -1,4 +1,5 @@
 import DDragon from './ddragon';
+import LCU from './lcu';
 import logger from '../logging';
 const log = logger('league');
 
@@ -8,8 +9,10 @@ class League {
     }
 
     init() {
+        this.lcu = new LCU();
+
         this.ddragon.init().then(() => {
-            log.info('League initialized!');
+            log.info('Ddragon initialized!');
         });
     }
 }
