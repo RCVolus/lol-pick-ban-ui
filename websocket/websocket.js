@@ -10,9 +10,13 @@ class WebSocket {
         this.clients = [];
         this.state = globalState.data;
 
+        this.sendHeartbeat = this.sendHeartbeat.bind(this);
+
         // Event listeners
         this.server.on('connection', ws => this.handleConnection(ws));
         globalState.on('stateUpdate', state => this.updateState(state));
+
+        this.heartbeatInterval = setInterval(this.sendHeartbeat, 1000);
     }
 
     handleConnection(ws) {
@@ -26,6 +30,12 @@ class WebSocket {
 
         this.clients.forEach(client => {
             client.send(JSON.stringify(this.state));
+        })
+    }
+
+    sendHeartbeat() {
+        this.clients.forEach(client => {
+            client.send(JSON.stringify({'heartbeat': true}));
         })
     }
 }

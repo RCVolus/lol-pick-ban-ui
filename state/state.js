@@ -9,6 +9,7 @@ class State extends EventEmitter {
 
         this.data = {
             leagueConnected: false,
+            champSelectActive: false,
             blueTeam: new Team(),
             redTeam: new Team(),
 
