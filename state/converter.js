@@ -9,6 +9,14 @@ const convertTeam = (team, actions) => {
 
         return cell;
     });
+
+    const isInThisTeam = cellId => {
+        return team.filter(cell => cell.cellId === cellId).length !== 0;
+    };
+
+    newTeam.bans = actions.filter(action => action.type === 'ban' && isInThisTeam(action.actorCellId));
+
+    return newTeam;
 };
 
 const convertState = lcuState => {
@@ -20,7 +28,7 @@ const convertState = lcuState => {
     return {
         blueTeam,
         redTeam
-    }
+    };
 };
 
 export default convertState;
