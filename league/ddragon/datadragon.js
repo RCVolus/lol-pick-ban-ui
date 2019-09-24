@@ -44,6 +44,7 @@ class DataDragon {
     getSummonerSpellById(id) {
         return this.summonerSpells.find(spell => {
             if (parseInt(spell.key, 10) === id) {
+                spell.icon = `${globalState.data.meta.cdn}/${globalState.data.meta.version.item}/img/spell/${spell.id}.png`;
                 return spell;
             }
         });
