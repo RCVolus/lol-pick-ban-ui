@@ -26,14 +26,15 @@ class LCU {
             password: this.connectionInfo.password
         });
         if (response.statusCode === 404) {
-            state.data.champSelectActive = false;
-            state.triggerUpdate()
+            if (state.data.champSelectActive) {
+                state.champselect.end();
+            }
         } else {
-            state.data.champSelectActive = true;
+            if (!state.data.champSelectActive) {
+                state.champselect.start();
+            }
 
-            console.log(response.body);
-
-            state.triggerUpdate()
+            state.champselect.updateNewSession(response.body);
         }
     }
 
@@ -43,7 +44,7 @@ class LCU {
         state.data.leagueConnected = true;
         state.triggerUpdate();
 
-        this.updateInterval = setInterval(this.updateFromLCU, 2000);
+        this.updateInterval = setInterval(this.updateFromLCU, 200);
     }
 
     onLeagueDisconnected() {
