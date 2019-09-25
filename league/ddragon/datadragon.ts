@@ -2,15 +2,17 @@ import needle from 'needle';
 
 import globalState from '../../state';
 import logger from '../../logging';
+import lolcsui from '../../types';
+import Spell = lolcsui.dto.Spell;
 
 const log = logger('datadragon');
 
 const realm = 'euw';
 
 class DataDragon {
-    constructor() {
-        this.versions = {}
-    }
+    versions: any;
+    champions: any;
+    summonerSpells: any;
 
     async init() {
         log.info('Getting latest versions from ddragon.');
@@ -33,17 +35,17 @@ class DataDragon {
         log.info(`Loaded ${this.summonerSpells.length} summoner spells`);
     }
 
-    getChampionById(id) {
-        return this.champions.find(champion => {
+    getChampionById(id: number) {
+        return this.champions.find((champion: { key: string; }) => {
             if (parseInt(champion.key, 10) === id) {
                 return champion;
             }
         });
     }
 
-    getSummonerSpellById(id) {
-        return this.summonerSpells.find(spell => {
-            if (parseInt(spell.key, 10) === id) {
+    getSummonerSpellById(id: number) {
+        return this.summonerSpells.find((spell: Spell) => {
+            if (parseInt(<string>spell.key, 10) === id) {
                 spell.icon = `${globalState.data.meta.cdn}/${globalState.data.meta.version.item}/img/spell/${spell.id}.png`;
                 return spell;
             }

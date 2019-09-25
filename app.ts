@@ -21,5 +21,9 @@ log.info('                                                   ');
 league.init();
 
 server.listen(process.env.PORT || 8999, () => {
+    if (server.address() === null) {
+        return log.error('Failed to start server.');
+    }
+    // @ts-ignore
     log.info(`Server started on http://localhost:${server.address().port}`);
 });

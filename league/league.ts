@@ -4,9 +4,8 @@ import logger from '../logging';
 const log = logger('league');
 
 class League {
-    constructor() {
-        this.ddragon = new DDragon();
-    }
+    ddragon = new DDragon();
+    lcu!: LCU;
 
     init() {
         this.lcu = new LCU();

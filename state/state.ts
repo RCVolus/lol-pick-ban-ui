@@ -1,10 +1,11 @@
 import EventEmitter from 'events';
 
-import Team from './data/team';
-import Meta from './data/meta';
 import ChampSelect from './champselect/champselect';
 
 import logger from '../logging';
+import lolcsui from "../types";
+import StateData = lolcsui.dto.StateData;
+import Team = lolcsui.dto.Team;
 const log = logger('state');
 
 class State extends EventEmitter {
@@ -16,16 +17,7 @@ class State extends EventEmitter {
 
         this.champselect = new ChampSelect();
 
-        const initialData = {
-            leagueConnected: false,
-            champSelectActive: false,
-            blueTeam: new Team(),
-            redTeam: new Team(),
-
-            meta: new Meta()
-        };
-
-        this.data = Object.assign({}, initialData);
+        this.data = new StateData();
 
         this.champselect.on('started', () => {
             this.data.champSelectActive = true;

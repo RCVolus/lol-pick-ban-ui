@@ -3,6 +3,9 @@ import ws from 'ws';
 import logger from '../logging';
 const log = logger('websocket');
 import state from '../state';
+import lolcsui from "../types";
+import StateData = lolcsui.dto.StateData;
+
 
 class WebSocket {
     server: ws.Server;
@@ -22,12 +25,12 @@ class WebSocket {
         this.heartbeatInterval = setInterval(this.sendHeartbeat, 1000);
     }
 
-    handleConnection(ws) {
+    handleConnection(ws: any) {
         this.clients.push(ws);
         ws.send(JSON.stringify(state));
     }
 
-    updateState(newState: any) {
+    updateState(newState: StateData) {
         log.debug(`New state: ${JSON.stringify(newState)}`);
 
         this.clients.forEach((client: any) => {
