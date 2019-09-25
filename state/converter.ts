@@ -12,6 +12,8 @@ import Champion = lolcsui.dto.Champion;
 const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
     const newTeam = new Team();
     newTeam.picks = team.map((cell: Cell) => {
+        const currentAction = actions[actions.length - 1];
+
         const pick = new Pick(cell.cellId);
         pick.id = cell.cellId;
         pick.isActive = false;
@@ -37,6 +39,10 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
             splashImg: champion ? champion.splashImg : '',
             squareImg: champion ? champion.squareImg : ''
         };
+
+        if (currentAction.type === ActionType.PICK && currentAction.actorCellId === cell.cellId) {
+            pick.isActive = true;
+        }
 
         return pick;
     });
