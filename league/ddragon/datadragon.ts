@@ -4,9 +4,9 @@ import globalState from '../../state';
 import logger from '../../logging';
 import lolcsui from '../../types';
 import Spell = lolcsui.dto.Spell;
+import Champion = lolcsui.dto.Champion;
 
 const log = logger('datadragon');
-
 const realm = 'euw';
 
 class DataDragon {
@@ -23,7 +23,6 @@ class DataDragon {
             item: this.versions['n']['item']
         };
         globalState.data.meta.cdn = this.versions['cdn'];
-
         globalState.triggerUpdate();
 
         log.info(`Champion: ${globalState.data.meta.version.champion}, Item: ${globalState.data.meta.version.item}, CDN: ${globalState.data.meta.cdn}`);
@@ -36,8 +35,12 @@ class DataDragon {
     }
 
     getChampionById(id: number) {
-        return this.champions.find((champion: { key: string; }) => {
-            if (parseInt(champion.key, 10) === id) {
+        return this.champions.find((champion: Champion) => {
+            if (parseInt(champion.key || '0', 10) === id) {
+                champion.splashImg = `${globalState.getCDN()}/img/champion/splash/${champion.id}_0.jpg`;
+                champion.squareImg = `${globalState.getVersionCDN()}/img/champion/${champion.id}.png`;
+                champion.loadingImg = `${globalState.getCDN()}/img/champion/loading/${champion.id}_0.jpg`;
+
                 return champion;
             }
         });
@@ -46,7 +49,7 @@ class DataDragon {
     getSummonerSpellById(id: number) {
         return this.summonerSpells.find((spell: Spell) => {
             if (parseInt(<string>spell.key, 10) === id) {
-                spell.icon = `${globalState.data.meta.cdn}/${globalState.data.meta.version.item}/img/spell/${spell.id}.png`;
+                spell.icon = `${globalState.getVersionCDN()}/img/spell/${spell.id}.png`;
                 return spell;
             }
         });

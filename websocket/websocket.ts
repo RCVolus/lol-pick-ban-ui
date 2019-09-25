@@ -27,7 +27,7 @@ class WebSocket {
 
     handleConnection(ws: any) {
         this.clients.push(ws);
-        ws.send(JSON.stringify(state));
+        ws.send(JSON.stringify(state.data));
     }
 
     updateState(newState: StateData) {

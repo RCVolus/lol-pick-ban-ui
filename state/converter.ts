@@ -16,18 +16,26 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
         pick.id = cell.cellId;
         pick.isActive = false;
 
+        const spell1 = league.ddragon.getSummonerSpellById(cell.spell1Id);
         pick.spell1 = {
             id: cell.spell1Id,
-            icon: league.ddragon.getSummonerSpellById(cell.spell1Id).icon
-        };
-        pick.spell2 = {
-            id: cell.spell2Id,
-            icon: league.ddragon.getSummonerSpellById(cell.spell2Id).icon
+            icon: spell1 ? spell1.icon : ''
         };
 
+        const spell2 = league.ddragon.getSummonerSpellById(cell.spell2Id);
+        pick.spell2 = {
+            id: cell.spell2Id,
+            icon: spell2 ? spell2.icon : ''
+        };
+
+        const champion = league.ddragon.getChampionById(cell.championId);
         pick.champion = {
             id: cell.championId,
-            name: league.ddragon.getChampionById(cell.championId).name
+            name: champion ? champion.name : '',
+            idName: champion ? champion.id : '',
+            loadingImg: champion ? champion.loadingImg : '',
+            splashImg: champion ? champion.splashImg : '',
+            squareImg: champion ? champion.squareImg : ''
         };
 
         return pick;
@@ -46,10 +54,14 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
             return ban;
         }
 
-        const championData = league.ddragon.getChampionById(action.championId);
+        const champion = league.ddragon.getChampionById(action.championId);
         ban.champion = {
-            name: championData.name,
-            id: action.championId
+            id: action.championId,
+            name: champion ? champion.name : '',
+            idName: champion ? champion.id : '',
+            loadingImg: champion ? champion.loadingImg : '',
+            splashImg: champion ? champion.splashImg : '',
+            squareImg: champion ? champion.squareImg : ''
         };
 
         return ban;

@@ -38,6 +38,11 @@ namespace lolcsui {
         export class Champion {
             id = 0;
             name = '';
+            key? = '';
+            splashImg = '';
+            loadingImg = '';
+            squareImg = '';
+            idName = '';
         }
 
         export class Spell {
@@ -80,8 +85,8 @@ namespace lolcsui {
         }
 
         export enum ActionType {
-            PICK,
-            BAN
+            PICK = 'pick',
+            BAN = 'ban'
         }
     }
 }

@@ -1,7 +1,5 @@
 import EventEmitter from 'events';
-
 import ChampSelect from './champselect/champselect';
-
 import logger from '../logging';
 import lolcsui from "../types";
 import StateData = lolcsui.dto.StateData;
@@ -16,7 +14,6 @@ class State extends EventEmitter {
         super();
 
         this.champselect = new ChampSelect();
-
         this.data = new StateData();
 
         this.champselect.on('started', () => {
@@ -40,6 +37,14 @@ class State extends EventEmitter {
 
     triggerUpdate() {
         this.emit('stateUpdate', this.data)
+    }
+
+    getVersionCDN(): string {
+        return this.data.meta.cdn + `/${this.data.meta.version.champion}`;
+    }
+
+    getCDN(): string {
+        return this.data.meta.cdn;
     }
 }
 
