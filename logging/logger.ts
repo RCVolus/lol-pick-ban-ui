@@ -4,7 +4,7 @@ const customFormat = winston.format.printf(({ level, message, label, timestamp }
     return `${timestamp} [${level.padEnd(15)}] ${`\u001b[95m${label}\u001b[39m`.padEnd(22)}: ${message}`;
 });
 
-const createLogger = label => winston.createLogger({
+const createLogger = (label: string) => winston.createLogger({
     level: process.env.LOGLEVEL || 'info',
     format: winston.format.combine(
         winston.format.timestamp(),
@@ -23,6 +23,6 @@ const createLogger = label => winston.createLogger({
     ]
 });
 
-export default label => {
+export default (label: string) => {
     return createLogger(label);
 };

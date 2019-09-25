@@ -1,7 +1,7 @@
 import Team from './data/team';
 import league from '../league';
 
-const convertTeam = (team, actions) => {
+const convertTeam = (team: Team, actions: Array<Action>) => {
     const newTeam = new Team();
     newTeam.picks = team.map(cell => {
         cell.spell1 = league.ddragon.getSummonerSpellById(cell.spell1id);

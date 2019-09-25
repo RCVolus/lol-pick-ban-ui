@@ -2,41 +2,43 @@ import ws from 'ws';
 
 import logger from '../logging';
 const log = logger('websocket');
-import globalState from '../state';
+import state from '../state';
 
 class WebSocket {
-    constructor(server) {
+    server: ws.Server;
+    clients: any;
+    heartbeatInterval: NodeJS.Timeout;
+
+    constructor(server: any) {
         this.server = new ws.Server({ server });
         this.clients = [];
-        this.state = globalState.data;
 
         this.sendHeartbeat = this.sendHeartbeat.bind(this);
 
         // Event listeners
         this.server.on('connection', ws => this.handleConnection(ws));
-        globalState.on('stateUpdate', state => this.updateState(state));
+        state.on('stateUpdate', (state: any) => this.updateState(state));
 
         this.heartbeatInterval = setInterval(this.sendHeartbeat, 1000);
     }
 
     handleConnection(ws) {
         this.clients.push(ws);
-        ws.send(JSON.stringify(this.state));
+        ws.send(JSON.stringify(state));
     }
 
-    updateState(newState) {
+    updateState(newState: any) {
         log.debug(`New state: ${JSON.stringify(newState)}`);
-        this.state = newState;
 
-        this.clients.forEach(client => {
-            client.send(JSON.stringify(this.state));
-        })
+        this.clients.forEach((client: any) => {
+            client.send(JSON.stringify(newState));
+        });
     }
 
     sendHeartbeat() {
-        this.clients.forEach(client => {
+        this.clients.forEach((client: any) => {
             client.send(JSON.stringify({'heartbeat': true}));
-        })
+        });
     }
 }
 

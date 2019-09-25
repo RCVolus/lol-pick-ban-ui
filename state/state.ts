@@ -8,6 +8,9 @@ import logger from '../logging';
 const log = logger('state');
 
 class State extends EventEmitter {
+    champselect: ChampSelect;
+    data: StateData;
+
     constructor() {
         super();
 
@@ -36,7 +39,7 @@ class State extends EventEmitter {
             this.triggerUpdate();
         });
 
-        this.champselect.on('newState', state => {
+        this.champselect.on('newState', (state: any) => {
             this.data.blueTeam = state.blueTeam;
             this.data.redTeam = state.redTeam;
             this.triggerUpdate();
