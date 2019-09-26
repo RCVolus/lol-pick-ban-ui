@@ -1,6 +1,8 @@
 import React from 'react';
+import Pick from "./Pick";
 
 import './europe.css';
+import Ban from "./Ban";
 
 export default class Overlay extends React.Component {
     render() {
@@ -22,14 +24,20 @@ export default class Overlay extends React.Component {
                         </div>
                     </div>
                     <div className="Team TeamBlue">
-                        <div className="Pick"></div>
-                        <div className="Pick"></div>
-                        <div className="Pick"></div>
-                        <div className="Pick"></div>
-                        <div className="Pick"></div>
+                        <div className="Picks">
+                            {state.blueTeam.picks.map(pick => <Pick {...pick} />)}
+                        </div>
+                        <div className="Bans">
+                            {state.blueTeam.bans.map(ban => <Ban {...ban} />)}
+                        </div>
                     </div>
                     <div className="Team TeamRed">
-
+                        <div className="Picks">
+                            {state.redTeam.picks.map(pick => <Pick {...pick} />)}
+                        </div>
+                        <div className="Bans">
+                            {state.redTeam.bans.map(ban => <Ban {...ban} />)}
+                        </div>
                     </div>
                 </div>}
             </div>

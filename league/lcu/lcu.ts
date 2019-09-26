@@ -18,6 +18,7 @@ class LCU {
         username: '',
         password: ''
     };
+    summoners: Array<any> = [];
 
     constructor() {
         this.onLeagueConnected = this.onLeagueConnected.bind(this);
@@ -52,18 +53,19 @@ class LCU {
         const blueTeam = session.myTeam;
         const redTeam = session.theirTeam;
 
-        const promises = [];
-
         const fetchPlayersFromTeam = (team: Array<Cell>) => {
             team.forEach(async cell => {
-                const promise = await needle('get', `https://127.0.0.1:${this.connectionInfo.port}/lol-summoner/v1/summoners/${cell.summonerId}`, this.requestConfig);
-                console.log(promise.body);
-                promises.push(promise);
+                const summoner = (await needle('get', `https://127.0.0.1:${this.connectionInfo.port}/lol-summoner/v1/summoners/${cell.summonerId}`, this.requestConfig)).body;
+                this.summoners.push(summoner);
             });
         };
 
         fetchPlayersFromTeam(blueTeam);
         fetchPlayersFromTeam(redTeam);
+    }
+
+    getSummonerById(id: number) {
+        return this.summoners.filter(summoner => summoner.summonerId === id)[0];
     }
 
     onLeagueConnected(e: ConnectionInfo) {

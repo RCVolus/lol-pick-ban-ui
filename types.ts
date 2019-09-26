@@ -29,6 +29,7 @@ namespace lolcsui {
             spell2!: Spell;
             champion!: Champion;
             isActive = false;
+            displayName: string = '';
 
             constructor(id: number) {
                 this.id = id;

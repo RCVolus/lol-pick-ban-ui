@@ -25,9 +25,20 @@
     position: absolute;
     width: 800px;
     height: 300px;
-    display: flex;
 
     bottom: 50px;
+}
+
+.Europe .Picks {
+    width: 100%;
+    height: 200px;
+    display: flex;
+}
+
+.Europe .Bans {
+    width: 100%;
+    height: 100px;
+    display: flex;
 }
 
 .Europe .Pick {
