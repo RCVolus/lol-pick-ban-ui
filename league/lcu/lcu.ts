@@ -3,12 +3,21 @@ import needle from 'needle';
 import logger from '../../logging';
 import state from '../../state';
 import Timeout = NodeJS.Timeout;
+import lolcsui from "../../types";
+import Session = lolcsui.lcu.Session;
+import Cell = lolcsui.lcu.Cell;
 const log = logger('lcu');
 
 class LCU {
     connector = new LCUConnector('');
     connectionInfo!: ConnectionInfo;
     updateInterval!: Timeout;
+    requestConfig = {
+        json: true,
+        rejectUnauthorized: false,
+        username: '',
+        password: ''
+    };
 
     constructor() {
         this.onLeagueConnected = this.onLeagueConnected.bind(this);
@@ -22,12 +31,7 @@ class LCU {
     }
 
     async updateFromLCU() {
-        const response = await needle('get', `https://127.0.0.1:${this.connectionInfo.port}/lol-champ-select/v1/session`, {
-            json: true,
-            rejectUnauthorized: false,
-            username: this.connectionInfo.username,
-            password: this.connectionInfo.password
-        });
+        const response = await needle('get', `https://127.0.0.1:${this.connectionInfo.port}/lol-champ-select/v1/session`, this.requestConfig);
         if (response.statusCode === 404) {
             if (state.data.champSelectActive) {
                 state.champselect.end();
@@ -35,15 +39,38 @@ class LCU {
         } else {
             if (!state.data.champSelectActive) {
                 state.champselect.start();
+
+                // Fetch players
+                this.fetchPlayers(response.body);
             }
 
             state.champselect.updateNewSession(response.body);
         }
     }
 
+    fetchPlayers(session: Session) {
+        const blueTeam = session.myTeam;
+        const redTeam = session.theirTeam;
+
+        const promises = [];
+
+        const fetchPlayersFromTeam = (team: Array<Cell>) => {
+            team.forEach(async cell => {
+                const promise = await needle('get', `https://127.0.0.1:${this.connectionInfo.port}/lol-summoner/v1/summoners/${cell.summonerId}`, this.requestConfig);
+                console.log(promise.body);
+                promises.push(promise);
+            });
+        };
+
+        fetchPlayersFromTeam(blueTeam);
+        fetchPlayersFromTeam(redTeam);
+    }
+
     onLeagueConnected(e: ConnectionInfo) {
         log.info('LeagueClient connected');
         this.connectionInfo = e;
+        this.requestConfig.username = this.connectionInfo.username;
+        this.requestConfig.password = this.connectionInfo.password;
         state.data.leagueConnected = true;
         state.triggerUpdate();
 
@@ -61,8 +88,8 @@ class LCU {
 
 class ConnectionInfo {
     port!: number;
-    username!: String;
-    password!: String;
+    username!: string;
+    password!: string;
 }
 
 export default LCU;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Overlay from "./europe/Overlay";
 
 function App() {
   const [globalState, setGlobalState] = useState({});
@@ -35,12 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      {Object.keys(globalState).length === 0 && <div className={"infoBox"}>Not connected to backend service!</div> }
-      {Object.keys(globalState).length !== 0 &&
-      <div className="ChampSelect">
-        {!globalState.leagueConnected && <div className={"infoBox"}>Not connected to client!</div> }
-        {JSON.stringify(globalState)}
-      </div>}
+      <Overlay state={globalState} />
     </div>
   );
 }

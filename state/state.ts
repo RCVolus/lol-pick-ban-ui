@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import ChampSelect from './champselect/champselect';
+import ChampSelect from './champselect';
 import logger from '../logging';
 import lolcsui from "../types";
 import StateData = lolcsui.dto.StateData;
