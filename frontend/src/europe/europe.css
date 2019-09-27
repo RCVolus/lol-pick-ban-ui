@@ -1,5 +1,5 @@
 body {
-    background: #00b140;
+    background: black;
     font-family: 'Nova Flat', cursive;
 }
 
@@ -21,7 +21,10 @@ body {
 
     --champselect-margin-bot: 50px;
 
-    --color-red: red;
+    --color-red: rgb(255,46,81);
+    --color-blue: rgb(0,195,209);
+    --color-red-bg: rgba(255, 46, 81, 0.3);
+    --color-blue-bg: rgba(0,195,209, 0.3);
 }
 
 .Europe .MiddleBox {
@@ -51,7 +54,7 @@ body {
     background: linear-gradient(to right, rgba(0,0,0,0), var(--color-red));
 
     background: var(--color-red);
-    background: linear-gradient(to right, rgba(0,0,0,0) 0%, var(--color-red) 50%);
+    background: linear-gradient(to right, var(--color-red-bg) 0%, var(--color-red) 100%);
 }
 
 .Europe .Team {
@@ -75,6 +78,10 @@ body {
 }
 .Europe .TeamBlue .Bans {
     justify-content: flex-end;
+    background-color: var(--color-blue)
+}
+.Europe .TeamRed .Bans {
+    background-color: var(--color-red)
 }
 
 .Europe .Pick {
