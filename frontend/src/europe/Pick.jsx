@@ -2,6 +2,10 @@ import React from 'react';
 
 export default props => (
     <div className="Pick">
+        <div className="SummonerSpells">
+            <img src={props.spell1.icon} alt="" />
+            <img src={props.spell2.icon} alt="" />
+        </div>
         <div className="PickImage">
             <img src={props.champion.loadingImg} alt="" />
         </div>

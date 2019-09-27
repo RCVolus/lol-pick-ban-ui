@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import Pick from "./Pick";
 
 import './europe.css';
@@ -17,9 +18,12 @@ export default class Overlay extends React.Component {
                     {!state.leagueConnected && <div className={"infoBox"}>Not connected to client!</div> }
                     <div className="MiddleBox">
                         <div className="Logo">
-                            [LOGO]
+                            <img src="https://eu.lolesports.com/darkroom/original/b496f5eaa42b6152b579a5c3e6edf5a3:b9ea0fa9ce55cde10d1eef7564ba4c3a/de-logo.png" alt="" />
                         </div>
-                        <div className="Timer Red">
+                        <div className="Patch">
+                            Patch: {Window.lolcfg.patch}
+                        </div>
+                        <div className="Timer Both">
                             17
                         </div>
                     </div>
@@ -27,23 +31,29 @@ export default class Overlay extends React.Component {
                         <div className="Picks">
                             {state.blueTeam.picks.map(pick => <Pick {...pick} />)}
                         </div>
-                        <div className="Bans">
+                        <div className={cx("Bans", {"WithScore": Window.lolcfg.scoreEnabled})}>
                             <div className="TeamName">
-                                SCYREX
+                                SCHALKE 04
                             </div>
                             {state.blueTeam.bans.map(ban => <Ban {...ban} />)}
                         </div>
+                        {Window.lolcfg.scoreEnabled && <div className="TeamScore">
+                            <div>{Window.lolcfg.blueTeam.score}</div>
+                        </div>}
                     </div>
                     <div className="Team TeamRed">
                         <div className="Picks">
                             {state.redTeam.picks.map(pick => <Pick {...pick} />)}
                         </div>
-                        <div className="Bans">
+                        <div className={cx("Bans", {"WithScore": Window.lolcfg.scoreEnabled})}>
                             {state.redTeam.bans.map(ban => <Ban {...ban} />)}
                             <div className="TeamName">
                                 SCYREX
                             </div>
                         </div>
+                        {Window.lolcfg.scoreEnabled && <div className="TeamScore">
+                            <div>{Window.lolcfg.redTeam.score}</div>
+                        </div>}
                     </div>
                 </div>}
             </div>

@@ -1,60 +1,96 @@
 body {
     background: black;
-    font-family: 'Nova Flat', cursive;
+    font-family: 'Nova Flat', sans-serif;
+
+    background: url("https://dotesports-media.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2019/06/14131635/LEC-Summer-2019.jpg");
+    background-size: cover;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 :root {
-    --box-width: calc(2 * var(--box-ban-height));
+    --box-width: 160px;
     --box-height: calc(var(--box-pick-height) + var(--box-ban-height));
-    --box-logo-height: 60%;
-    --box-timer-height: 40%;
+    --box-logo-height: calc(100% - calc(var(--box-ban-height) + var(--box-patch-height)));
+    --box-timer-height: var(--box-ban-height);
+    --box-patch-height: 40px;
 
     --box-team-width: calc(5 * var(--box-width));
     --box-pick-height: 230px;
-    --box-ban-height: 80px;
+    --box-ban-height: 60px;
     --box-ban-spacer: calc(var(--box-ban-height) / 2);
 
     --pick-name-height: 30px;
     --pick-image-crop: 8px;
 
-    --ban-image-crop: 5px;
+    --ban-image-crop: 4px;
+    --summoner-spell-size: 40px;
 
     --champselect-margin-bot: 50px;
 
-    --color-red: rgb(255,46,81);
+    --color-red: rgb(222,40,70);
     --color-blue: rgb(0,195,209);
-    --color-red-bg: rgba(255, 46, 81, 0.3);
-    --color-blue-bg: rgba(0,195,209, 0.3);
+    --color-red-bg: rgba(222,40,70,0.3);
+    --color-blue-bg: rgba(0,195,209,0.3);
+
+    --border-between-color: darkgray;
+    --border-width: 3px;
 }
 
 .Europe .MiddleBox {
     position: absolute;
     color: white;
+    background-color: black;
     width: var(--box-width);
-    height: var(--box-pick-height);
+    height: calc(var(--box-pick-height) + var(--box-ban-height));
 
-    bottom: calc(var(--box-ban-height) + var(--champselect-margin-bot));
+    bottom: var(--champselect-margin-bot);
     left: 50%;
     transform: translateX(-50%);
+}
+
+.Europe .Patch {
+    height: var(--box-patch-height);
+    font-size: 26px;
+    text-align: center;
+    color: white;
+    border-left: darkgrey 1px solid;
+    border-right: darkgrey 1px solid;
 }
 
 .Europe .Logo {
     width: 100%;
     height: var(--box-logo-height);
-    background-color: black;
+    border-left: darkgrey 1px solid;
+    border-right: darkgrey 1px solid;
+}
+.Europe .Logo img {
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    padding-top: 10%;
+    display: block;
+    object-fit: contain;
 }
 
 .Europe .Timer {
     width: 100%;
     height: var(--box-timer-height);
-    font-size: 80px;
+    font-size: 50px;
     text-align: center;
 }
 .Europe .Timer.Red {
-    background: linear-gradient(to right, rgba(0,0,0,0), var(--color-red));
-
     background: var(--color-red);
-    background: linear-gradient(to right, var(--color-red-bg) 0%, var(--color-red) 100%);
+    background: linear-gradient(to right, black 0%, var(--color-red) 100%);
+}
+.Europe .Timer.Blue {
+    background: var(--color-blue);
+    background: linear-gradient(to left, black 0%, var(--color-blue) 100%);
+}
+.Europe .Timer.Both {
+    background: linear-gradient(to right, var(--color-blue) 0%, var(--color-red) 100%)
 }
 
 .Europe .Team {
@@ -69,37 +105,55 @@ body {
     width: 100%;
     height: var(--box-pick-height);
     display: flex;
+    box-sizing: border-box;
 }
 
 .Europe .Bans {
     width: 100%;
     height: var(--box-ban-height);
     display: flex;
+    box-sizing: border-box;
+}
+.Europe .Bans.WithScore {
+    width: calc(100% - var(--box-ban-height) - 3px);
 }
 .Europe .TeamBlue .Bans {
     justify-content: flex-end;
-    background-color: var(--color-blue)
+    background-color: var(--color-blue);
+    border: solid var(--color-blue) var(--border-width);
+    float: right;
 }
 .Europe .TeamRed .Bans {
-    background-color: var(--color-red)
+    background-color: var(--color-red);
+    border: solid var(--color-red) var(--border-width);
+    float: left;
 }
 
 .Europe .Pick {
+    position: relative;
     width: 20%;
     height: 100%;
     overflow: hidden;
+    border-left: solid var(--border-between-color) 1px;
 }
-.Europe .TeamBlue .Pick {
-    border-left: solid white 1px;
-}
-.Europe .TeamBlue .Pick:first-child {
+.Europe .Pick:first-child {
     border: none;
+}
+
+.Europe .Pick .SummonerSpells {
+    position: absolute;
+    top: calc(var(--box-pick-height) - 30px - var(--summoner-spell-size));
+    right: 0;
+}
+.Europe .Pick .SummonerSpells img {
+    height: var(--summoner-spell-size);
+    width: var(--summoner-spell-size);
 }
 
 .Europe .Ban {
     display: block;
-    width: var(--box-ban-height);
-    height: var(--box-ban-height);
+    width: calc(var(--box-ban-height) - calc(2 * var(--border-width)));
+    height: calc(var(--box-ban-height) - calc(2 * var(--border-width)));
     overflow: hidden;
 }
 .Europe .Ban img {
@@ -107,6 +161,18 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: calc(-1 * var(--ban-image-crop)) calc(-1 * var(--ban-image-crop));
+}
+.Europe .TeamRed .Ban {
+    border-left: solid var(--color-red) var(--border-width);
+}
+.Europe .TeamRed .Ban:first-child {
+    border: none;
+}
+.Europe .TeamBlue .Ban {
+    border-left: solid var(--color-blue) var(--border-width);
+}
+.Europe .TeamBlue .Ban:first-child {
+    border: none;
 }
 
 .Europe .TeamBlue .Ban:nth-child(4) {
@@ -132,8 +198,40 @@ body {
 }
 
 .Europe .TeamName {
-    font-size: 70px;
+    font-size: 55px;
     color: white;
+    font-family: 'Saira Condensed', sans-serif;
+    margin-top: -15px;
+}
+.Europe .TeamBlue .TeamName {
+    margin-left: 15px;
+}
+.Europe .TeamRed .TeamName {
+    margin-right: 15px;
+}
+
+.Europe .TeamScore {
+    font-size: 55px;
+    color: white;
+    font-family: 'Saira Condensed', sans-serif;
+    width: var(--box-ban-height);
+    height: var(--box-ban-height);
+}
+.Europe .TeamScore div {
+    margin-top: -13px;
+    width: 100%;
+    height: var(--box-ban-height);
+    text-align: center;
+}
+.Europe .TeamBlue .TeamScore {
+    background-color: var(--color-blue);
+    float: right;
+    margin-right: 3px;
+}
+.Europe .TeamRed .TeamScore {
+    background-color: var(--color-red);
+    float: left;
+    margin-left: 3px;
 }
 
 .Europe .Pick .PickImage {
@@ -152,6 +250,7 @@ body {
     color: white;
     background-color: black;
     text-align: center;
-    font-size: calc(0.8 * var(--pick-name-height));
+    font-size: calc(0.5 * var(--pick-name-height));
+    line-height: var(--pick-name-height);
 }
 

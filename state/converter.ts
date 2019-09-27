@@ -41,7 +41,9 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
         };
 
         const summoner = league.lcu.getSummonerById(cell.summonerId);
-        pick.displayName = summoner.displayName;
+        if (summoner) {
+            pick.displayName = summoner.displayName;
+        }
 
         if (currentAction.type === ActionType.PICK && currentAction.actorCellId === cell.cellId) {
             pick.isActive = true;
