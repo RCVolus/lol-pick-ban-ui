@@ -19,8 +19,8 @@ export default class Overlay extends React.Component {
                         <div className="Logo">
                             [LOGO]
                         </div>
-                        <div className="Timer">
-                            30
+                        <div className="Timer Red">
+                            17
                         </div>
                     </div>
                     <div className="Team TeamBlue">
@@ -28,6 +28,9 @@ export default class Overlay extends React.Component {
                             {state.blueTeam.picks.map(pick => <Pick {...pick} />)}
                         </div>
                         <div className="Bans">
+                            <div className="TeamName">
+                                SCYREX
+                            </div>
                             {state.blueTeam.bans.map(ban => <Ban {...ban} />)}
                         </div>
                     </div>
@@ -37,6 +40,9 @@ export default class Overlay extends React.Component {
                         </div>
                         <div className="Bans">
                             {state.redTeam.bans.map(ban => <Ban {...ban} />)}
+                            <div className="TeamName">
+                                SCYREX
+                            </div>
                         </div>
                     </div>
                 </div>}

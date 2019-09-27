@@ -1,0 +1,343 @@
+{
+  "leagueConnected": true,
+  "champSelectActive": true,
+  "blueTeam": {
+    "bans": [
+      {
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Caitlyn_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 36,
+          "name": "Dr. Mundo",
+          "idName": "DrMundo",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/DrMundo_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/DrMundo_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/DrMundo.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 103,
+          "name": "Ahri",
+          "idName": "Ahri",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ahri_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Ahri.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 0,
+          "name": "Lux",
+          "idName": "Lux",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lux_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Lux.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 0,
+          "name": "Lux",
+          "idName": "Lux",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lux_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Shyvana.png"
+        },
+        "isActive": false
+      }
+    ],
+    "picks": [
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      },
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      },
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      },
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      },
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      }
+    ]
+  },
+  "redTeam": {
+    "bans": [
+      {
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Caitlyn_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 36,
+          "name": "Dr. Mundo",
+          "idName": "DrMundo",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/DrMundo_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/DrMundo_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/DrMundo.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 103,
+          "name": "Ahri",
+          "idName": "Ahri",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ahri_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Ahri.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 0,
+          "name": "Lux",
+          "idName": "Lux",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lux_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Lux.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 0,
+          "name": "Lux",
+          "idName": "Lux",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lux_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Shyvana.png"
+        },
+        "isActive": false
+      }
+    ],
+    "picks": [
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      },
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      },
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      },
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      },
+      {
+        "isActive": true,
+        "displayName": "SCY Larce",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 51,
+          "name": "Caitlyn",
+          "idName": "Caitlyn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Varus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Caitlyn.png"
+        }
+      }
+    ]
+  },
+  "meta": {
+    "cdn": "https://ddragon.leagueoflegends.com/cdn",
+    "version": {
+      "champion": "9.19.1",
+      "item": "9.19.1"
+    }
+  }
+}

@@ -1,59 +1,150 @@
+body {
+    background: #00b140;
+    font-family: 'Nova Flat', cursive;
+}
+
+:root {
+    --box-width: calc(2 * var(--box-ban-height));
+    --box-height: calc(var(--box-pick-height) + var(--box-ban-height));
+    --box-logo-height: 60%;
+    --box-timer-height: 40%;
+
+    --box-team-width: calc(5 * var(--box-width));
+    --box-pick-height: 230px;
+    --box-ban-height: 80px;
+    --box-ban-spacer: calc(var(--box-ban-height) / 2);
+
+    --pick-name-height: 30px;
+    --pick-image-crop: 8px;
+
+    --ban-image-crop: 5px;
+
+    --champselect-margin-bot: 50px;
+
+    --color-red: red;
+}
+
 .Europe .MiddleBox {
     position: absolute;
-    background-color: black;
     color: white;
-    width: 200px;
-    height: 300px;
+    width: var(--box-width);
+    height: var(--box-pick-height);
 
-    bottom: 50px;
+    bottom: calc(var(--box-ban-height) + var(--champselect-margin-bot));
     left: 50%;
     transform: translateX(-50%);
 }
 
 .Europe .Logo {
     width: 100%;
-    height: 200px;
+    height: var(--box-logo-height);
+    background-color: black;
 }
 
 .Europe .Timer {
     width: 100%;
-    height: 100px;
-    background-color: white;
+    height: var(--box-timer-height);
+    font-size: 80px;
+    text-align: center;
+}
+.Europe .Timer.Red {
+    background: linear-gradient(to right, rgba(0,0,0,0), var(--color-red));
+
+    background: var(--color-red);
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%, var(--color-red) 50%);
 }
 
 .Europe .Team {
     position: absolute;
-    width: 800px;
-    height: 300px;
+    width: var(--box-team-width);
+    height: var(--box-height);
 
-    bottom: 50px;
+    bottom: var(--champselect-margin-bot);
 }
 
 .Europe .Picks {
     width: 100%;
-    height: 200px;
+    height: var(--box-pick-height);
     display: flex;
 }
 
 .Europe .Bans {
     width: 100%;
-    height: 100px;
+    height: var(--box-ban-height);
     display: flex;
+}
+.Europe .TeamBlue .Bans {
+    justify-content: flex-end;
 }
 
 .Europe .Pick {
     width: 20%;
     height: 100%;
+    overflow: hidden;
+}
+.Europe .TeamBlue .Pick {
+    border-left: solid white 1px;
+}
+.Europe .TeamBlue .Pick:first-child {
+    border: none;
+}
+
+.Europe .Ban {
+    display: block;
+    width: var(--box-ban-height);
+    height: var(--box-ban-height);
+    overflow: hidden;
+}
+.Europe .Ban img {
+    width: calc(100% + calc(2 * var(--ban-image-crop)));
+    height: 100%;
+    object-fit: cover;
+    object-position: calc(-1 * var(--ban-image-crop)) calc(-1 * var(--ban-image-crop));
+}
+
+.Europe .TeamBlue .Ban:nth-child(4) {
+    margin-right: var(--box-ban-spacer);
+}
+
+.Europe .TeamRed .Ban:nth-child(3) {
+    margin-right: var(--box-ban-spacer);
 }
 
 .Europe .TeamRed {
-    background-color: red;
-
-    left: calc(50% + 100px);
+    left: calc(50% + calc(var(--box-width) / 2));
+}
+.Europe .TeamBlue .TeamName {
+    margin-right: auto;
+}
+.Europe .TeamRed .TeamName {
+    margin-left: auto;
 }
 
 .Europe .TeamBlue {
-    background-color: blue;
-
-    right: calc(50% + 100px);
+    right: calc(50% + calc(var(--box-width) / 2));
 }
+
+.Europe .TeamName {
+    font-size: 70px;
+    color: white;
+}
+
+.Europe .Pick .PickImage {
+    height: calc(100% - var(--pick-name-height))
+}
+
+.Europe .Pick .PickImage img {
+    width: calc(100% + calc(2 * var(--pick-image-crop)));
+    height: 100%;
+    object-fit: cover;
+    object-position: calc(-1 * var(--pick-image-crop)) calc(-1 * var(--pick-image-crop));
+}
+
+.Europe .Pick .PlayerName {
+    height: var(--pick-name-height);
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-size: calc(0.8 * var(--pick-name-height));
+}
+

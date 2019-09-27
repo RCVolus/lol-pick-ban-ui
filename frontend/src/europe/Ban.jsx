@@ -2,6 +2,6 @@ import React from 'react';
 
 export default props => (
     <div className="Ban">
-        {props.champion.name}
+        <img src={props.champion.squareImg} alt="" />
     </div>
 );

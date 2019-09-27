@@ -4,7 +4,9 @@ import Overlay from "./europe/Overlay";
 function App() {
   const [globalState, setGlobalState] = useState({});
   useEffect(() => {
-    const socketUrl = process.env.REACT_APP_LCSU_BACKEND || `ws://${window.location.host}/ws`
+    const socketUrl = window.location.pathname === '/example' ? `ws://localhost:8999/example` : process.env.REACT_APP_LCSU_BACKEND || `ws://${window.location.host}/ws`;
+    console.log(`WebSocket service: ${socketUrl}`);
+    console.log(process.env);
     let socket;
 
     const onopen = (() => {
