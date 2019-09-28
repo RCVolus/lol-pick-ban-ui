@@ -31,6 +31,7 @@ class State extends EventEmitter {
         this.champselect.on('newState', (state: any) => {
             this.data.blueTeam = state.blueTeam;
             this.data.redTeam = state.redTeam;
+            this.data.timer = state.timer;
             this.triggerUpdate();
         });
     }

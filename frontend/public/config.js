@@ -1,7 +1,7 @@
 Window.lolcfg = {
     scoreEnabled: true,
     blueTeam: {
-        name: "SCHALKE 04",
+        name: "MY COOL ESPORTS ORG",
         score: 2,
         coach: "Yosef Yominotoro"
     },

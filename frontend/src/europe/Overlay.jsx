@@ -5,9 +5,65 @@ import Pick from "./Pick";
 import './europe.css';
 import Ban from "./Ban";
 
+import botSplash from '../assets/bot_splash_placeholder.svg';
+import jungSplash from '../assets/jung_splash_placeholder.svg';
+import midSplash from '../assets/mid_splash_placeholder.svg';
+import supSplash from '../assets/sup_splash_placeholder.svg';
+import topSplash from '../assets/top_splash_placeholder.svg';
+import banImg from '../assets/ban_placeholder.svg';
+
 export default class Overlay extends React.Component {
     render() {
         const { state } = this.props;
+        const pickSplashes = [topSplash, jungSplash, midSplash, botSplash, supSplash];
+
+        const putPlaceholders = team => {
+            for (let i = 0; i < 5; i++) {
+                // Picks
+                // Check if exists
+                if (i >= team.picks.length) {
+                    // Does not exists, push
+                    team.picks.push({
+                        champion: {
+                            loadingImg: pickSplashes[i]
+                        }
+                    });
+                } else {
+                    // Exists, check!
+                    const pick = team.picks[i];
+                    if (!pick.champion || !pick.champion.loadingImg) {
+                        pick.champion = {
+                            loadingImg: pickSplashes[i]
+                        };
+                        pick.spell1 = null;
+                        pick.spell2 = null;
+                    }
+                }
+
+                // Bans
+                if (i >= team.bans.length) {
+                    // Does not exist
+                    team.bans.push({
+                        champion: {
+                            squareImg: banImg
+                        }
+                    });
+                } else {
+                    const ban = team.bans[i];
+                    if (!ban.champion || !ban.champion.squareImg) {
+                        ban.champion = {
+                            squareImg: banImg
+                        }
+                    }
+                }
+            }
+        };
+
+        if (Object.keys(state).length !== 0) {
+            putPlaceholders(state.blueTeam);
+            putPlaceholders(state.redTeam);
+        }
+
         console.log(state);
 
         return (
@@ -23,8 +79,12 @@ export default class Overlay extends React.Component {
                         <div className="Patch">
                             Patch: {Window.lolcfg.patch}
                         </div>
-                        <div className="Timer Both">
-                            17
+                        <div className={cx("Timer", {
+                            'Red': state.redTeam.isActive,
+                            'Blue': state.blueTeam.isActive,
+                            'Both': !state.blueTeam.isActive && !state.redTeam.isActive
+                        })}>
+                            {state.timer}
                         </div>
                     </div>
                     <div className="Team TeamBlue">
@@ -33,7 +93,10 @@ export default class Overlay extends React.Component {
                         </div>
                         <div className={cx("Bans", {"WithScore": Window.lolcfg.scoreEnabled})}>
                             <div className="TeamName">
-                                SCHALKE 04
+                                {Window.lolcfg.blueTeam.name}
+                                <div className="CoachName">
+                                    Coach: {Window.lolcfg.blueTeam.coach}
+                                </div>
                             </div>
                             {state.blueTeam.bans.map(ban => <Ban {...ban} />)}
                         </div>
@@ -48,7 +111,10 @@ export default class Overlay extends React.Component {
                         <div className={cx("Bans", {"WithScore": Window.lolcfg.scoreEnabled})}>
                             {state.redTeam.bans.map(ban => <Ban {...ban} />)}
                             <div className="TeamName">
-                                SCYREX
+                                {Window.lolcfg.redTeam.name}
+                                <div className="CoachName">
+                                    Coach: {Window.lolcfg.redTeam.coach}
+                                </div>
                             </div>
                         </div>
                         {Window.lolcfg.scoreEnabled && <div className="TeamScore">

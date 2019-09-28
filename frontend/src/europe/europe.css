@@ -18,22 +18,22 @@ body {
     --box-patch-height: 40px;
 
     --box-team-width: calc(5 * var(--box-width));
-    --box-pick-height: 230px;
+    --box-pick-height: 260px;
     --box-ban-height: 60px;
     --box-ban-spacer: calc(var(--box-ban-height) / 2);
 
     --pick-name-height: 30px;
     --pick-image-crop: 8px;
 
-    --ban-image-crop: 4px;
+    --ban-image-crop: 6px;
     --summoner-spell-size: 40px;
 
     --champselect-margin-bot: 50px;
 
     --color-red: rgb(222,40,70);
-    --color-blue: rgb(0,195,209);
+    --color-blue: rgb(0,151,196);
     --color-red-bg: rgba(222,40,70,0.3);
-    --color-blue-bg: rgba(0,195,209,0.3);
+    --color-blue-bg: rgba(0,151,196,0.3);
 
     --border-between-color: darkgray;
     --border-width: 3px;
@@ -198,7 +198,7 @@ body {
 }
 
 .Europe .TeamName {
-    font-size: 55px;
+    font-size: 40px;
     color: white;
     font-family: 'Saira Condensed', sans-serif;
     margin-top: -15px;
@@ -207,7 +207,13 @@ body {
     margin-left: 15px;
 }
 .Europe .TeamRed .TeamName {
+    text-align: right;
     margin-right: 15px;
+}
+
+.Europe .CoachName {
+    font-size: 20px;
+    margin-top: -20px;
 }
 
 .Europe .TeamScore {

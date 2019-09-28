@@ -7,15 +7,17 @@ namespace lolcsui {
             redTeam = new Team();
 
             meta = new Meta();
-        }
-
-        export class Team {
-            bans: Array<Ban> = [];
-            picks: Array<Pick> = [];
+            timer: number = 0;
         }
 
         export interface IAction {
             isActive: boolean;
+        }
+
+        export class Team implements IAction{
+            bans: Array<Ban> = [];
+            picks: Array<Pick> = [];
+            isActive = false;
         }
 
         export class Ban implements IAction {
@@ -68,7 +70,20 @@ namespace lolcsui {
             myTeam: Array<Cell> = [];
             theirTeam: Array<Cell> = [];
             actions: Array<Array<Action>> = [];
+
+            timer: Timer = new Timer();
         }
+
+        export class Timer {
+            adjustedTimeLeftInPhase: number = 0;
+            adjustedTimeLeftInPhaseInSec: number = 0;
+            internalNowInEpochMs: number = 0;
+            phase: string = "";
+            timeLeftInPhase: number = 0;
+            timeLeftInPhaseInSec: number = 0;
+            totalTimeInPhase: number = 0;
+        }
+
 
         export class Cell {
             cellId!: number;

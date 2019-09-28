@@ -8,6 +8,7 @@ import Team = lolcsui.dto.Team;
 import Pick = lolcsui.dto.Pick;
 import Session = lolcsui.lcu.Session;
 import Champion = lolcsui.dto.Champion;
+import Timer = lolcsui.lcu.Timer;
 
 const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
     const newTeam = new Team();
@@ -47,6 +48,7 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
 
         if (currentAction.type === ActionType.PICK && currentAction.actorCellId === cell.cellId) {
             pick.isActive = true;
+            newTeam.isActive = true;
         }
 
         return pick;
@@ -61,6 +63,7 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
 
         if (!action.completed) {
             ban.isActive = true;
+            newTeam.isActive = true;
             ban.champion = new Champion();
             return ban;
         }
@@ -81,6 +84,19 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
     return newTeam;
 };
 
+const convertTimer = (timer: Timer) => {
+    const startOfPhase = timer.internalNowInEpochMs;
+    const expectedEndOfPhase = startOfPhase + timer.adjustedTimeLeftInPhase;
+
+    const countdown = expectedEndOfPhase - new Date().getTime();
+    const countdownSec = Math.floor(countdown / 1000);
+
+    if (countdownSec < 0) {
+        return 0;
+    }
+    return countdownSec;
+};
+
 const convertState = (lcuSession: Session) => {
     // @ts-ignore
     const flattenedActions: Array<Action> = [].concat(...lcuSession.actions);
@@ -88,9 +104,12 @@ const convertState = (lcuSession: Session) => {
     const blueTeam = convertTeam(lcuSession.myTeam, flattenedActions);
     const redTeam = convertTeam(lcuSession.theirTeam, flattenedActions);
 
+    const timer = convertTimer(lcuSession.timer);
+
     return {
         blueTeam,
-        redTeam
+        redTeam,
+        timer
     };
 };
 
