@@ -66,8 +66,29 @@ export default class Overlay extends React.Component {
 
         console.log(state);
 
+        const renderTeam = (teamName, teamConfig, teamState) => (
+            <div className={cx('Team', teamName)}>
+                <div className="Picks">
+                    {teamState.picks.map(pick => <Pick {...pick} />)}
+                </div>
+                <div className={cx("Bans", {"WithScore": Window.lolcfg.scoreEnabled})}>
+                    {teamName === 'TeamRed' && teamState.bans.map(ban => <Ban {...ban} />)}
+                    <div className={cx('TeamName', {'WithoutCoaches': !Window.lolcfg.coachesEnabled})}>
+                        {teamConfig.name}
+                        {Window.lolcfg.coachesEnabled && <div className="CoachName">
+                            Coach: {teamConfig.coach}
+                        </div>}
+                    </div>
+                    {teamName === 'TeamBlue' && teamState.bans.map(ban => <Ban {...ban} />)}
+                </div>
+                {Window.lolcfg.scoreEnabled && <div className="TeamScore">
+                    <div>{teamConfig.score}</div>
+                </div>}
+            </div>
+        );
+
         return (
-            <div className={"Overlay Europe"}>
+            <div className={"Overlay Europe"} style={{"--color-red": Window.lolcfg.redTeam.color, "--color-blue": Window.lolcfg.blueTeam.color}}>
                 {Object.keys(state).length === 0 && <div className={"infoBox"}>Not connected to backend service!</div>}
                 {Object.keys(state).length !== 0 &&
                 <div className="ChampSelect">
@@ -80,7 +101,7 @@ export default class Overlay extends React.Component {
                             Patch: {Window.lolcfg.patch}
                         </div>
                         <div className={cx("Timer", {
-                            'Both': !state.blueTeam.isActive && !state.redTeam.isActive,
+                            'Red Blue': !state.blueTeam.isActive && !state.redTeam.isActive,
                             'Blue': state.blueTeam.isActive,
                             'Red': state.redTeam.isActive
                         })}>
@@ -91,40 +112,8 @@ export default class Overlay extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="Team TeamBlue">
-                        <div className="Picks">
-                            {state.blueTeam.picks.map(pick => <Pick {...pick} />)}
-                        </div>
-                        <div className={cx("Bans", {"WithScore": Window.lolcfg.scoreEnabled})}>
-                            <div className="TeamName">
-                                {Window.lolcfg.blueTeam.name}
-                                <div className="CoachName">
-                                    Coach: {Window.lolcfg.blueTeam.coach}
-                                </div>
-                            </div>
-                            {state.blueTeam.bans.map(ban => <Ban {...ban} />)}
-                        </div>
-                        {Window.lolcfg.scoreEnabled && <div className="TeamScore">
-                            <div>{Window.lolcfg.blueTeam.score}</div>
-                        </div>}
-                    </div>
-                    <div className="Team TeamRed">
-                        <div className="Picks">
-                            {state.redTeam.picks.map(pick => <Pick {...pick} />)}
-                        </div>
-                        <div className={cx("Bans", {"WithScore": Window.lolcfg.scoreEnabled})}>
-                            {state.redTeam.bans.map(ban => <Ban {...ban} />)}
-                            <div className="TeamName">
-                                {Window.lolcfg.redTeam.name}
-                                <div className="CoachName">
-                                    Coach: {Window.lolcfg.redTeam.coach}
-                                </div>
-                            </div>
-                        </div>
-                        {Window.lolcfg.scoreEnabled && <div className="TeamScore">
-                            <div>{Window.lolcfg.redTeam.score}</div>
-                        </div>}
-                    </div>
+                    {renderTeam('TeamBlue', Window.lolcfg.blueTeam, state.blueTeam)}
+                    {renderTeam('TeamRed', Window.lolcfg.redTeam, state.redTeam)}
                 </div>}
             </div>
         )

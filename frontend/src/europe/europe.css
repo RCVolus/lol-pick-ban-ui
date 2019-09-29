@@ -3,7 +3,7 @@ body {
     font-family: 'Nova Flat', sans-serif;
 
     background-color: black;
-    /* background: url("https://dotesports-media.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2019/06/14131635/LEC-Summer-2019.jpg"); */
+    background: url("https://dotesports-media.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2019/06/14131635/LEC-Summer-2019.jpg");
     background-size: cover;
 }
 
@@ -33,8 +33,6 @@ body {
 
     --color-red: rgb(222,40,70);
     --color-blue: rgb(0,151,196);
-    --color-red-bg: rgba(222,40,70,0.3);
-    --color-blue-bg: rgba(0,151,196,0.3);
 
     --border-between-color: darkgray;
     --border-width: 3px;
@@ -92,14 +90,14 @@ body {
     transition: left 1s;
 }
 .Europe .Timer .Background.Blue {
-    background: linear-gradient(to left, black 0%, var(--color-blue) 100%);
+    background: linear-gradient(to left, rgba(0,0,0,0) 0%, var(--color-blue) 100%);
     left: -100%;
 }
 .Europe .Blue .Background.Blue {
     left: 0;
 }
 .Europe .Timer .Background.Red {
-    background: linear-gradient(to right, black 0%, var(--color-red) 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%, var(--color-red) 100%);
     left: 100%;
 }
 .Europe .Red .Background.Red {
@@ -112,38 +110,12 @@ body {
 }
 .Europe .Timer .TimerChar {
     width: 30px;
+    margin: 0 2px;
     text-align: right;
 }
 .Europe .Timer .TimerChar:nth-child(2) {
     text-align: left;
 }
-/* .Europe .Timer.Red {
-    background: linear-gradient(to right, black 0%, var(--color-red) 100%);
-} */
-/* .Europe .Timer.Blue {
-    background: linear-gradient(to left, black 0%, var(--color-blue) 100%);
-} */
-/* .Europe .Timer::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    /* background: green;
-    /* opacity: 0;
-    transition: left 1s;
-    z-index: -1;
-}
-.Europe .Timer.Blue::before {
-    opacity: 1;
-    left: 0;
-    background: linear-gradient(to left, black 0%, var(--color-blue) 100%);
-}
-.Europe .Timer.Red::before {
-    opacity: 1;
-    background: linear-gradient(to right, black 0%, var(--color-red) 100%);
-} */
 .Europe .Timer.Both {
     background: linear-gradient(to right, var(--color-blue) 0%, var(--color-red) 100%)
 }
@@ -189,6 +161,7 @@ body {
     width: 20%;
     height: 100%;
     overflow: hidden;
+    background-color: #0a0a0a;
     border-left: solid var(--border-between-color) 1px;
 }
 .Europe .Pick:first-child {
@@ -203,6 +176,33 @@ body {
 .Europe .Pick .SummonerSpells img {
     height: var(--summoner-spell-size);
     width: var(--summoner-spell-size);
+}
+@keyframes pulsate {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+.Europe .PickImage.Active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    animation: pulsate 1.5s infinite;
+}
+.Europe .TeamBlue .PickImage.Active::before {
+    background-image: linear-gradient(to left, var(--color-blue) 0%, rgba(0,0,0,0) 50%, var(--color-blue) 100%);
+}
+.Europe .TeamRed .PickImage.Active::before {
+    background-image: linear-gradient(to left, var(--color-red) 0%, rgba(0,0,0,0) 50%, var(--color-red) 100%);
 }
 
 .Europe .Ban {
@@ -258,6 +258,10 @@ body {
     font-family: 'Saira Condensed', sans-serif;
     margin-top: -15px;
 }
+.Europe .TeamName.WithoutCoaches {
+    font-size: 60px;
+    margin-top: -20px;
+}
 .Europe .TeamBlue .TeamName {
     margin-left: 15px;
 }
@@ -296,6 +300,7 @@ body {
 }
 
 .Europe .Pick .PickImage {
+    position: relative;
     height: calc(100% - var(--pick-name-height))
 }
 

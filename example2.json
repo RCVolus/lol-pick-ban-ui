@@ -1,0 +1,346 @@
+{
+  "leagueConnected": true,
+  "champSelectActive": true,
+  "blueTeam": {
+    "bans": [
+      {
+        "champion": {
+          "id": 1,
+          "name": "Annie",
+          "idName": "Annie",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Annie_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Qiyana_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Qiyana.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 1,
+          "name": "Annie",
+          "idName": "Annie",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Annie_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Annie_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Ivern.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 1,
+          "name": "Annie",
+          "idName": "Annie",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Annie_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Annie_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Annie.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 28,
+          "name": "Evelynn",
+          "idName": "Evelynn",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Evelynn_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Evelynn_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Evelynn.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 142,
+          "name": "Zoe",
+          "idName": "Zoe",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Zoe_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Zoe_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Zoe.png"
+        },
+        "isActive": false
+      }
+    ],
+    "picks": [
+      {
+        "isActive": true,
+        "displayName": "SPY Vizicsacsi",
+        "id": 0,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 99,
+          "name": "Lux",
+          "idName": "Lux",
+          "loadingImg": "",
+          "splashImg": "",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Lux.png"
+        }
+      },
+      {
+        "isActive": false,
+        "displayName": "Rosa-Lea Odling",
+        "id": 1,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 58,
+          "name": "Renekton",
+          "idName": "Renekton",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Renekton_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Renekton_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Renekton.png"
+        }
+      },
+      {
+        "isActive": false,
+        "displayName": "Shennai Lanier",
+        "id": 2,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 11,
+          "name": "Master Yi",
+          "idName": "MasterYi",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/MasterYi_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/MasterYi_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/MasterYi.png"
+        }
+      },
+      {
+        "isActive": false,
+        "displayName": "Laaibah Moyer",
+        "id": 3,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 115,
+          "name": "Ziggs",
+          "idName": "Ziggs",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ziggs_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ziggs_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Ziggs.png"
+        }
+      },
+      {
+        "isActive": false,
+        "displayName": "Donatella Mccann",
+        "id": 4,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 33,
+          "name": "Rammus",
+          "idName": "Rammus",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Rammus_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Rammus_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Rammus.png"
+        }
+      }
+    ],
+    "isActive": false
+  },
+  "redTeam": {
+    "bans": [
+      {
+        "champion": {
+          "id": 12,
+          "name": "Alistar",
+          "idName": "Alistar",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Alistar_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Alistar_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Riven.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 12,
+          "name": "Alistar",
+          "idName": "Alistar",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Alistar_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Alistar_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Yuumi.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 12,
+          "name": "Alistar",
+          "idName": "Alistar",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Alistar_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Alistar_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Alistar.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 136,
+          "name": "Aurelion Sol",
+          "idName": "AurelionSol",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/AurelionSol_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/AurelionSol_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/AurelionSol.png"
+        },
+        "isActive": false
+      },
+      {
+        "champion": {
+          "id": 268,
+          "name": "Azir",
+          "idName": "Azir",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Azir_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Azir_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Azir.png"
+        },
+        "isActive": false
+      }
+    ],
+    "picks": [
+      {
+        "isActive": false,
+        "displayName": "Elilift",
+        "id": 5,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 105,
+          "name": "Fizz",
+          "idName": "Fizz",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Fizz_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Fizz_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Fizz.png"
+        }
+      },
+      {
+        "isActive": false,
+        "displayName": "Poppy-Lea Rosen",
+        "id": 6,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 102,
+          "name": "Shyvana",
+          "idName": "Shyvana",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/KogMaw_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Shyvana_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Shyvana.png"
+        }
+      },
+      {
+        "isActive": false,
+        "displayName": "xXpUsSY_SLaYer69Xx",
+        "id": 7,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 81,
+          "name": "Ezreal",
+          "idName": "Ezreal",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ezreal_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ezreal_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Ezreal.png"
+        }
+      },
+      {
+        "isActive": false,
+        "displayName": "Phoebie Mcmanus",
+        "id": 8,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 22,
+          "name": "Ashe",
+          "idName": "Ashe",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ashe_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Ashe.png"
+        }
+      },
+      {
+        "isActive": false,
+        "displayName": "Kynaat Woodward",
+        "id": 9,
+        "spell1": {
+          "id": 4,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerFlash.png"
+        },
+        "spell2": {
+          "id": 14,
+          "icon": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/SummonerDot.png"
+        },
+        "champion": {
+          "id": 11,
+          "name": "Master Yi",
+          "idName": "MasterYi",
+          "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/MasterYi_0.jpg",
+          "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/MasterYi_0.jpg",
+          "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/MasterYi.png"
+        }
+      }
+    ],
+    "isActive": false
+  },
+  "meta": {
+    "cdn": "https://ddragon.leagueoflegends.com/cdn",
+    "version": {
+      "champion": "9.19.1",
+      "item": "9.19.1"
+    }
+  },
+  "timer": 22
+}

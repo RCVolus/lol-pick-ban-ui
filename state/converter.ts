@@ -10,10 +10,11 @@ import Session = lolcsui.lcu.Session;
 import Champion = lolcsui.dto.Champion;
 import Timer = lolcsui.lcu.Timer;
 
-const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
+const convertTeam = (team: Array<Cell>, actions: Array<Action>, name: string) => {
     const newTeam = new Team();
     newTeam.picks = team.map((cell: Cell) => {
         const currentAction = actions[actions.length - 1];
+        console.log(currentAction);
 
         const pick = new Pick(cell.cellId);
         pick.id = cell.cellId;
@@ -47,6 +48,8 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
         }
 
         if (currentAction.type === ActionType.PICK && currentAction.actorCellId === cell.cellId && !currentAction.completed) {
+            console.log("Currently active is team " + name);
+            console.log(team);
             pick.isActive = true;
             newTeam.isActive = true;
         }
@@ -101,8 +104,8 @@ const convertState = (lcuSession: Session) => {
     // @ts-ignore
     const flattenedActions: Array<Action> = [].concat(...lcuSession.actions);
 
-    const blueTeam = convertTeam(lcuSession.myTeam, flattenedActions);
-    const redTeam = convertTeam(lcuSession.theirTeam, flattenedActions);
+    const blueTeam = convertTeam(lcuSession.myTeam, flattenedActions, 'blueTeam');
+    const redTeam = convertTeam(lcuSession.theirTeam, flattenedActions, 'redTeam');
 
     const timer = convertTimer(lcuSession.timer);
 

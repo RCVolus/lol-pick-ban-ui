@@ -76,7 +76,7 @@ class LCU {
         state.data.leagueConnected = true;
         state.triggerUpdate();
 
-        this.updateInterval = setInterval(this.updateFromLCU, 200);
+        this.updateInterval = setInterval(this.updateFromLCU, 500);
     }
 
     onLeagueDisconnected() {
