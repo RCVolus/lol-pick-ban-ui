@@ -1,5 +1,6 @@
 Window.lolcfg = {
     scoreEnabled: true,
+    spellsEnabled: true,
     blueTeam: {
         name: "MY COOL ESPORTS ORG",
         score: 2,

@@ -46,7 +46,7 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>) => {
             pick.displayName = summoner.displayName;
         }
 
-        if (currentAction.type === ActionType.PICK && currentAction.actorCellId === cell.cellId) {
+        if (currentAction.type === ActionType.PICK && currentAction.actorCellId === cell.cellId && !currentAction.completed) {
             pick.isActive = true;
             newTeam.isActive = true;
         }

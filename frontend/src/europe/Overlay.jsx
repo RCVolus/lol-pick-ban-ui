@@ -80,11 +80,15 @@ export default class Overlay extends React.Component {
                             Patch: {Window.lolcfg.patch}
                         </div>
                         <div className={cx("Timer", {
-                            'Red': state.redTeam.isActive,
+                            'Both': !state.blueTeam.isActive && !state.redTeam.isActive,
                             'Blue': state.blueTeam.isActive,
-                            'Both': !state.blueTeam.isActive && !state.redTeam.isActive
+                            'Red': state.redTeam.isActive
                         })}>
-                            {state.timer}
+                            <div className={cx('Background', 'Blue')} />
+                            <div className={cx('Background', 'Red')} />
+                            <div className="TimerChars">
+                                {state.timer.toString().split('').map(char => <div className={"TimerChar"}>{char}</div>)}
+                            </div>
                         </div>
                     </div>
                     <div className="Team TeamBlue">

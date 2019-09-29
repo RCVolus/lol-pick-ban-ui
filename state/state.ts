@@ -24,15 +24,32 @@ class State extends EventEmitter {
         this.champselect.on('ended', () => {
             this.data.blueTeam = new Team();
             this.data.redTeam = new Team();
+            this.data.timer = 0;
             this.data.champSelectActive = false;
             this.triggerUpdate();
         });
 
         this.champselect.on('newState', (state: any) => {
-            this.data.blueTeam = state.blueTeam;
-            this.data.redTeam = state.redTeam;
-            this.data.timer = state.timer;
-            this.triggerUpdate();
+            let shouldUpdate = false;
+
+            if (JSON.stringify(this.data.blueTeam) !== JSON.stringify(state.blueTeam)) {
+                this.data.blueTeam = state.blueTeam;
+                shouldUpdate = true;
+            }
+
+            if (JSON.stringify(this.data.redTeam) !== JSON.stringify(state.redTeam)) {
+                this.data.redTeam = state.redTeam;
+                shouldUpdate = true;
+            }
+
+            if (this.data.timer !== state.timer) {
+                this.data.timer = state.timer;
+                shouldUpdate = true;
+            }
+
+            if (shouldUpdate) {
+                this.triggerUpdate();
+            }
         });
     }
 

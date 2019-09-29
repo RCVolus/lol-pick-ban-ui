@@ -165,7 +165,8 @@
           "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Rammus.png"
         }
       }
-    ]
+    ],
+    "isActive": false
   },
   "redTeam": {
     "bans": [
@@ -331,7 +332,8 @@
           "squareImg": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/MasterYi.png"
         }
       }
-    ]
+    ],
+    "isActive": true
   },
   "meta": {
     "cdn": "https://ddragon.leagueoflegends.com/cdn",
@@ -339,5 +341,6 @@
       "champion": "9.19.1",
       "item": "9.19.1"
     }
-  }
+  },
+  "timer": 8
 }
