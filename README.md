@@ -27,4 +27,4 @@ transitions
 - Development: Lars "Larce" Bärtschi
 - Design (Europe): Elias "Elilift" Inäbnit
 
-Please feel free to contact me via Twitter and let me know if you used this project! I'm also happy to help out if any questions or inquiries or feedback appear regarding this! [https://twitter.com/LarsBaertschi](@LarsBaertschi)
+Please feel free to contact me via Twitter and let me know if you used this project! I'm also happy to help out if any questions or inquiries or feedback appear regarding this! [@LarsBaertschi](https://twitter.com/LarsBaertschi)
