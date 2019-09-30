@@ -11,6 +11,7 @@ import midSplash from '../assets/mid_splash_placeholder.svg';
 import supSplash from '../assets/sup_splash_placeholder.svg';
 import topSplash from '../assets/top_splash_placeholder.svg';
 import banImg from '../assets/ban_placeholder.svg';
+import logo from '../assets/example_logo.png';
 
 export default class Overlay extends React.Component {
     render() {
@@ -95,7 +96,7 @@ export default class Overlay extends React.Component {
                     {!state.leagueConnected && <div className={"infoBox"}>Not connected to client!</div> }
                     <div className="MiddleBox">
                         <div className="Logo">
-                            <img src="https://eu.lolesports.com/darkroom/original/b496f5eaa42b6152b579a5c3e6edf5a3:b9ea0fa9ce55cde10d1eef7564ba4c3a/de-logo.png" alt="" />
+                            <img src={logo} alt="" />
                         </div>
                         <div className="Patch">
                             Patch: {Window.lolcfg.patch}

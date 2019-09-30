@@ -2,7 +2,17 @@
   "leagueConnected": true,
   "champSelectActive": true,
   "blueTeam": {
-    "bans": [],
+    "bans": [{
+      "champion": {
+        "id": 1,
+        "name": "Annie",
+        "idName": "Annie",
+        "loadingImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Annie_0.jpg",
+        "splashImg": "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Qiyana_0.jpg",
+        "squareImg2": "https://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/Qiyana.png"
+      },
+      "isActive": true
+    }],
     "picks": [
       {
         "isActive": true,

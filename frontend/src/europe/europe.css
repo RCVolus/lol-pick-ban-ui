@@ -172,21 +172,16 @@ body {
     position: absolute;
     top: calc(var(--box-pick-height) - 30px - var(--summoner-spell-size));
     right: 0;
+    z-index: 10;
 }
 .Europe .Pick .SummonerSpells img {
     height: var(--summoner-spell-size);
     width: var(--summoner-spell-size);
 }
-@keyframes pulsate {
-    0% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 0.2;
-    }
-    100% {
-        opacity: 0.5;
-    }
+@keyframes pulsate-pick {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.2; }
+    100% { opacity: 0.5; }
 }
 .Europe .PickImage.Active::before {
     content: "";
@@ -196,7 +191,7 @@ body {
     width: 100%;
     height: 100%;
     opacity: 0.5;
-    animation: pulsate 1.5s infinite;
+    animation: pulsate-pick 1.5s infinite;
 }
 .Europe .TeamBlue .PickImage.Active::before {
     background-image: linear-gradient(to left, var(--color-blue) 0%, rgba(0,0,0,0) 50%, var(--color-blue) 100%);
@@ -210,6 +205,7 @@ body {
     width: calc(var(--box-ban-height) - calc(2 * var(--border-width)));
     height: calc(var(--box-ban-height) - calc(2 * var(--border-width)));
     overflow: hidden;
+    position: relative;
 }
 .Europe .Ban img {
     width: calc(100% + calc(2 * var(--ban-image-crop)));
@@ -228,6 +224,27 @@ body {
 }
 .Europe .TeamBlue .Ban:first-child {
     border: none;
+}
+@keyframes pulsate-ban {
+    0% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.7; }
+}
+.Europe .BanImage.Active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    animation: pulsate-ban 1.5s infinite;
+}
+.Europe .TeamBlue .BanImage.Active::before {
+    background-image: linear-gradient(to left, var(--color-blue) 0%, rgba(0,0,0,0) 50%, var(--color-blue) 100%);
+}
+.Europe .TeamRed .BanImage.Active::before {
+    background-image: linear-gradient(to left, var(--color-red) 0%, rgba(0,0,0,0) 50%, var(--color-red) 100%);
 }
 
 .Europe .TeamBlue .Ban:nth-child(4) {
