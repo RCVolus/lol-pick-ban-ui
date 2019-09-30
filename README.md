@@ -22,3 +22,9 @@ is realised it will automatically fetch the correct resources.
   - Set colors (default blue/red, but they can differ!)
 - Allows to completely create a custom design based on web technologies (HTML, CSS & JS), including custom animations and
 transitions
+
+## Contributors / Maintainers
+- Development: Lars "Larce" Bärtschi
+- Design (Europe): Elias "Elilift" Inäbnit
+
+Please feel free to contact me via Twitter and let me know if you used this project! I'm also happy to help out if any questions or inquiries or feedback appear regarding this! [https://twitter.com/LarsBaertschi](@LarsBaertschi)
