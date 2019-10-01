@@ -28,11 +28,14 @@ class WebSocket {
     }
 
     handleConnection(ws: any, request: IncomingMessage) {
+        const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
         if (request.url && request.url === '/example') {
             log.info('New example client connected!');
+            ws.send(JSON.stringify({'heartbeat': true, config}));
             this.exampleClients.push(ws);
         } else {
             this.clients.push(ws);
+            ws.send(JSON.stringify({'heartbeat': true, config}));
             ws.send(JSON.stringify(state.data));
         }
     }
@@ -46,14 +49,15 @@ class WebSocket {
     }
 
     sendHeartbeat() {
+        const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
         this.clients.forEach((client: any) => {
-            client.send(JSON.stringify({'heartbeat': true}));
+            client.send(JSON.stringify({'heartbeat': true, config}));
         });
 
-        // example clients do not receive a heartbeat, they receive the file content instead
         const exampleData = fs.readFileSync('./example.json', 'utf8');
         this.exampleClients.forEach((client: any) => {
             client.send(JSON.stringify(JSON.parse(exampleData)));
+            client.send(JSON.stringify({'heartbeat': true, config}));
         });
     }
 }

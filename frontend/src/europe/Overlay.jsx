@@ -15,7 +15,7 @@ import logo from '../assets/example_logo.png';
 
 export default class Overlay extends React.Component {
     render() {
-        const { state } = this.props;
+        const { state, config } = this.props;
         const pickSplashes = [topSplash, jungSplash, midSplash, botSplash, supSplash];
 
         const putPlaceholders = team => {
@@ -72,24 +72,24 @@ export default class Overlay extends React.Component {
                 <div className={cx(css.Picks)}>
                     {teamState.picks.map(pick => <Pick {...pick} />)}
                 </div>
-                <div className={cx(css.Bans, {[css.WithScore]: Window.lolcfg.scoreEnabled})}>
+                <div className={cx(css.Bans, {[css.WithScore]: config.frontend.scoreEnabled})}>
                     {teamName === css.TeamRed && teamState.bans.map(ban => <Ban {...ban} />)}
-                    <div className={cx(css.TeamName, {[css.WithoutCoaches]: !Window.lolcfg.coachesEnabled})}>
+                    <div className={cx(css.TeamName, {[css.WithoutCoaches]: !config.frontend.coachesEnabled})}>
                         {teamConfig.name}
-                        {Window.lolcfg.coachesEnabled && <div className={css.CoachName}>
+                        {config.frontend.coachesEnabled && <div className={css.CoachName}>
                             Coach: {teamConfig.coach}
                         </div>}
                     </div>
                     {teamName === css.TeamBlue && teamState.bans.map(ban => <Ban {...ban} />)}
                 </div>
-                {Window.lolcfg.scoreEnabled && <div className={css.TeamScore}>
+                {config.frontend.scoreEnabled && <div className={css.TeamScore}>
                     <div>{teamConfig.score}</div>
                 </div>}
             </div>
         );
 
         return (
-            <div className={cx(css.Overlay, css.Europe)} style={{"--color-red": Window.lolcfg.redTeam.color, "--color-blue": Window.lolcfg.blueTeam.color}}>
+            <div className={cx(css.Overlay, css.Europe)} style={{"--color-red": config.frontend.redTeam.color, "--color-blue": config.frontend.blueTeam.color}}>
                 {Object.keys(state).length === 0 && <div className={cx(css.infoBox)}>Not connected to backend service!</div>}
                 {Object.keys(state).length !== 0 &&
                 <div className={cx(css.ChampSelect)}>
@@ -99,7 +99,7 @@ export default class Overlay extends React.Component {
                             <img src={logo} alt="" />
                         </div>
                         <div className={cx(css.Patch)}>
-                            Patch: {Window.lolcfg.patch}
+                            Patch: {config.frontend.patch}
                         </div>
                         <div className={cx(css.Timer, {
                             [`${css.Red} ${css.Blue}`]: !state.blueTeam.isActive && !state.redTeam.isActive,
@@ -113,8 +113,8 @@ export default class Overlay extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {renderTeam(css.TeamBlue, Window.lolcfg.blueTeam, state.blueTeam)}
-                    {renderTeam(css.TeamRed, Window.lolcfg.redTeam, state.redTeam)}
+                    {renderTeam(css.TeamBlue, config.frontend.blueTeam, state.blueTeam)}
+                    {renderTeam(css.TeamRed, config.frontend.redTeam, state.redTeam)}
                 </div>}
             </div>
         )
