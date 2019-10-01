@@ -1,0 +1,96 @@
+.AnimationHidden {
+  .Timer {
+    position: relative;
+    bottom: -130px;
+    animation: timer 1s forwards;
+
+    .Blue, .Red {
+      opacity: 0;
+    }
+  }
+  .Team {
+    opacity: 0;
+  }
+  .Logo, .Patch {
+    opacity: 0;
+  }
+}
+
+@keyframes timer {
+  100% {
+    bottom: 0;
+  }
+}
+
+.AnimationTimer {
+  .Timer {
+    .Blue {
+      left: 100% !important;
+      transition: none !important;
+      animation: timer-colors 0.5s forwards;
+      animation-timing-function: ease-in;
+    }
+    .Red {
+      left: -100% !important;
+      transition: none !important;
+      animation: timer-colors 0.5s forwards;
+      animation-timing-function: ease-in;
+    }
+  }
+  .Team {
+    &.TeamBlue {
+      .Picks {
+        opacity: 0;
+      }
+      .Bans {
+        transform: translateX(100%);
+        animation: bans-fadein 1.5s forwards;
+        animation-delay: 0.5s;
+      }
+    }
+
+    &.TeamRed {
+      .Picks {
+        opacity: 0;
+      }
+      .Bans {
+        transform: translateX(-100%);
+        animation: bans-fadein 1.5s forwards;
+        animation-delay: 0.5s;
+      }
+    }
+  }
+  .Logo, .Patch {
+    opacity: 0;
+  }
+}
+
+@keyframes timer-colors {
+  100% {
+    left: 0;
+  }
+}
+@keyframes bans-fadein {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.AnimationBans {
+  .Picks {
+    opacity: 0;
+  }
+  .Logo, .Patch {
+    opacity: 0;
+  }
+}
+
+.AnimationBirb {
+  .Picks {
+    opacity: 0;
+  }
+}
+
+.AnimationPigs {
+  // EPIC gamer moment
+}

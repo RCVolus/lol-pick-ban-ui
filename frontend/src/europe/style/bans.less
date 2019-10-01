@@ -4,10 +4,6 @@
   display: flex;
   box-sizing: border-box;
 
-  &.WithScore {
-    width: calc(100% - var(--box-ban-height) - 3px);
-  }
-
   .Ban {
     display: block;
     width: calc(var(--box-ban-height) - calc(2 * var(--border-width)));
@@ -37,6 +33,10 @@
       animation: pulsate-ban 1.5s infinite;
     }
   }
+}
+
+.BansWrapper {
+  overflow: hidden;
 }
 
 @keyframes pulsate-ban {
