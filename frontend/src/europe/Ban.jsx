@@ -1,10 +1,12 @@
 import React from 'react';
-import cx from "classnames";
+import cx from 'classnames';
+
+import css from './style/index.less';
 
 export default props => (
-    <div className="Ban">
-        <div className={cx('BanImage', {
-            'Active': props.isActive
+    <div className={cx(css.Ban)}>
+        <div className={cx(css.BanImage, {
+            [css.Active]: props.isActive
         })}>
             <img src={props.champion.squareImg} alt="" />
         </div>

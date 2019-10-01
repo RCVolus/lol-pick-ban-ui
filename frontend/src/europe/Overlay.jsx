@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import Pick from "./Pick";
 
-import './europe.css';
+import css from './style/index.less';
 import Ban from "./Ban";
 
 import botSplash from '../assets/bot_splash_placeholder.svg';
@@ -68,53 +68,53 @@ export default class Overlay extends React.Component {
         console.log(state);
 
         const renderTeam = (teamName, teamConfig, teamState) => (
-            <div className={cx('Team', teamName)}>
-                <div className="Picks">
+            <div className={cx(css.Team, teamName)}>
+                <div className={cx(css.Picks)}>
                     {teamState.picks.map(pick => <Pick {...pick} />)}
                 </div>
-                <div className={cx("Bans", {"WithScore": Window.lolcfg.scoreEnabled})}>
-                    {teamName === 'TeamRed' && teamState.bans.map(ban => <Ban {...ban} />)}
-                    <div className={cx('TeamName', {'WithoutCoaches': !Window.lolcfg.coachesEnabled})}>
+                <div className={cx(css.Bans, {[css.WithScore]: Window.lolcfg.scoreEnabled})}>
+                    {teamName === css.TeamRed && teamState.bans.map(ban => <Ban {...ban} />)}
+                    <div className={cx(css.TeamName, {[css.WithoutCoaches]: !Window.lolcfg.coachesEnabled})}>
                         {teamConfig.name}
-                        {Window.lolcfg.coachesEnabled && <div className="CoachName">
+                        {Window.lolcfg.coachesEnabled && <div className={css.CoachName}>
                             Coach: {teamConfig.coach}
                         </div>}
                     </div>
-                    {teamName === 'TeamBlue' && teamState.bans.map(ban => <Ban {...ban} />)}
+                    {teamName === css.TeamBlue && teamState.bans.map(ban => <Ban {...ban} />)}
                 </div>
-                {Window.lolcfg.scoreEnabled && <div className="TeamScore">
+                {Window.lolcfg.scoreEnabled && <div className={css.TeamScore}>
                     <div>{teamConfig.score}</div>
                 </div>}
             </div>
         );
 
         return (
-            <div className={"Overlay Europe"} style={{"--color-red": Window.lolcfg.redTeam.color, "--color-blue": Window.lolcfg.blueTeam.color}}>
-                {Object.keys(state).length === 0 && <div className={"infoBox"}>Not connected to backend service!</div>}
+            <div className={cx(css.Overlay, css.Europe)} style={{"--color-red": Window.lolcfg.redTeam.color, "--color-blue": Window.lolcfg.blueTeam.color}}>
+                {Object.keys(state).length === 0 && <div className={cx(css.infoBox)}>Not connected to backend service!</div>}
                 {Object.keys(state).length !== 0 &&
-                <div className="ChampSelect">
-                    {!state.leagueConnected && <div className={"infoBox"}>Not connected to client!</div> }
-                    <div className="MiddleBox">
-                        <div className="Logo">
+                <div className={cx(css.ChampSelect)}>
+                    {!state.leagueConnected && <div className={cx(css.infoBox)}>Not connected to client!</div> }
+                    <div className={cx(css.MiddleBox)}>
+                        <div className={cx(css.Logo)}>
                             <img src={logo} alt="" />
                         </div>
-                        <div className="Patch">
+                        <div className={cx(css.Patch)}>
                             Patch: {Window.lolcfg.patch}
                         </div>
-                        <div className={cx("Timer", {
-                            'Red Blue': !state.blueTeam.isActive && !state.redTeam.isActive,
-                            'Blue': state.blueTeam.isActive,
-                            'Red': state.redTeam.isActive
+                        <div className={cx(css.Timer, {
+                            [`${css.Red} ${css.Blue}`]: !state.blueTeam.isActive && !state.redTeam.isActive,
+                            [css.Blue]: state.blueTeam.isActive,
+                            [css.Red]: state.redTeam.isActive
                         })}>
-                            <div className={cx('Background', 'Blue')} />
-                            <div className={cx('Background', 'Red')} />
-                            <div className="TimerChars">
-                                {state.timer.toString().split('').map(char => <div className={"TimerChar"}>{char}</div>)}
+                            <div className={cx(css.Background, css.Blue)} />
+                            <div className={cx(css.Background, css.Red)} />
+                            <div className={cx(css.TimerChars)}>
+                                {state.timer.toString().split('').map(char => <div className={cx(css.TimerChar)}>{char}</div>)}
                             </div>
                         </div>
                     </div>
-                    {renderTeam('TeamBlue', Window.lolcfg.blueTeam, state.blueTeam)}
-                    {renderTeam('TeamRed', Window.lolcfg.redTeam, state.redTeam)}
+                    {renderTeam(css.TeamBlue, Window.lolcfg.blueTeam, state.blueTeam)}
+                    {renderTeam(css.TeamRed, Window.lolcfg.redTeam, state.redTeam)}
                 </div>}
             </div>
         )
