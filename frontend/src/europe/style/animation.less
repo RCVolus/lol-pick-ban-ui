@@ -1,3 +1,9 @@
+.TheAbsoluteVoid {
+  * {
+    display: none;
+  }
+}
+
 .AnimationHidden {
   .Timer {
     position: relative;
@@ -39,29 +45,20 @@
   }
   .Team {
     &.TeamBlue {
-      .Picks {
-        opacity: 0;
-      }
       .Bans {
         transform: translateX(100%);
-        animation: bans-fadein 1.5s forwards;
+        animation: bans-fadein 1s forwards;
         animation-delay: 0.5s;
       }
     }
 
     &.TeamRed {
-      .Picks {
-        opacity: 0;
-      }
       .Bans {
         transform: translateX(-100%);
-        animation: bans-fadein 1.5s forwards;
+        animation: bans-fadein 1s forwards;
         animation-delay: 0.5s;
       }
     }
-  }
-  .Logo, .Patch {
-    opacity: 0;
   }
 }
 
@@ -76,18 +73,59 @@
   }
 }
 
-.AnimationBans {
-  .Picks {
-    opacity: 0;
+.AnimationBansPick {
+  --animation-initial-delay: 0.4s;
+  --animation-progress: 0.1745s;
+
+  .Pick {
+    animation: pick-move-up 0.7s forwards;
+    top: 100%;
+  }
+  .TeamBlue .Pick {
+    &:nth-child(5) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 1));
+    }
+    &:nth-child(4) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 2));
+    }
+    &:nth-child(3) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 3));
+    }
+    &:nth-child(2) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 4));
+    }
+    &:nth-child(1) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 5));
+    }
+  }
+  .TeamRed .Pick {
+    &:nth-child(1) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 1));
+    }
+    &:nth-child(2) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 2));
+    }
+    &:nth-child(3) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 3));
+    }
+    &:nth-child(4) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 4));
+    }
+    &:nth-child(5) {
+      animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 5));
+    }
   }
   .Logo, .Patch {
-    opacity: 0;
+    position: relative;
+    top: 100%;
+    z-index: -20;
+    animation: pick-move-up 0.7s forwards;
   }
 }
 
-.AnimationBirb {
-  .Picks {
-    opacity: 0;
+@keyframes pick-move-up {
+  100% {
+    top: 0;
   }
 }
 

@@ -15,30 +15,41 @@ import logo from '../assets/example_logo.png';
 
 export default class Overlay extends React.Component {
     state = {
-        currentAnimationState: css.AnimationHidden
+        currentAnimationState: css.TheAbsoluteVoid,
+        openingAnimationPlayed: false
     };
 
-    playAnimationOpening() {
+    playOpeningAnimation() {
+        this.setState({openingAnimationPlayed: true});
         setTimeout(() => {
             this.setState({currentAnimationState: css.AnimationHidden});
 
             setTimeout(() => {
-                this.setState({currentAnimationState: css.AnimationTimer});
+                this.setState({currentAnimationState: css.AnimationTimer + ' ' + css.AnimationBansPick});
 
-                /* setTimeout(() => {
-                    this.setState({currentAnimationState: css.AnimationBans});
-                }, 2000); */
-            }, 1200);
+                setTimeout(() => {
+                    this.setState({currentAnimationState: css.AnimationBansPick});
+
+                    setTimeout(() => {
+                        this.setState({currentAnimationState: css.AnimationPigs});
+                    }, 3000);
+                }, 1450);
+            }, 500);
         }, 500);
-    }
-
-    componentDidMount() {
-        this.playAnimationOpening();
     }
 
     render() {
         const { state, config } = this.props;
         const pickSplashes = [topSplash, jungSplash, midSplash, botSplash, supSplash];
+
+        if (state.champSelectActive && !this.state.openingAnimationPlayed) {
+            this.playOpeningAnimation();
+        }
+
+        if (!state.champSelectActive && this.state.openingAnimationPlayed) {
+            this.setState({openingAnimationPlayed: false});
+            this.setState({currentAnimationState: css.TheAbsoluteVoid});
+        }
 
         const putPlaceholders = team => {
             for (let i = 0; i < 5; i++) {
