@@ -23,6 +23,11 @@ is realised it will automatically fetch the correct resources.
 - Allows to completely create a custom design based on web technologies (HTML, CSS & JS), including custom animations and
 transitions
 
+## Demo (YouTube)
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=u-CTYFDBtqE
+" target="_blank"><img src="http://img.youtube.com/vi/u-CTYFDBtqE/0.jpg" 
+alt="Demo Video" width="240" height="180" border="10" /></a>
+
 ## Contributors / Maintainers
 - Development: Lars "Larce" Bärtschi
 - Design (Europe): Elias "Elilift" Inäbnit
