@@ -1,18 +1,20 @@
 import DDragon from './ddragon';
 import LCU from './lcu';
 import logger from '../logging';
+
 const log = logger('league');
 
 class League {
     ddragon = new DDragon();
+
     lcu!: LCU;
 
-    init() {
-        this.lcu = new LCU();
+    init(): void {
+      this.lcu = new LCU();
 
-        this.ddragon.init().then(() => {
-            log.info('Ddragon initialized!');
-        });
+      this.ddragon.init().then(() => {
+        log.info('Ddragon initialized!');
+      });
     }
 }
 
