@@ -23,18 +23,13 @@
   }
 
   .TeamScore {
-    font-size: 55px;
+    font-size: 60px;
+    margin-top: -20px;
     color: white;
     font-family: 'Saira Condensed', sans-serif;
     width: var(--box-ban-height);
-    height: var(--box-ban-height);
-
-    div {
-      margin-top: -13px;
-      width: 100%;
-      height: var(--box-ban-height);
-      text-align: center;
-    }
+    text-align: center;
+    height: calc(100% + 23px);
   }
 
   @import "./picks";
@@ -44,9 +39,7 @@
     right: calc(50% + calc(var(--box-width) / 2));
 
     .TeamScore {
-      background-color: var(--color-blue);
-      float: right;
-      margin-right: 3px;
+      border-right: 3px solid black;
     }
 
     .Bans {
@@ -58,7 +51,7 @@
       .Ban {
         border-left: solid var(--color-blue) var(--border-width);
 
-        &:nth-child(4) {
+        &:nth-child(5) {
           margin-right: var(--box-ban-spacer);
         }
 
@@ -86,9 +79,7 @@
     left: calc(50% + calc(var(--box-width) / 2));
 
     .TeamScore {
-      background-color: var(--color-red);
-      float: left;
-      margin-left: 3px;
+      border-left: 3px solid black;
     }
 
     .Bans {

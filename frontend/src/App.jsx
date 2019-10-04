@@ -24,7 +24,7 @@ function App() {
         }
     });
     useEffect(() => {
-        const socketUrl = window.location.pathname === '/example' ? `ws://localhost:8999/example` : process.env.REACT_APP_LCSU_BACKEND || `ws://${window.location.host}/ws`;
+        const socketUrl = window.location.pathname === '/example' ? `ws://${window.location.hostname}:8999/example` : process.env.REACT_APP_LCSU_BACKEND || `ws://${window.location.host}/ws`;
         console.log(`WebSocket service: ${socketUrl}`);
         let socket;
 

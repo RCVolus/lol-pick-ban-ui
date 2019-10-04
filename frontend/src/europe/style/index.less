@@ -2,8 +2,10 @@ body {
     background: black;
     font-family: 'Nova Flat', sans-serif;
 
-    /* background: url("https://dotesports-media.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2019/06/14131635/LEC-Summer-2019.jpg"); */
+    background: url("https://dotesports-media.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2019/06/14131635/LEC-Summer-2019.jpg");
     background-size: cover;
+
+    overflow: hidden;
 }
 
 * {
@@ -11,18 +13,19 @@ body {
 }
 
 @import "./variables";
+@import "./animation";
 
 .Europe {
     .MiddleBox {
         position: absolute;
         color: white;
-        background-color: black;
         width: var(--box-width);
         height: calc(var(--box-pick-height) + var(--box-ban-height));
 
         bottom: var(--champselect-margin-bot);
         left: 50%;
         transform: translateX(-50%);
+        overflow: hidden;
     }
 
     .Patch {
@@ -32,6 +35,7 @@ body {
         color: white;
         border-left: darkgrey 1px solid;
         border-right: darkgrey 1px solid;
+        background-color: black;
     }
 
     .Logo {
@@ -39,6 +43,7 @@ body {
         height: var(--box-logo-height);
         border-left: darkgrey 1px solid;
         border-right: darkgrey 1px solid;
+        background-color: black;
 
         img {
             width: 80%;
