@@ -8,8 +8,6 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>): Team => {
     const currentAction = actions.find((action) => !action.completed);
 
     const pick = new Pick(cell.cellId);
-    pick.id = cell.cellId;
-    pick.isActive = false;
 
     const spell1 = league.ddragon.getSummonerSpellById(cell.spell1Id);
     pick.spell1 = {
@@ -48,10 +46,12 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>): Team => {
 
   const isInThisTeam = (cellId: number): boolean => team.filter((cell) => cell.cellId === cellId).length !== 0;
 
+  let isBanDetermined = false;
   newTeam.bans = actions.filter((action) => action.type === ActionType.BAN && isInThisTeam(action.actorCellId)).map((action) => {
     const ban = new Ban();
 
-    if (!action.completed) {
+    if (!action.completed && !isBanDetermined) {
+      isBanDetermined = true;
       ban.isActive = true;
       newTeam.isActive = true;
       ban.champion = new Champion();
