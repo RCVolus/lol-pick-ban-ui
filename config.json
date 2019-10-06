@@ -16,5 +16,7 @@
       "color": "rgb(222,40,70)"
     },
     "patch": "9.19"
-  }
+  },
+  "contentPatch": "9.19.1",
+  "contentCdn": "https://ddragon.leagueoflegends.com/cdn"
 }

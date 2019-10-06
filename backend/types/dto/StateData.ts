@@ -1,4 +1,4 @@
-import { Meta, Team } from './';
+import { Config, Meta, Team } from './';
 
 export class StateData {
   leagueConnected = false;
@@ -7,4 +7,5 @@ export class StateData {
   redTeam = new Team();
   meta = new Meta();
   timer = 0;
+  config = new Config();
 }

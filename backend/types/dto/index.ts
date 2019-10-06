@@ -7,3 +7,4 @@ export * from './Spell';
 export * from './StateData';
 export * from './Team';
 export * from './Version';
+export * from './Config';

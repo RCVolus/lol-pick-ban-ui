@@ -1,6 +1,7 @@
 import EventEmitter from 'events';
+import * as fs from 'fs';
 import ChampSelect from './champselect';
-import { StateData, Team } from '../types/dto';
+import { Config, StateData, Team } from '../types/dto';
 
 class State extends EventEmitter {
     champselect: ChampSelect;
@@ -12,7 +13,10 @@ class State extends EventEmitter {
       this.champselect = new ChampSelect();
       this.data = new StateData();
 
-      this.champselect.on('started', () => {
+      this.champselect.on('started', () =>
+      {
+        this.data.config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+
         this.data.champSelectActive = true;
         this.triggerUpdate();
       });
@@ -59,6 +63,10 @@ class State extends EventEmitter {
 
     getCDN(): string {
       return this.data.meta.cdn;
+    }
+
+    getConfig(): Config {
+      return this.data.config;
     }
 }
 
