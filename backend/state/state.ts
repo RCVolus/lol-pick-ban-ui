@@ -12,6 +12,7 @@ class State extends EventEmitter {
 
       this.champselect = new ChampSelect();
       this.data = new StateData();
+      this.data.config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
       this.champselect.on('started', () =>
       {

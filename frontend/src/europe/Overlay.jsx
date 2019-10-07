@@ -5,12 +5,6 @@ import Pick from "./Pick";
 import css from './style/index.less';
 import Ban from "./Ban";
 
-import botSplash from '../assets/bot_splash_placeholder.svg';
-import jungSplash from '../assets/jung_splash_placeholder.svg';
-import midSplash from '../assets/mid_splash_placeholder.svg';
-import supSplash from '../assets/sup_splash_placeholder.svg';
-import topSplash from '../assets/top_splash_placeholder.svg';
-import banImg from '../assets/ban_placeholder.svg';
 import logo from '../assets/example_logo.png';
 
 export default class Overlay extends React.Component {
@@ -40,7 +34,6 @@ export default class Overlay extends React.Component {
 
     render() {
         const { state, config } = this.props;
-        const pickSplashes = [topSplash, jungSplash, midSplash, botSplash, supSplash];
 
         if (state.champSelectActive && !this.state.openingAnimationPlayed) {
             this.playOpeningAnimation();
@@ -49,53 +42,6 @@ export default class Overlay extends React.Component {
         if (!state.champSelectActive && this.state.openingAnimationPlayed) {
             this.setState({openingAnimationPlayed: false});
             this.setState({currentAnimationState: css.TheAbsoluteVoid});
-        }
-
-        const putPlaceholders = team => {
-            for (let i = 0; i < 5; i++) {
-                // Picks
-                // Check if exists
-                if (i >= team.picks.length) {
-                    // Does not exists, push
-                    team.picks.push({
-                        champion: {
-                            loadingImg: pickSplashes[i]
-                        }
-                    });
-                } else {
-                    // Exists, check!
-                    const pick = team.picks[i];
-                    if (!pick.champion || !pick.champion.loadingImg) {
-                        pick.champion = {
-                            loadingImg: pickSplashes[i]
-                        };
-                        pick.spell1 = null;
-                        pick.spell2 = null;
-                    }
-                }
-
-                // Bans
-                if (i >= team.bans.length) {
-                    // Does not exist
-                    team.bans.push({
-                        champion: {
-                            squareImg: banImg
-                        }
-                    });
-                } else {
-                    const ban = team.bans[i];
-                    if (!ban.champion || !ban.champion.squareImg) {
-                        ban.champion = {
-                            squareImg: banImg
-                        }
-                    }
-                }
-            }
-        };
-
-        if (Object.keys(state).length !== 0) {
-            putPlaceholders(state.blueTeam);
-            putPlaceholders(state.redTeam);
         }
 
         console.log(state);
@@ -125,8 +71,6 @@ export default class Overlay extends React.Component {
                 </div>
             </div>
         );
-
-        console.log(this.state.currentAnimationState);
 
         return (
             <div className={cx(css.Overlay, css.Europe, this.state.currentAnimationState)} style={{"--color-red": config.frontend.redTeam.color, "--color-blue": config.frontend.blueTeam.color}}>

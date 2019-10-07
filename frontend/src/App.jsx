@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Overlay from "./europe/Overlay";
+import convertState from './convertState';
 
 function App() {
+    const backendUrl = process.env.REACT_APP_LCSU_BACKEND || window.location.hostname;
+    const socketUrl = window.location.pathname === '/example' ? `ws://${backendUrl}/example` : 'ws://' + backendUrl + '/ws';
+
     const [globalState, setGlobalState] = useState({});
     const [config, setConfig] = useState({
         frontend: {
@@ -20,11 +24,12 @@ function App() {
                 coach: "",
                 color: "rgb(222,40,70)"
             },
-            patch: ""
+            patch: "",
+            socketUrl,
+            backendUrl
         }
     });
     useEffect(() => {
-        const socketUrl = window.location.pathname === '/example' ? `ws://${window.location.hostname}:8999/example` : process.env.REACT_APP_LCSU_BACKEND || `ws://${window.location.host}/ws`;
         console.log(`WebSocket service: ${socketUrl}`);
         let socket;
 
@@ -54,11 +59,13 @@ function App() {
 
         observeConnection();
         setTimeout(() => setInterval(observeConnection, 500), 2000);
-    }, []);
+    }, [socketUrl]);
+
+    console.log(backendUrl);
 
     return (
         <div className="App">
-            <Overlay state={globalState} config={config}/>
+            <Overlay state={convertState(globalState, backendUrl)} config={config}/>
         </div>
     );
 }

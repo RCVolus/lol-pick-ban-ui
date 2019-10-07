@@ -6,13 +6,12 @@ const log = logger('league');
 
 class League {
     ddragon = new DDragon();
-
     lcu!: LCU;
 
-    init(): void {
+    init(): Promise<void> {
       this.lcu = new LCU();
 
-      this.ddragon.init().then(() => {
+      return this.ddragon.init().then(() => {
         log.info('Ddragon initialized!');
       });
     }
