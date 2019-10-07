@@ -23,6 +23,18 @@ is realised it will automatically fetch the correct resources.
 - Allows to completely create a custom design based on web technologies (HTML, CSS & JS), including custom animations and
 transitions
 
+## Installation (Development purposes)
+1. Download and install Node.JS for Windows (or any other operating system): https://nodejs.org/dist/v10.16.3/node-v10.16.3-x64.msi
+2. Download or clone this Git-Repository to your local machine.
+3. Inside the downloaded folder, open up a command prompt (Windows: Shift + Rightclick -> Open Powershell / Commandline Window here)
+4. Install all required dependencies for the backend using the command `npm install`
+5. Start the backend using the command `npm start`
+6. The backend should now launch on localhost:8999
+7. Open up the folder "backend", keep the backend open & running!
+8. Also open the terminal here (like in step 3)
+9. Also issue `npm install` (like in step 4)
+10. Also start the frontend using `npm start` (like in step 5)
+
 ## Demo (YouTube)
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=u-CTYFDBtqE
 " target="_blank"><img src="http://img.youtube.com/vi/u-CTYFDBtqE/0.jpg" 
