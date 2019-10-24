@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>P&B UI by RCV - Test</title>
+</head>
+<body>
+<div>
+    Status: <span id="status">LOADED</span>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>Time</th>
+        <th>Event</th>
+    </tr>
+    </thead>
+    <tbody id="events">
+    </tbody>
+</table>
+<div id="state">
+</div>
+
+<script src="frontend-lib.js"></script>
+<script>
+    PB.on('statusChange', newStatus => {
+        document.getElementById("status").innerText = newStatus;
+    });
+
+    PB.start();
+</script>
+</body>
+</html>

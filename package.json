@@ -1,5 +1,5 @@
 {
-  "name": "lol-champselect-ui",
+  "name": "lol-pick-ban-ui",
   "version": "0.0.0",
   "private": true,
   "main": "electron-main.js",
