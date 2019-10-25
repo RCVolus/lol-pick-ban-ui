@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* Event Emitter */
 const eventify = (self) => {
     self.events = {};
@@ -49,7 +50,7 @@ eventify(PB);
 PB.start = function() {
     this.backend = window.location.search.substring(1);
 
-    console.log("[PB] Connecting to ws backend on " + this.backend);
+    console.log('[PB] Connecting to ws backend on ' + this.backend);
 
     const connect = () => {
         this.socket = new WebSocket(this.backend);

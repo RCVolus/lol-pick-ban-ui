@@ -1,14 +1,16 @@
 import LCUConnector from 'lcu-connector';
-import needle from 'needle';
+import needle, {NeedleResponse} from 'needle';
 
 import logger from '../../logging';
 import state from '../../state';
 import { Session, Cell, Summoner } from '../../types/lcu';
 
 import Timeout = NodeJS.Timeout;
+import { CurrentState } from '../../data/CurrentState';
+import { DataProviderService } from '../../data/DataProviderService';
 const log = logger('lcu');
 
-class LCU {
+class LCU implements DataProviderService {
     connector = new LCUConnector('');
     connectionInfo!: ConnectionInfo;
     updateInterval!: Timeout;
@@ -25,7 +27,7 @@ class LCU {
     constructor() {
       this.onLeagueConnected = this.onLeagueConnected.bind(this);
       this.onLeagueDisconnected = this.onLeagueDisconnected.bind(this);
-      this.updateFromLCU = this.updateFromLCU.bind(this);
+      this.getCurrentData = this.getCurrentData.bind(this);
 
       this.connector.on('connect', this.onLeagueConnected);
       this.connector.on('disconnect', this.onLeagueDisconnected);
@@ -33,9 +35,11 @@ class LCU {
       log.info('Waiting for LeagueClient to connect');
     }
 
-    async updateFromLCU(): Promise<void> {
+    async getCurrentData(): Promise<CurrentState> {
       const response = await needle('get', `https://127.0.0.1:${this.connectionInfo.port}/lol-champ-select/v1/session`, this.requestConfig);
-      if (response.statusCode === 404) {
+
+      return new CurrentState(response.statusCode === 200, response.body)
+      /* if (response.statusCode === 404) {
         if (state.data.champSelectActive) {
           state.champselect.end();
         }
@@ -48,22 +52,26 @@ class LCU {
         }
 
         state.champselect.updateNewSession(response.body);
-      }
+      }*/
     }
 
-    fetchPlayers(session: Session): void {
+    async cacheSummoners(session: Session): Promise<void> {
       const blueTeam = session.myTeam;
       const redTeam = session.theirTeam;
 
-      const fetchPlayersFromTeam = (team: Array<Cell>): void => {
-        team.forEach(async (cell) => {
-          const summoner = (await needle('get', `https://127.0.0.1:${this.connectionInfo.port}/lol-summoner/v1/summoners/${cell.summonerId}`, this.requestConfig)).body;
-          this.summoners.push(summoner);
-        });
-      };
+      const fetchPlayersFromTeam = (team: Array<Cell>): Array<Promise<NeedleResponse>> =>
+          team.map((cell) => needle('get', `https://127.0.0.1:${this.connectionInfo.port}/lol-summoner/v1/summoners/${cell.summonerId}`, this.requestConfig));
 
-      fetchPlayersFromTeam(blueTeam);
-      fetchPlayersFromTeam(redTeam);
+      const jobs = [
+          ...fetchPlayersFromTeam(blueTeam),
+          ...fetchPlayersFromTeam(redTeam)
+      ];
+
+      const completedJobs = await Promise.all(jobs);
+
+      completedJobs.forEach((job: NeedleResponse) => {
+        this.summoners.push(job.body)
+      });
     }
 
     getSummonerById(id: number): Summoner {
