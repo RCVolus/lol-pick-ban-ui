@@ -12,8 +12,12 @@ const makeUrlAbsolute = (url, backendUrl) => {
     return url;
   }
 
-  return 'http://' + backendUrl + url;
-}
+  const httpBackendUrl = backendUrl.replace('ws://', 'http://').replace('wss://', 'https://');
+  const components = httpBackendUrl.split('/')
+  console.log(httpBackendUrl);
+
+  return components[0] + '//' + components[2] + url;
+};
 
 const putPlaceholders = (team,  backendUrl) => {
   for (let i = 0; i < 5; i++) {

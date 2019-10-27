@@ -79,8 +79,18 @@ PB.start = function() {
         };
         this.socket.onerror = () => {
             this.emit('statusChange', 'ERROR');
-        }
+        };
+        this.socket.onmessage = msg => {
+            const data = JSON.parse(msg.data);
+
+            if (data.heartbeat === true) {
+                return;
+            }
+            this.emit('newState', data);
+        };
     };
 
     connect();
 };
+
+Window.PB = PB;

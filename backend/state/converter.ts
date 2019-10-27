@@ -1,27 +1,28 @@
-import league from '../league';
 import { Cell, Action, ActionType, Session, Timer } from '../types/lcu';
 import { Ban, Team, Pick, Champion } from '../types/dto';
+import DataProviderService from "../data/DataProviderService";
+import DataDragon from "../data/league/datadragon";
 
-const convertTeam = (team: Array<Cell>, actions: Array<Action>): Team => {
+const convertTeam = (kwargs: { team: Array<Cell>, actions: Array<Action>, dataProvider: DataProviderService, ddragon: DataDragon }): Team => {
   const newTeam = new Team();
-  newTeam.picks = team.map((cell: Cell) => {
-    const currentAction = actions.find((action) => !action.completed);
+  newTeam.picks = kwargs.team.map((cell: Cell) => {
+    const currentAction = kwargs.actions.find((action) => !action.completed);
 
     const pick = new Pick(cell.cellId);
 
-    const spell1 = league.ddragon.getSummonerSpellById(cell.spell1Id);
+    const spell1 = kwargs.ddragon.getSummonerSpellById(cell.spell1Id);
     pick.spell1 = {
       id: cell.spell1Id,
       icon: spell1 ? spell1.icon : '',
     };
 
-    const spell2 = league.ddragon.getSummonerSpellById(cell.spell2Id);
+    const spell2 = kwargs.ddragon.getSummonerSpellById(cell.spell2Id);
     pick.spell2 = {
       id: cell.spell2Id,
       icon: spell2 ? spell2.icon : '',
     };
 
-    const champion = league.ddragon.getChampionById(cell.championId);
+    const champion = kwargs.ddragon.getChampionById(cell.championId);
     pick.champion = {
       id: cell.championId,
       name: champion ? champion.name : '',
@@ -31,7 +32,7 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>): Team => {
       squareImg: champion ? champion.squareImg : '',
     };
 
-    const summoner = league.lcu.getSummonerById(cell.summonerId);
+    const summoner = kwargs.dataProvider.getSummonerById(cell.summonerId);
     if (summoner) {
       pick.displayName = summoner.displayName;
     }
@@ -44,10 +45,10 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>): Team => {
     return pick;
   });
 
-  const isInThisTeam = (cellId: number): boolean => team.filter((cell) => cell.cellId === cellId).length !== 0;
+  const isInThisTeam = (cellId: number): boolean => kwargs.team.filter((cell) => cell.cellId === cellId).length !== 0;
 
   let isBanDetermined = false;
-  newTeam.bans = actions.filter((action) => action.type === ActionType.BAN && isInThisTeam(action.actorCellId)).map((action) => {
+  newTeam.bans = kwargs.actions.filter((action) => action.type === ActionType.BAN && isInThisTeam(action.actorCellId)).map((action) => {
     const ban = new Ban();
 
     if (!action.completed && !isBanDetermined) {
@@ -58,7 +59,7 @@ const convertTeam = (team: Array<Cell>, actions: Array<Action>): Team => {
       return ban;
     }
 
-    const champion = league.ddragon.getChampionById(action.championId);
+    const champion = kwargs.ddragon.getChampionById(action.championId);
     ban.champion = {
       id: action.championId,
       name: champion ? champion.name : '',
@@ -87,14 +88,14 @@ const convertTimer = (timer: Timer): number => {
   return countdownSec;
 };
 
-const convertState = (lcuSession: Session): { blueTeam: Team; redTeam: Team; timer: number } => {
+const convertState = (lcuSession: Session, dataProvider: DataProviderService, ddragon: DataDragon): { blueTeam: Team; redTeam: Team; timer: number } => {
   const flattenedActions: Array<Action> = [];
   lcuSession.actions.forEach(actionGroup => {
     flattenedActions.push(...actionGroup);
   });
 
-  const blueTeam = convertTeam(lcuSession.myTeam, flattenedActions);
-  const redTeam = convertTeam(lcuSession.theirTeam, flattenedActions);
+  const blueTeam = convertTeam({ team: lcuSession.myTeam, actions: flattenedActions, dataProvider, ddragon });
+  const redTeam = convertTeam({ team: lcuSession.theirTeam, actions: flattenedActions, dataProvider, ddragon });
 
   const timer = convertTimer(lcuSession.timer);
 

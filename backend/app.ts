@@ -3,11 +3,18 @@ import http from 'http';
 
 import WebSocketServer from './websocket';
 import logger from './logging';
-import league from './league';
+import TickManager from './TickManager'
 import { AddressInfo } from 'net';
+import State from "./state";
+import {getDataProvider} from "./data/DataProviderService";
+import minimist from 'minimist';
+import DataDragon from "./data/league/datadragon";
+import Controller from "./state/controller";
+import GlobalContext from "./GlobalContext";
+
+const argv = minimist(process.argv.slice(2));
 
 const log = logger('main');
-
 const app = express();
 
 log.info('  _          _       ____  ___   ____    _   _ ___ ');
@@ -17,11 +24,29 @@ log.info(' | |__| (_) | |___  |  __/ (_>  < |_) | | |_| || | ');
 log.info(' |_____\\___/|_____| |_|   \\___/\\/____/   \\___/|___|');
 log.info('                                                   ');
 
-league.init().then(() => {
+log.debug('Logging in debug mode!');
+
+GlobalContext.commandLine = {
+  data: argv['data'],
+  record: argv['record']
+};
+log.info('Configuration: ' + JSON.stringify(GlobalContext.commandLine));
+
+const state = new State();
+const ddragon = new DataDragon(state);
+const dataProvider = getDataProvider();
+const controller = new Controller({ dataProvider, state, ddragon });
+const tickManager = new TickManager({ controller });
+
+const main = async () => {
+  await ddragon.init();
+
   const server = http.createServer(app);
   app.use('/cache', express.static(__dirname + '/../cache'));
-  const wsServer = new WebSocketServer(server);
+  const wsServer = new WebSocketServer(server, state);
   wsServer.startHeartbeat();
+
+  tickManager.startLoop();
 
   server.listen(process.env.PORT || 8999, () => {
     if (server.address() === null) {
@@ -30,4 +55,6 @@ league.init().then(() => {
     const serverAddress = server.address() as AddressInfo;
     return log.info(`Server started on ${JSON.stringify(serverAddress)}`);
   });
-});
+};
+
+main().then();

@@ -2,18 +2,19 @@ import LCUConnector from 'lcu-connector';
 import needle, {NeedleResponse} from 'needle';
 
 import logger from '../../logging';
-import state from '../../state';
 import { Session, Cell, Summoner } from '../../types/lcu';
 
-import Timeout = NodeJS.Timeout;
-import { CurrentState } from '../../data/CurrentState';
-import { DataProviderService } from '../../data/DataProviderService';
-const log = logger('lcu');
+import { CurrentState } from '../CurrentState';
+import { EventEmitter } from 'events';
+import DataProviderService from "../DataProviderService";
+import Recorder from "../../recording/Recorder";
+import GlobalContext from "../../GlobalContext";
+const log = logger('LCUDataProviderService');
 
-class LCU implements DataProviderService {
+class LeagueDataProviderService extends EventEmitter implements DataProviderService {
     connector = new LCUConnector('');
     connectionInfo!: ConnectionInfo;
-    updateInterval!: Timeout;
+    recorder!: Recorder;
 
     requestConfig = {
       json: true,
@@ -25,9 +26,16 @@ class LCU implements DataProviderService {
     summoners: Array<Summoner> = [];
 
     constructor() {
+      super();
+
       this.onLeagueConnected = this.onLeagueConnected.bind(this);
       this.onLeagueDisconnected = this.onLeagueDisconnected.bind(this);
       this.getCurrentData = this.getCurrentData.bind(this);
+
+      if (GlobalContext.commandLine!!.record) {
+        this.recorder = new Recorder(GlobalContext.commandLine!!.record);
+        log.info('Recording to ' + GlobalContext.commandLine!!.record);
+      }
 
       this.connector.on('connect', this.onLeagueConnected);
       this.connector.on('disconnect', this.onLeagueDisconnected);
@@ -37,22 +45,13 @@ class LCU implements DataProviderService {
 
     async getCurrentData(): Promise<CurrentState> {
       const response = await needle('get', `https://127.0.0.1:${this.connectionInfo.port}/lol-champ-select/v1/session`, this.requestConfig);
+      const currentState = new CurrentState(response.statusCode === 200, response.body);
 
-      return new CurrentState(response.statusCode === 200, response.body)
-      /* if (response.statusCode === 404) {
-        if (state.data.champSelectActive) {
-          state.champselect.end();
-        }
-      } else {
-        if (!state.data.champSelectActive) {
-          state.champselect.start();
+      if (this.recorder) {
+        this.recorder.addDataPoint(currentState);
+      }
 
-          // Fetch players
-          this.fetchPlayers(response.body);
-        }
-
-        state.champselect.updateNewSession(response.body);
-      }*/
+      return currentState;
     }
 
     async cacheSummoners(session: Session): Promise<void> {
@@ -72,6 +71,10 @@ class LCU implements DataProviderService {
       completedJobs.forEach((job: NeedleResponse) => {
         this.summoners.push(job.body)
       });
+
+      if (this.recorder) {
+        this.recorder.setSummoners(this.summoners);
+      }
     }
 
     getSummonerById(id: number): Summoner {
@@ -83,18 +86,18 @@ class LCU implements DataProviderService {
       this.connectionInfo = e;
       this.requestConfig.username = this.connectionInfo.username;
       this.requestConfig.password = this.connectionInfo.password;
-      state.data.leagueConnected = true;
-      state.triggerUpdate();
 
-      this.updateInterval = setInterval(this.updateFromLCU, 500);
+      this.emit('connected');
     }
 
     onLeagueDisconnected(): void {
       log.info('LeagueClient disconnected');
-      state.data.leagueConnected = false;
-      state.triggerUpdate();
 
-      clearInterval(this.updateInterval);
+      if (this.recorder) {
+        this.recorder.save();
+      }
+
+      this.emit('disconnected');
     }
 }
 
@@ -104,4 +107,4 @@ class ConnectionInfo {
     password!: string;
 }
 
-export default LCU;
+export default LeagueDataProviderService;

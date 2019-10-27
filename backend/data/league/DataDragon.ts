@@ -2,9 +2,9 @@ import needle from 'needle';
 import * as fs from 'fs';
 import cliProgress from 'cli-progress';
 
-import globalState from '../../state';
 import logger from '../../logging';
-import { Champion, Spell } from '../../types/dto';
+import {Champion, Spell} from '../../types/dto';
+import State from "../../state";
 
 const log = logger('datadragon');
 const realm = 'euw';
@@ -19,9 +19,14 @@ class DataDragon {
     };
     champions: Array<Champion> = [];
     summonerSpells: Array<Spell> = [];
+    state: State;
+
+    constructor(state: State) {
+      this.state = state;
+    }
 
     async init(): Promise<void> {
-      const config = globalState.getConfig();
+      const config = this.state.getConfig();
 
       if (config.contentPatch === 'latest') {
         log.info('Getting latest versions from ddragon.');
@@ -37,19 +42,19 @@ class DataDragon {
         }
       }
 
-      globalState.data.meta.version = {
+      this.state.data.meta.version = {
         champion: this.versions.n.champion,
         item: this.versions.n.item,
       };
-      globalState.data.meta.cdn = this.versions.cdn;
-      globalState.triggerUpdate();
+      this.state.data.meta.cdn = this.versions.cdn;
+      this.state.triggerUpdate();
 
-      log.info(`Champion: ${globalState.data.meta.version.champion}, Item: ${globalState.data.meta.version.item}, CDN: ${globalState.data.meta.cdn}`);
+      log.info(`Champion: ${this.state.data.meta.version.champion}, Item: ${this.state.data.meta.version.item}, CDN: ${this.state.data.meta.cdn}`);
 
-      this.champions = Object.values((await needle('get', `${globalState.data.meta.cdn}/${globalState.data.meta.version.champion}/data/en_US/champion.json`, { json: true })).body.data);
+      this.champions = Object.values((await needle('get', `${this.state.data.meta.cdn}/${this.state.data.meta.version.champion}/data/en_US/champion.json`, { json: true })).body.data);
       log.info(`Loaded ${this.champions.length} champions`);
 
-      this.summonerSpells = Object.values((await needle('get', `${globalState.data.meta.cdn}/${globalState.data.meta.version.item}/data/en_US/summoner.json`, { json: true })).body.data);
+      this.summonerSpells = Object.values((await needle('get', `${this.state.data.meta.cdn}/${this.state.data.meta.version.item}/data/en_US/summoner.json`, { json: true })).body.data);
       log.info(`Loaded ${this.summonerSpells.length} summoner spells`);
 
       // Download all champion images and spell images
@@ -65,9 +70,9 @@ class DataDragon {
     }
 
     extendChampion(champion: Champion): Champion {
-      champion.splashImg = `${globalState.getCDN()}/img/champion/splash/${champion.id}_0.jpg`;
-      champion.squareImg = `${globalState.getVersionCDN()}/img/champion/${champion.id}.png`;
-      champion.loadingImg = `${globalState.getCDN()}/img/champion/loading/${champion.id}_0.jpg`;
+      champion.splashImg = `${this.state.getCDN()}/img/champion/splash/${champion.id}_0.jpg`;
+      champion.squareImg = `${this.state.getVersionCDN()}/img/champion/${champion.id}.png`;
+      champion.loadingImg = `${this.state.getCDN()}/img/champion/loading/${champion.id}_0.jpg`;
       return champion;
     }
     extendChampionLocal(champion: Champion): Champion {
@@ -86,7 +91,7 @@ class DataDragon {
     }
 
     extendSummonerSpell(spell: Spell): Spell {
-      spell.icon = `${globalState.getVersionCDN()}/img/spell/${spell.id}.png`;
+      spell.icon = `${this.state.getVersionCDN()}/img/spell/${spell.id}.png`;
       return spell;
     }
     extendSummonerSpellLocal(spell: Spell): Spell {
@@ -95,7 +100,7 @@ class DataDragon {
     }
 
     async checkLocalCache(): Promise<void> {
-      const patch = globalState.data.meta.version.champion;
+      const patch = this.state.data.meta.version.champion;
 
       const patchFolder = `./cache/${patch}`;
       const patchFolderChampion = patchFolder + '/champion';
