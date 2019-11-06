@@ -3,8 +3,8 @@ import * as fs from 'fs';
 import cliProgress from 'cli-progress';
 
 import logger from '../../logging';
-import {Champion, Spell} from '../../types/dto';
-import State from "../../state";
+import { Champion, Spell } from '../../types/dto';
+import State from '../../state';
 
 const log = logger('datadragon');
 const realm = 'euw';
@@ -121,7 +121,7 @@ class DataDragon {
 
       log.info('Download process started. This could take a while. Downloading to: ' + patchFolder);
 
-      const downloadFile = (targetUrl: string, targetPath: string) => (): Promise<void> => new Promise<void>((resolve, reject) => {
+      const downloadFile = (targetUrl: string, targetPath: string) => (): Promise<void> => new Promise<void>((resolve, reject): void => {
         needle('get', targetUrl, {
           // eslint-disable-next-line @typescript-eslint/camelcase
           open_timeout: 0

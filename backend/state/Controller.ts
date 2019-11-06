@@ -1,10 +1,10 @@
-import {EventEmitter} from 'events';
+import { EventEmitter } from 'events';
 import convertState from './converter';
-import {CurrentState} from "../data/CurrentState";
-import DataProviderService from "../data/DataProviderService";
-import State from "./state";
-import DataDragon from "../data/league/datadragon";
-import logger from "../logging/logger";
+import { CurrentState } from '../data/CurrentState';
+import DataProviderService from '../data/DataProviderService';
+import State from './state';
+import DataDragon from '../data/league/datadragon';
+import logger from '../logging/logger';
 
 const log = logger('Controller');
 
@@ -13,7 +13,7 @@ export default class Controller extends EventEmitter {
   state: State;
   ddragon: DataDragon;
 
-  constructor(kwargs: { dataProvider: DataProviderService, state: State, ddragon: DataDragon }) {
+  constructor(kwargs: { dataProvider: DataProviderService; state: State; ddragon: DataDragon }) {
     super();
 
     this.dataProvider = kwargs.dataProvider;
@@ -31,7 +31,7 @@ export default class Controller extends EventEmitter {
     })
   }
 
-  applyNewState(newState: CurrentState) {
+  applyNewState(newState: CurrentState): void {
     if (!this.state.data.champSelectActive && newState.isChampSelectActive) {
       log.info('ChampSelect started!');
       this.state.champselectStarted();

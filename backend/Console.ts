@@ -5,11 +5,11 @@ const log = logger('Console');
 readline.emitKeypressEvents(process.stdin);
 
 declare class KeyEvent {
-  sequence: String;
-  name: String;
-  ctrl: Boolean;
-  meta: Boolean;
-  shift: Boolean;
+  sequence: string;
+  name: string;
+  ctrl: boolean;
+  meta: boolean;
+  shift: boolean;
 }
 
 const handlers: Array<(event: KeyEvent) => void> = [];
@@ -29,6 +29,6 @@ if (process.stdin.setRawMode) {
   log.info('Cannot listen for console events: no stdin found.');
 }
 
-export const registerHandler = (handler: (event: KeyEvent) => void) => {
+export const registerHandler = (handler: (event: KeyEvent) => void): void => {
   handlers.push(handler);
 };

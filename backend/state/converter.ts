@@ -1,11 +1,11 @@
-import { Cell, Action, ActionType, Session, Timer } from '../types/lcu';
+import { Cell, Action, ActionType, Timer } from '../types/lcu';
 import { Ban, Team, Pick, Champion } from '../types/dto';
-import DataProviderService from "../data/DataProviderService";
-import DataDragon from "../data/league/datadragon";
-import {CurrentState} from "../data/CurrentState";
-import RecordingDatapoint from "../recording/RecordingDatapoint";
+import DataProviderService from '../data/DataProviderService';
+import DataDragon from '../data/league/datadragon';
+import { CurrentState } from '../data/CurrentState';
+import RecordingDatapoint from '../recording/RecordingDatapoint';
 
-const convertTeam = (kwargs: { team: Array<Cell>, actions: Array<Action>, dataProvider: DataProviderService, ddragon: DataDragon }): Team => {
+const convertTeam = (kwargs: { team: Array<Cell>; actions: Array<Action>; dataProvider: DataProviderService; ddragon: DataDragon }): Team => {
   const newTeam = new Team();
   newTeam.picks = kwargs.team.map((cell: Cell) => {
     const currentAction = kwargs.actions.find((action) => !action.completed);

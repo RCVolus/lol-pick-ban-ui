@@ -12,14 +12,14 @@ class State extends EventEmitter {
       this.data.config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
     }
 
-    champselectStarted() {
+    champselectStarted(): void {
       this.data.config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
       this.data.champSelectActive = true;
       this.triggerUpdate();
     }
 
-    champselectEnded() {
+    champselectEnded(): void {
       this.data.blueTeam = new Team();
       this.data.redTeam = new Team();
       this.data.timer = 0;
@@ -27,7 +27,7 @@ class State extends EventEmitter {
       this.triggerUpdate();
     }
 
-    newState (state: { redTeam: Team; blueTeam: Team; timer: number }) {
+    newState (state: { redTeam: Team; blueTeam: Team; timer: number }): void {
       let shouldUpdate = false;
 
       if (JSON.stringify(this.data.blueTeam) !== JSON.stringify(state.blueTeam)) {

@@ -1,21 +1,21 @@
-import DataProviderService from "./DataProviderService";
-import {EventEmitter} from "events";
+import DataProviderService from './DataProviderService';
+import { EventEmitter } from 'events';
 import fs from 'fs';
-import {Session, Summoner} from "../types/lcu";
-import {CurrentState} from "./CurrentState";
-import logger from "../logging/logger";
-import RecordingDatapoint from "../recording/RecordingDatapoint";
-import {registerHandler} from "../Console";
+import { Session, Summoner } from '../types/lcu';
+import { CurrentState } from './CurrentState';
+import logger from '../logging/logger';
+import RecordingDatapoint from '../recording/RecordingDatapoint';
+import { registerHandler } from '../Console';
 const log = logger('ReplayDataProviderService');
 
 export default class ReplayDataProviderService extends EventEmitter implements DataProviderService {
   replayFilePath: string;
   recording: {
-    summoners: Array<Summoner>,
-    dataPoints: Array<RecordingDatapoint>
+    summoners: Array<Summoner>;
+    dataPoints: Array<RecordingDatapoint>;
   };
   numberOfPoints: number;
-  isPaused: boolean = false;
+  isPaused = false;
 
   constructor(replayFile: string) {
     super();
@@ -35,7 +35,7 @@ export default class ReplayDataProviderService extends EventEmitter implements D
     });
   }
 
-  async cacheSummoners(session: Session): Promise<void> {
+  async cacheSummoners(): Promise<void> {
     // Nothing to do here - summoners are loaded already :)
   }
 

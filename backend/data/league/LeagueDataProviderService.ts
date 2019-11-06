@@ -1,14 +1,14 @@
 import LCUConnector from 'lcu-connector';
-import needle, {NeedleResponse} from 'needle';
+import needle, { NeedleResponse } from 'needle';
 
 import logger from '../../logging';
 import { Session, Cell, Summoner } from '../../types/lcu';
 
 import { CurrentState } from '../CurrentState';
 import { EventEmitter } from 'events';
-import DataProviderService from "../DataProviderService";
-import Recorder from "../../recording/Recorder";
-import GlobalContext from "../../GlobalContext";
+import DataProviderService from '../DataProviderService';
+import Recorder from '../../recording/Recorder';
+import GlobalContext from '../../GlobalContext';
 const log = logger('LCUDataProviderService');
 
 class LeagueDataProviderService extends EventEmitter implements DataProviderService {
@@ -32,9 +32,9 @@ class LeagueDataProviderService extends EventEmitter implements DataProviderServ
       this.onLeagueDisconnected = this.onLeagueDisconnected.bind(this);
       this.getCurrentData = this.getCurrentData.bind(this);
 
-      if (GlobalContext.commandLine!!.record) {
-        this.recorder = new Recorder(GlobalContext.commandLine!!.record);
-        log.info('Recording to ' + GlobalContext.commandLine!!.record);
+      if (GlobalContext.commandLine.record) {
+        this.recorder = new Recorder(GlobalContext.commandLine.record);
+        log.info('Recording to ' + GlobalContext.commandLine.record);
       }
 
       this.connector.on('connect', this.onLeagueConnected);

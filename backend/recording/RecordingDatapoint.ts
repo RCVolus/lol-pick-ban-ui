@@ -1,5 +1,5 @@
-import {CurrentState} from "../data/CurrentState";
-import {Session} from "../types/lcu";
+import { CurrentState } from '../data/CurrentState';
+import { Session } from '../types/lcu';
 
 export default class RecordingDatapoint extends CurrentState {
   time: Date;

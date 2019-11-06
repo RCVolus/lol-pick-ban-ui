@@ -5,13 +5,13 @@ import WebSocketServer from './websocket';
 import logger from './logging';
 import TickManager from './TickManager'
 import { AddressInfo } from 'net';
-import State from "./state";
-import {getDataProvider} from "./data/DataProviderService";
+import State from './state';
+import { getDataProvider } from './data/DataProviderService';
 import minimist from 'minimist';
-import DataDragon from "./data/league/datadragon";
-import Controller from "./state/controller";
-import GlobalContext from "./GlobalContext";
-import "./Console";
+import DataDragon from './data/league/datadragon';
+import Controller from './state/controller';
+import GlobalContext from './GlobalContext';
+import './Console';
 
 const argv = minimist(process.argv.slice(2));
 
@@ -39,7 +39,7 @@ const dataProvider = getDataProvider();
 const controller = new Controller({ dataProvider, state, ddragon });
 const tickManager = new TickManager({ controller });
 
-const main = async () => {
+const main = async (): Promise<void> => {
   await ddragon.init();
 
   const server = http.createServer(app);

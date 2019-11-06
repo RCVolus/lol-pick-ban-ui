@@ -1,7 +1,10 @@
 class GlobalContext {
-    commandLine?: {
+    commandLine: {
         data: string;
         record: string;
+    } = {
+        data: '',
+        record: ''
     };
 }
 

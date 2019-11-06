@@ -4,8 +4,7 @@ import * as http from 'http';
 
 import logger from '../logging';
 import { StateData } from '../types/dto';
-import state from '../state';
-import State from "../state";
+import State from '../state';
 
 const log = logger('websocket');
 
@@ -32,7 +31,7 @@ class WebSocketServer {
     }
 
     handleConnection(socket: WebSocket, request: http.IncomingMessage): void {
-      const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+      // const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
       if (request.url && request.url === '/example') {
         log.debug('New example client connected!');
         this.exampleClients.push(socket);

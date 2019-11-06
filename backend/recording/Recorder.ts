@@ -1,8 +1,8 @@
-import {CurrentState} from "../data/CurrentState";
+import { CurrentState } from '../data/CurrentState';
 import fs from 'fs';
-import {Summoner} from "../types/lcu";
-import logger from "../logging/logger";
-import RecordingDatapoint from "./RecordingDatapoint";
+import { Summoner } from '../types/lcu';
+import logger from '../logging/logger';
+import RecordingDatapoint from './RecordingDatapoint';
 const log = logger('Recorder');
 
 export default class Recorder {
@@ -14,16 +14,16 @@ export default class Recorder {
     this.name = name;
   }
 
-  addDataPoint(state: CurrentState) {
+  addDataPoint(state: CurrentState): void {
     const dataPoint = new RecordingDatapoint(state.isChampSelectActive, state.session, new Date());
     this.dataPoints.push(dataPoint);
   }
 
-  setSummoners(summoners: Array<Summoner>) {
+  setSummoners(summoners: Array<Summoner>): void {
     this.summoners = summoners;
   }
 
-  save() {
+  save(): void {
     const recordingsPath = './recordings';
 
     if (!fs.existsSync(recordingsPath)) {
