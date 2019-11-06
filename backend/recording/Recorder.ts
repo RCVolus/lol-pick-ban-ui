@@ -30,6 +30,17 @@ export default class Recorder {
       fs.mkdirSync(recordingsPath);
     }
 
+    // Remove duplicates from datapoints. This ensures that we have the pace of 1 state change / second!
+    /* const distinctDataPoints = this.dataPoints.filter((value, index, self) => {
+      if (index === 0) {
+        return true;
+      }
+      if (JSON.stringify(self[index - 1].session) === JSON.stringify(value.session)) {
+        return false;
+      }
+      return true;
+    }); */
+
     const jsonString = JSON.stringify({
       dataPoints: this.dataPoints,
       summoners: this.summoners

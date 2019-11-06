@@ -30,6 +30,10 @@ function App() {
            setConfig(state.config);
         });
 
+        Window.PB.on('heartbeat', hb => {
+            setConfig(hb.config);
+        });
+
         Window.PB.start();
     }, []);
 

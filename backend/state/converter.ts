@@ -2,6 +2,8 @@ import { Cell, Action, ActionType, Session, Timer } from '../types/lcu';
 import { Ban, Team, Pick, Champion } from '../types/dto';
 import DataProviderService from "../data/DataProviderService";
 import DataDragon from "../data/league/datadragon";
+import {CurrentState} from "../data/CurrentState";
+import RecordingDatapoint from "../recording/RecordingDatapoint";
 
 const convertTeam = (kwargs: { team: Array<Cell>, actions: Array<Action>, dataProvider: DataProviderService, ddragon: DataDragon }): Team => {
   const newTeam = new Team();
@@ -75,11 +77,11 @@ const convertTeam = (kwargs: { team: Array<Cell>, actions: Array<Action>, dataPr
   return newTeam;
 };
 
-const convertTimer = (timer: Timer): number => {
+const convertTimer = (timer: Timer, currentDate: Date): number => {
   const startOfPhase = timer.internalNowInEpochMs;
   const expectedEndOfPhase = startOfPhase + timer.adjustedTimeLeftInPhase;
 
-  const countdown = expectedEndOfPhase - new Date().getTime();
+  const countdown = expectedEndOfPhase - currentDate.getTime();
   const countdownSec = Math.floor(countdown / 1000);
 
   if (countdownSec < 0) {
@@ -88,7 +90,11 @@ const convertTimer = (timer: Timer): number => {
   return countdownSec;
 };
 
-const convertState = (lcuSession: Session, dataProvider: DataProviderService, ddragon: DataDragon): { blueTeam: Team; redTeam: Team; timer: number } => {
+const convertState = (state: CurrentState, dataProvider: DataProviderService, ddragon: DataDragon): { blueTeam: Team; redTeam: Team; timer: number } => {
+  const lcuSession = state.session;
+
+  const currentDate = (state as RecordingDatapoint).time ? new Date((state as RecordingDatapoint).time) : new Date();
+
   const flattenedActions: Array<Action> = [];
   lcuSession.actions.forEach(actionGroup => {
     flattenedActions.push(...actionGroup);
@@ -97,7 +103,7 @@ const convertState = (lcuSession: Session, dataProvider: DataProviderService, dd
   const blueTeam = convertTeam({ team: lcuSession.myTeam, actions: flattenedActions, dataProvider, ddragon });
   const redTeam = convertTeam({ team: lcuSession.theirTeam, actions: flattenedActions, dataProvider, ddragon });
 
-  const timer = convertTimer(lcuSession.timer);
+  const timer = convertTimer(lcuSession.timer, currentDate);
 
   return {
     blueTeam,

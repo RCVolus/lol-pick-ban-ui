@@ -11,6 +11,7 @@ import minimist from 'minimist';
 import DataDragon from "./data/league/datadragon";
 import Controller from "./state/controller";
 import GlobalContext from "./GlobalContext";
+import "./Console";
 
 const argv = minimist(process.argv.slice(2));
 

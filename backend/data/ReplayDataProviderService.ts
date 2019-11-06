@@ -4,16 +4,18 @@ import fs from 'fs';
 import {Session, Summoner} from "../types/lcu";
 import {CurrentState} from "./CurrentState";
 import logger from "../logging/logger";
+import RecordingDatapoint from "../recording/RecordingDatapoint";
+import {registerHandler} from "../Console";
 const log = logger('ReplayDataProviderService');
 
 export default class ReplayDataProviderService extends EventEmitter implements DataProviderService {
   replayFilePath: string;
   recording: {
     summoners: Array<Summoner>,
-    dataPoints: Array<CurrentState>
+    dataPoints: Array<RecordingDatapoint>
   };
   numberOfPoints: number;
-  currentTime = new Date();
+  isPaused: boolean = false;
 
   constructor(replayFile: string) {
     super();
@@ -24,6 +26,13 @@ export default class ReplayDataProviderService extends EventEmitter implements D
 
     this.recording = JSON.parse(recordingString);
     this.numberOfPoints = this.recording.dataPoints.length;
+
+    // Pause / UnPause
+    registerHandler(event => {
+      if (event.name === 'p') {
+        this.togglePause();
+      }
+    });
   }
 
   async cacheSummoners(session: Session): Promise<void> {
@@ -33,7 +42,13 @@ export default class ReplayDataProviderService extends EventEmitter implements D
   async getCurrentData(): Promise<CurrentState> {
     log.info(`${this.numberOfPoints - this.recording.dataPoints.length} / ${this.numberOfPoints}`);
 
-    const nextPoint = this.recording.dataPoints.shift();
+    let nextPoint;
+
+    if (!this.isPaused) {
+      nextPoint = this.recording.dataPoints.shift();
+    } else {
+      nextPoint = this.recording.dataPoints[0];
+    }
 
     if (!nextPoint) {
       return new CurrentState(false, new Session());
@@ -44,5 +59,9 @@ export default class ReplayDataProviderService extends EventEmitter implements D
 
   getSummonerById(id: number): Summoner {
     return this.recording.summoners.filter((summoner) => summoner.summonerId === id)[0];
+  }
+
+  togglePause(): void {
+    this.isPaused = !this.isPaused;
   }
 }

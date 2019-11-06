@@ -14,7 +14,6 @@ const makeUrlAbsolute = (url, backendUrl) => {
 
   const httpBackendUrl = backendUrl.replace('ws://', 'http://').replace('wss://', 'https://');
   const components = httpBackendUrl.split('/')
-  console.log(httpBackendUrl);
 
   return components[0] + '//' + components[2] + url;
 };

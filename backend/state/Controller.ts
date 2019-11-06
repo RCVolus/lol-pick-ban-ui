@@ -49,7 +49,7 @@ export default class Controller extends EventEmitter {
       return;
     }
 
-    const cleanedData = convertState(newState.session, this.dataProvider, this.ddragon);
+    const cleanedData = convertState(newState, this.dataProvider, this.ddragon);
 
     // TODO examine what events to fire
 

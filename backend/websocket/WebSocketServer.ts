@@ -53,7 +53,7 @@ class WebSocketServer {
     sendHeartbeat(): void {
       const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
       this.clients.forEach((client: WebSocket) => {
-        client.send(JSON.stringify({ heartbeat: true }));
+        client.send(JSON.stringify({ heartbeat: true, config }));
       });
 
       const exampleData = fs.readFileSync('./example.json', 'utf8');

@@ -84,6 +84,7 @@ PB.start = function() {
             const data = JSON.parse(msg.data);
 
             if (data.heartbeat === true) {
+                this.emit('heartbeat', data);
                 return;
             }
             this.emit('newState', data);
