@@ -59,8 +59,23 @@ const getQueryVariable = variable => {
 const PB = {};
 eventify(PB);
 
-PB.start = function() {
-    this.backend = getQueryVariable('backend');
+
+PB.toAbsoluteUrl = (convertUrl, baseUrl) => {
+    baseUrl = baseUrl || getQueryVariable('backend');
+
+    if (!convertUrl || !convertUrl.startsWith('/cache')) {
+        return convertUrl;
+    }
+
+    const httpBackendUrl = baseUrl.replace('ws://', 'http://').replace('wss://', 'https://');
+    const components = httpBackendUrl.split('/');
+
+    return components[0] + '//' + components[2] + convertUrl;
+};
+
+
+PB.start = function(url) {
+    this.backend = getQueryVariable('backend') || url;
 
     console.log('[PB] Connecting to ws backend on ' + this.backend);
 
@@ -79,8 +94,20 @@ PB.start = function() {
         };
         this.socket.onerror = () => {
             this.emit('statusChange', 'ERROR');
-        }
+        };
+        this.socket.onmessage = msg => {
+            const data = JSON.parse(msg.data);
+            // Maybe check if heartbeat arrives regularly to assure that connection is alive?
+
+            if (data.eventType) {
+                this.emit(data.eventType, data);
+            } else {
+                console.log('[PB] Unexpected packet format: ' + JSON.stringify(data));
+            }
+        };
     };
 
     connect();
 };
+
+Window.PB = PB;

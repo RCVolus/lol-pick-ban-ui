@@ -51,7 +51,7 @@ export default class Controller extends EventEmitter {
 
     const cleanedData = convertState(newState, this.dataProvider, this.ddragon);
 
-    // TODO examine what events to fire
+    // TODO examine what other events to fire
 
     this.state.newState(cleanedData);
   }

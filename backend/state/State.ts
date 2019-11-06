@@ -15,6 +15,8 @@ class State extends EventEmitter {
     champselectStarted(): void {
       this.data.config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
+      this.emit('champSelectStarted');
+
       this.data.champSelectActive = true;
       this.triggerUpdate();
     }
@@ -24,6 +26,9 @@ class State extends EventEmitter {
       this.data.redTeam = new Team();
       this.data.timer = 0;
       this.data.champSelectActive = false;
+
+      this.emit('champSelectEnded');
+
       this.triggerUpdate();
     }
 
