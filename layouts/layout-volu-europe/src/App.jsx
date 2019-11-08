@@ -26,8 +26,8 @@ function App() {
     });
     useEffect(() => {
         Window.PB.on('newState', state => {
-           setGlobalState(state);
-           setConfig(state.config);
+            setGlobalState(state.state);
+            setConfig(state.state.config);
         });
 
         Window.PB.on('heartbeat', hb => {
@@ -36,6 +36,8 @@ function App() {
 
         Window.PB.start();
     }, []);
+
+    console.log(globalState);
 
     return (
         <div className="App">

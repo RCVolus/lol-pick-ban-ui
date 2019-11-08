@@ -36,10 +36,16 @@ const putPlaceholders = (team,  backendUrl) => {
         pick.champion = {
           loadingImg: pickSplashes[i]
         };
-        pick.spell1 = null;
-        pick.spell2 = null;
+        // pick.spell1 = null;
+        // pick.spell2 = null;
       }
 
+      if (pick.spell1) {
+        pick.spell1.icon = makeUrlAbsolute(pick.spell1.icon, backendUrl);
+      }
+      if (pick.spell2) {
+        pick.spell2.icon = makeUrlAbsolute(pick.spell2.icon, backendUrl);
+      }
       pick.champion.loadingImg = makeUrlAbsolute(pick.champion.loadingImg, backendUrl);
       pick.champion.splashImg = makeUrlAbsolute(pick.champion.splashImg, backendUrl);
       pick.champion.squareImg = makeUrlAbsolute(pick.champion.squareImg, backendUrl);
