@@ -1,10 +1,13 @@
 .Timer {
   position: relative;
   width: 100%;
-  height: var(--box-timer-height);
+  // height: var(--box-timer-height);
   font-size: 50px;
   text-align: center;
   overflow: hidden;
+
+  height: 338px;
+  margin-top: -260px;
 
   &::after {
     content: "";
@@ -55,6 +58,8 @@
   .TimerChars {
     display: flex;
     justify-content: center;
+
+    margin-top: 260px;
 
     .TimerChar {
       width: 30px;

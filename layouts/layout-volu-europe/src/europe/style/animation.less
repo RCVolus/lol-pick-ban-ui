@@ -7,8 +7,9 @@
 .AnimationHidden {
   .Timer {
     position: relative;
-    bottom: -130px;
-    animation: timer 1s forwards;
+    /* bottom: -130px; */
+    bottom: -300px;
+    animation: timer 0.75s forwards;
 
     .Blue, .Red {
       opacity: 0;
@@ -120,6 +121,17 @@
     top: 100%;
     z-index: -20;
     animation: pick-move-up 0.7s forwards;
+  }
+}
+
+.AnimationBansPickOnly {
+  .Timer {
+    .Blue {
+      left: 0 !important;
+    }
+    .Red {
+      left: 0 !important;
+    }
   }
 }
 

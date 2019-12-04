@@ -33,20 +33,32 @@
       animation: pulsate-ban 1.5s infinite;
     }
   }
+
+  .Spacing {
+    width: var(--box-ban-spacer);
+  }
+}
+
+&.TeamBlue .BansBox {
+  flex-direction: row-reverse;
 }
 
 .BansWrapper {
   overflow: hidden;
 }
 
+.BansBox {
+  display: flex;
+}
+
 @keyframes pulsate-ban {
   0% {
-    opacity: 0.7;
+    opacity: 1; // 0.7
   }
   50% {
     opacity: 0.3;
   }
   100% {
-    opacity: 0.7;
+    opacity: 1; // 0.7
   }
 }

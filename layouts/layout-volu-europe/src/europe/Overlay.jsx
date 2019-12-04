@@ -5,7 +5,7 @@ import Pick from "./Pick";
 import css from './style/index.less';
 import Ban from "./Ban";
 
-import logo from '../assets/example_logo.png';
+import logo from '../assets/Logo_Itemania_2019.png';
 
 export default class Overlay extends React.Component {
     state = {
@@ -22,13 +22,13 @@ export default class Overlay extends React.Component {
                 this.setState({currentAnimationState: css.AnimationTimer + ' ' + css.AnimationBansPick});
 
                 setTimeout(() => {
-                    this.setState({currentAnimationState: css.AnimationBansPick});
+                    this.setState({currentAnimationState: css.AnimationBansPick + ' ' + css.AnimationBansPickOnly});
 
                     setTimeout(() => {
                         this.setState({currentAnimationState: css.AnimationPigs});
-                    }, 3000);
+                    }, 1000);
                 }, 1450);
-            }, 500);
+            }, 700);
         }, 500);
     }
 
@@ -46,6 +46,12 @@ export default class Overlay extends React.Component {
 
         console.log(state);
 
+        const renderBans = (teamState) =>{
+            const list =  teamState.bans.map(ban => <Ban {...ban} />);
+            list.splice(3, 0, <div className={css.Spacing} />);
+            return <div className={cx(css.BansBox)}>{list}</div>;
+        };
+
         const renderTeam = (teamName, teamConfig, teamState) => (
             <div className={cx(css.Team, teamName)}>
                 <div className={cx(css.Picks)}>
@@ -56,14 +62,14 @@ export default class Overlay extends React.Component {
                         {teamName === css.TeamBlue && config.frontend.scoreEnabled && <div className={css.TeamScore}>
                             {teamConfig.score}
                         </div>}
-                        {teamName === css.TeamRed && teamState.bans.map(ban => <Ban {...ban} />)}
+                        {teamName === css.TeamRed && renderBans(teamState)}
                         <div className={cx(css.TeamName, {[css.WithoutCoaches]: !config.frontend.coachesEnabled})}>
                             {teamConfig.name}
                             {config.frontend.coachesEnabled && <div className={css.CoachName}>
                                 Coach: {teamConfig.coach}
                             </div>}
                         </div>
-                        {teamName === css.TeamBlue && teamState.bans.map(ban => <Ban {...ban} />)}
+                        {teamName === css.TeamBlue && renderBans(teamState)}
                         {teamName === css.TeamRed && config.frontend.scoreEnabled && <div className={css.TeamScore}>
                             {teamConfig.score}
                         </div>}
