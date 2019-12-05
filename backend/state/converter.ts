@@ -1,8 +1,8 @@
-import { Cell, Action, ActionType, Timer } from '../types/lcu';
-import { Ban, Team, Pick, Champion } from '../types/dto';
+import {Action, ActionType, Cell, Timer} from '../types/lcu';
+import {Ban, Champion, Pick, Team} from '../types/dto';
 import DataProviderService from '../data/DataProviderService';
 import DataDragon from '../data/league/datadragon';
-import { CurrentState } from '../data/CurrentState';
+import {CurrentState} from '../data/CurrentState';
 import RecordingDatapoint from '../recording/RecordingDatapoint';
 
 const convertTeam = (kwargs: { team: Array<Cell>; actions: Array<Action>; dataProvider: DataProviderService; ddragon: DataDragon }): Team => {
@@ -90,7 +90,30 @@ const convertTimer = (timer: Timer, currentDate: Date): number => {
   return countdownSec;
 };
 
-const convertState = (state: CurrentState, dataProvider: DataProviderService, ddragon: DataDragon): { blueTeam: Team; redTeam: Team; timer: number } => {
+const convertStateName = (actions: Array<Action>) => {
+  const currentActionIndex = actions.findIndex((action) => !action.completed);
+
+  if (currentActionIndex === -1) {
+    return 'FINALIZATION';
+  }
+
+  const currentAction = actions[currentActionIndex];
+  if (currentAction.type == ActionType.BAN) {
+    if (currentActionIndex <= 6) {
+      return 'BAN 1';
+    } else {
+      return 'BAN 2';
+    }
+  } else {
+    if (currentActionIndex <= 12) {
+      return 'PICK 1';
+    } else {
+      return 'PICK 2';
+    }
+  }
+};
+
+const convertState = (state: CurrentState, dataProvider: DataProviderService, ddragon: DataDragon): { blueTeam: Team; redTeam: Team; timer: number; state: string } => {
   const lcuSession = state.session;
 
   const currentDate = (state as RecordingDatapoint).time ? new Date((state as RecordingDatapoint).time) : new Date();
@@ -104,11 +127,13 @@ const convertState = (state: CurrentState, dataProvider: DataProviderService, dd
   const redTeam = convertTeam({ team: lcuSession.theirTeam, actions: flattenedActions, dataProvider, ddragon });
 
   const timer = convertTimer(lcuSession.timer, currentDate);
+  const stateName = convertStateName(flattenedActions);
 
   return {
     blueTeam,
     redTeam,
     timer,
+    state: stateName
   };
 };
 

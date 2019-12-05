@@ -32,7 +32,7 @@ class State extends EventEmitter {
       this.triggerUpdate();
     }
 
-    newState (state: { redTeam: Team; blueTeam: Team; timer: number }): void {
+    newState (state: { redTeam: Team; blueTeam: Team; timer: number; state: string }): void {
       let shouldUpdate = false;
 
       if (JSON.stringify(this.data.blueTeam) !== JSON.stringify(state.blueTeam)) {
@@ -47,6 +47,11 @@ class State extends EventEmitter {
 
       if (this.data.timer !== state.timer) {
         this.data.timer = state.timer;
+        shouldUpdate = true;
+      }
+
+      if (this.data.state !== state.state) {
+        this.data.state = state.state;
         shouldUpdate = true;
       }
 

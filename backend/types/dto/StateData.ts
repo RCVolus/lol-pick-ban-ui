@@ -7,5 +7,6 @@ export class StateData {
   redTeam = new Team();
   meta = new Meta();
   timer = 0;
+  state = 'PICK 1';
   config = new Config();
 }

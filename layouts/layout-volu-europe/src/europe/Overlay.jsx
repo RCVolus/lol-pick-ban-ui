@@ -89,7 +89,7 @@ export default class Overlay extends React.Component {
                             <img src={logo} alt="" />
                         </div>
                         <div className={cx(css.Patch)}>
-                            Patch: {config.frontend.patch}
+                            {state.state}
                         </div>
                         <div className={cx(css.Timer, {
                             [`${css.Red} ${css.Blue}`]: !state.blueTeam.isActive && !state.redTeam.isActive,
