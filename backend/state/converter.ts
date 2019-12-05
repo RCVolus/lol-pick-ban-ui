@@ -94,21 +94,21 @@ const convertStateName = (actions: Array<Action>) => {
   const currentActionIndex = actions.findIndex((action) => !action.completed);
 
   if (currentActionIndex === -1) {
-    return 'FINALIZATION';
+    return '';
   }
 
   const currentAction = actions[currentActionIndex];
   if (currentAction.type == ActionType.BAN) {
     if (currentActionIndex <= 6) {
-      return 'BAN 1';
+      return 'BAN PHASE 1';
     } else {
-      return 'BAN 2';
+      return 'BAN PHASE 2';
     }
   } else {
     if (currentActionIndex <= 12) {
-      return 'PICK 1';
+      return 'PICK PHASE 1';
     } else {
-      return 'PICK 2';
+      return 'PICK PHASE 2';
     }
   }
 };
