@@ -30,7 +30,7 @@ transitions
 4. Install all required dependencies for the backend using the command `npm install`
 5. Start the backend using the command `npm start`
 6. The backend should now launch on localhost:8999
-7. Open up the folder "backend", keep the backend open & running!
+7. Open up the folder "layouts/layout-volu-europe", keep the backend open & running!
 8. Also open the terminal here (like in step 3)
 9. Also issue `npm install` (like in step 4)
 10. Also start the frontend using `npm start` (like in step 5)
