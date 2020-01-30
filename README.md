@@ -7,7 +7,7 @@ TODO (Graphic)
 ## Features
 - Connects to the League Client and fetches information about the current champ select in real time
 - Automatically fetches champion loading images, splash arts and square icons from datadragon, which means that if a new champion
-is realised it will automatically fetch the correct resources.
+is released it will automatically fetch the correct resources.
 - Ready to use design templates:
   - Europe (similar to the pick&ban UI used in the LEC)
 - Easy feature toggle (when using design templates) for:
