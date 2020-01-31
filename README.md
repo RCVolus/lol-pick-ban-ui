@@ -41,7 +41,7 @@ transitions
 alt="Demo Video" width="240" height="180" border="10" /></a>
 
 ## Creating your own design
-Please refer to [CUSTOM_THEME.md](CUSTOM_THEME.md).
+Please refer to [CUSTOM_THEME](CUSTOM_THEME.md).
 
 ## Contributors / Maintainers
 - Development: Lars "Larce" Bärtschi
