@@ -2,7 +2,7 @@
 UI to display the league of legends champion selection in esports tournaments.
 
 ## Rough Architecture:
-TODO (Graphic)
+![Architecture](Architecture.png)
 
 ## Features
 - Connects to the League Client and fetches information about the current champ select in real time
@@ -39,6 +39,9 @@ transitions
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=u-CTYFDBtqE
 " target="_blank"><img src="http://img.youtube.com/vi/u-CTYFDBtqE/0.jpg" 
 alt="Demo Video" width="240" height="180" border="10" /></a>
+
+## Creating your own design
+Please refer to [CUSTOM_THEME.md](CUSTOM_THEME.md).
 
 ## Contributors / Maintainers
 - Development: Lars "Larce" Bärtschi
