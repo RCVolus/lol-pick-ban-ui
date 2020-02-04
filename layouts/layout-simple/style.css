@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    overflow: hidden;
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+}
+
+:root {
+    --bar-height: 150px;
+    --bar-text-width: 660px;
+    --bar-timer-width: 170px;
+    --bar-middle-width: 200px;
+    --bar-big-text-size: 80px;
+
+    --bar-blue-text-margin: 0 0 0 30px;
+    --bar-red-text-margin: 0 30px 0 0;
+
+    /* --debug-color-green: rgba(0, 255, 0, 0.5); */
+}
+
+.flex-vcenter {
+    display: flex;
+    align-items: center;
+}
+
+#overlay img {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    position: absolute;
+}
+
+#bar {
+    height: var(--bar-height);
+    width: 100%;
+    position: absolute;
+    display: flex;
+
+    background-color: var(--debug-color-green);
+}
+
+#bar .text {
+    height: 100%;
+    width: var(--bar-text-width);
+}
+#bar .text span {
+    background-image: linear-gradient(#FFFFFF, rgb(129,129,129));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#bar .timer {
+    height: 100%;
+    width: var(--bar-timer-width);
+}
+#bar .timer span {
+    background-image: linear-gradient(rgb(38,38,38), rgb(44,44,44));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+#bar .middle {
+    height: 100%;
+    width: var(--bar-middle-width);
+}
+#bar .middle .top {
+    height: 65%;
+}
+#bar .middle .bot {
+    height: 35%;
+}
+
+#bar .score-text {
+    display: block;
+    width: 100%;
+    font-size: calc(var(--bar-height) * 0.65 * 0.6);
+    height: 100%;
+    line-height: calc(var(--bar-height) * 0.65);
+    text-align: center;
+
+    background-image: linear-gradient(rgb(38,38,38), rgb(44,44,44));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#bar .phase-text {
+    display: block;
+    width: 100%;
+    font-size: calc(var(--bar-height) * 0.35 * 0.55);
+    height: calc(var(--bar-height) * 0.35 * 0.55);
+    line-height: calc(var(--bar-height) * 0.35 * 0.55);
+    text-align: center;
+
+    background-image: linear-gradient(#FFFFFF, rgb(129,129,129));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#bar .big-text {
+    display: block;
+    width: 100%;
+    line-height: var(--bar-big-text-size);
+    font-size: var(--bar-big-text-size);
+    height: var(--bar-big-text-size);
+    text-align: center;
+}
+
+#bar .blue.text {
+    margin: var(--bar-blue-text-margin);
+}
+#bar .red.text {
+    margin: var(--bar-red-text-margin);
+}
