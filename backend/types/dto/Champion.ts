@@ -3,6 +3,7 @@ export class Champion {
   name = '';
   key? = '';
   splashImg = '';
+  splashCenteredImg = '';
   loadingImg = '';
   squareImg = '';
   idName = '';

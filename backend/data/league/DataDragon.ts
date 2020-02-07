@@ -71,12 +71,14 @@ class DataDragon {
 
     extendChampion(champion: Champion): Champion {
       champion.splashImg = `${this.state.getCDN()}/img/champion/splash/${champion.id}_0.jpg`;
+      champion.splashCenteredImg = `https://cdn.communitydragon.org/${this.state.getVersion()}/champion/${champion.id}/splash-art/centered`;
       champion.squareImg = `${this.state.getVersionCDN()}/img/champion/${champion.id}.png`;
       champion.loadingImg = `${this.state.getCDN()}/img/champion/loading/${champion.id}_0.jpg`;
       return champion;
     }
     extendChampionLocal(champion: Champion): Champion {
       champion.splashImg = `/cache/${this.versions.n.champion}/champion/${champion.id}_splash.jpg`;
+      champion.splashCenteredImg = `/cache/${this.versions.n.champion}/champion/${champion.id}_centered_splash.jpg`;
       champion.squareImg = `/cache/${this.versions.n.champion}/champion/${champion.id}_square.png`;
       champion.loadingImg = `/cache/${this.versions.n.champion}/champion/${champion.id}_loading.jpg`;
       return champion;
@@ -143,6 +145,7 @@ class DataDragon {
         champion = this.extendChampion(champion);
         tasks.push(downloadFile(champion.loadingImg, `${patchFolderChampion}/${champion.id}_loading.jpg`));
         tasks.push(downloadFile(champion.splashImg, `${patchFolderChampion}/${champion.id}_splash.jpg`));
+        tasks.push(downloadFile(champion.splashCenteredImg, `${patchFolderChampion}/${champion.id}_centered_splash.jpg`));
         tasks.push(downloadFile(champion.squareImg, `${patchFolderChampion}/${champion.id}_square.png`));
       });
 

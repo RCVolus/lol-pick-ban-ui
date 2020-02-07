@@ -23,8 +23,11 @@ body {
     display: flex;
     align-items: center;
 }
+.hidden {
+    display: none;
+}
 
-#overlay img {
+#overlay > img {
     width: 1920px;
     height: 1080px;
     overflow: hidden;
@@ -112,4 +115,127 @@ body {
 }
 #bar .red.text {
     margin: var(--bar-red-text-margin);
+}
+
+.picks {
+    position: absolute;
+    top: 183px;
+    width: 400px;
+    height: 690px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    background-color: var(--debug-color-green);
+}
+.picks.red {
+    right: 0;
+}
+
+.picks .pick {
+    height: 130px;
+    width: 100%;
+}
+
+.picks .pick .splash {
+    width: 100%;
+    height: 100px;
+}
+
+.picks .pick .text {
+    background-image: linear-gradient(#FFFFFF, rgb(129,129,129));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-size: 24px;
+
+    margin: 0 10px;
+}
+.picks.blue .pick .text {
+    text-align: right;
+}
+
+.picks .pick .splash {
+    overflow: hidden;
+}
+.picks .pick .splash img {
+    display: block;
+    height: auto !important;
+    width: 100%;
+    overflow: hidden;
+    margin-top: -25px;
+}
+
+.bans {
+    position: absolute;
+    top: 900px;
+    width: 720px;
+    height: 130px;
+
+    margin: 0 45px;
+
+    display: flex;
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    background-color: var(--debug-color-green);
+}
+.bans.red {
+    right: 0;
+    flex-direction: row-reverse;
+}
+
+.bans .ban {
+    overflow: hidden;
+    transform: rotate(-15deg);
+    height: 200px;
+    margin-top: -25px;
+}
+.bans.red .ban {
+    transform: rotate(15deg);
+}
+
+.bans .ban .splash {
+    width: 110px;
+    height: 200px;
+}
+
+.bans .ban .splash img {
+    width: 500px;
+    height: auto;
+
+    margin-top: 0px;
+    margin-left: -206px;
+}
+.bans.red .ban .splash img {
+    margin-top: 0px;
+    margin-left: -182px;
+}
+
+.bans.blue .ban:first-child {
+    margin-left: 25px;
+}
+.bans.blue .ban:last-child {
+    margin-right: 35px;
+}
+.bans.blue .ban:nth-child(3) {
+    margin-right: 30px;
+}
+.bans.red .ban:first-child {
+    margin-right: 25px;
+}
+.bans.red .ban:last-child {
+    margin-left: 35px;
+}
+.bans.red .ban:nth-child(3) {
+    margin-left: 30px;
+}
+
+.bans.blue .ban .splash img {
+    transform: rotate(15deg);
+}
+.bans.red .ban .splash img {
+    transform: rotate(-15deg);
 }

@@ -31,6 +31,7 @@ const convertTeam = (kwargs: { team: Array<Cell>; actions: Array<Action>; dataPr
       idName: champion ? champion.id.toString() : '',
       loadingImg: champion ? champion.loadingImg : '',
       splashImg: champion ? champion.splashImg : '',
+      splashCenteredImg: champion ? champion.splashCenteredImg : '',
       squareImg: champion ? champion.squareImg : '',
     };
 
@@ -68,6 +69,7 @@ const convertTeam = (kwargs: { team: Array<Cell>; actions: Array<Action>; dataPr
       idName: champion ? champion.id.toString() : '',
       loadingImg: champion ? champion.loadingImg : '',
       splashImg: champion ? champion.splashImg : '',
+      splashCenteredImg: champion ? champion.splashCenteredImg : '',
       squareImg: champion ? champion.squareImg : '',
     };
 

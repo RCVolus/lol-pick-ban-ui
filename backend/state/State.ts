@@ -78,6 +78,10 @@ class State extends EventEmitter {
       return `${this.data.meta.cdn}/${this.data.meta.version.champion}`;
     }
 
+    getVersion(): string {
+      return this.data.meta.version.champion;
+    }
+
     getCDN(): string {
       return this.data.meta.cdn;
     }

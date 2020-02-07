@@ -8,7 +8,8 @@
 </head>
 <body>
 <div id="overlay">
-    <!--<img src="overlay.png" alt="overlay" />-->
+    <img src="overlay.png" alt="overlay" style="z-index: 100;" />
+    <img src="underlay.png" alt="underlay" style="z-index: -100;" />
 
     <div id="bar">
         <div class="blue text flex-vcenter">
@@ -32,6 +33,12 @@
             <span class="big-text" id="red_name">TEAM 2</span>
         </div>
     </div>
+
+    <div class="picks blue" id="picks_blue"></div>
+    <div class="picks red" id="picks_red"></div>
+
+    <div class="bans blue" id="bans_blue"></div>
+    <div class="bans red" id="bans_red"></div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
