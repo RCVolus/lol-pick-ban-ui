@@ -98,9 +98,13 @@ export default class Overlay extends React.Component {
                         })}>
                             <div className={cx(css.Background, css.Blue)} />
                             <div className={cx(css.Background, css.Red)} />
-                            <div className={cx(css.TimerChars)}>
-                                {state.timer.toString().split('').map(char => <div className={cx(css.TimerChar)}>{char}</div>)}
-                            </div>
+                            {state.timer < 100 && <div className={cx(css.TimerChars)}>
+                                {state.timer.toString().split('').map(char => <div
+                                    className={cx(css.TimerChar)}>{char}</div>)}
+                            </div>}
+                            {state.timer >= 100 && <div className={cx(css.TimerChars)}>
+                                {state.timer}
+                            </div>}
                         </div>
                     </div>
                     {renderTeam(css.TeamBlue, config.frontend.blueTeam, state.blueTeam)}
