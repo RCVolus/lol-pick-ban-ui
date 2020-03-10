@@ -34,6 +34,7 @@ transitions
 8. Also open the terminal here (like in step 3)
 9. Also issue `npm install` (like in step 4)
 10. Also start the frontend using `npm start` (like in step 5)
+11. The application will now be accessible under http://localhost:3000?backend=ws://localhost:8999
 
 ## Demo (YouTube)
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=u-CTYFDBtqE
