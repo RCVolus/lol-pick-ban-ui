@@ -23,6 +23,15 @@ is released it will automatically fetch the correct resources.
 - Allows to completely create a custom design based on web technologies (HTML, CSS & JS), including custom animations and
 transitions
 
+### Replays (Playing a recorded champ select)
+Replays are available. They are pretty useful to test your overlay with, since it mocks the data sources and simulates a draft phase, that has already passed. There are some recordings of replays in the "recordings" folder.
+
+In order to play a replay that simulates a full tournament draft, please issue the following command to start the backend (the root project):
+
+`npm start -- --data recordings/tournament-draft`
+
+While you are in a replay, you can focus the window and press "p" on your keyboard once, to pause or unpause the replay. This will freeze the current state, so you can adapt your design without having to hurry.
+
 ## Installation (Development purposes)
 1. Download and install Node.JS for Windows (or any other operating system): https://nodejs.org/dist/v10.16.3/node-v10.16.3-x64.msi
 2. Download or clone this Git-Repository to your local machine.
