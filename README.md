@@ -39,11 +39,19 @@ While you are in a replay, you can focus the window and press "p" on your keyboa
 4. Install all required dependencies for the backend using the command `npm install`
 5. Start the backend using the command `npm start`
 6. The backend should now launch on localhost:8999
-7. Open up the folder "layouts/layout-volu-europe", keep the backend open & running!
+
+### Installation of europe layout
+7. Open up the folder `layouts/layout-volu-europe`, keep the backend open & running!
 8. Also open the terminal here (like in step 3)
 9. Also issue `npm install` (like in step 4)
 10. Also start the frontend using `npm start` (like in step 5)
 11. The application will now be accessible under http://localhost:3000?backend=ws://localhost:8999
+
+### Installation of simple layout
+7. Open up another terminal in the project root folder, using `Shift + Rightclick -> Open Powershell`.
+8. You only need to execute the following command once: `npm install -g serve`
+9. Now start the local web server, using the simple command `serve`
+10. Now the application is accessible under http://localhost:5000/layouts/layout-simple/index.html?backend=ws://localhost:8999
 
 ## Demo (YouTube)
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=u-CTYFDBtqE
