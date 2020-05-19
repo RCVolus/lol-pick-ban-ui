@@ -1,7 +1,7 @@
 # lol-champselect-ui
 UI to display the league of legends champion selection in esports tournaments.
 
-## Rough Architecture:
+## Architecture:
 ![Architecture](Architecture.png)
 
 ## Who used this?
