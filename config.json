@@ -17,6 +17,6 @@
     },
     "patch": "9.19"
   },
-  "contentPatch": "latest",
+  "contentPatch": "10.9.1",
   "contentCdn": "https://ddragon.leagueoflegends.com/cdn"
 }
