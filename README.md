@@ -55,10 +55,11 @@ While you are in a replay, you can focus the window and press "p" on your keyboa
 11. The application will now be accessible under http://localhost:3000?backend=ws://localhost:8999
 
 ### Installation of simple layout
+Please note that for simple layout, you need to edit the two files "overlay.png" and "underlay.png" in the folder layouts/layout-simple. We have provided some example, however you need to do it on your own.
 7. Open up another terminal in the project root folder, using `Shift + Rightclick -> Open Powershell`.
 8. You only need to execute the following command once: `npm install -g serve`
 9. Now start the local web server, using the simple command `serve`
-10. Now the application is accessible under http://localhost:5000/layouts/layout-simple/index.html?backend=ws://localhost:8999
+10. Now the application is accessible under http://localhost:5000/layouts/layout-simple/?backend=ws://localhost:8999
 
 ## Demo (YouTube)
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=u-CTYFDBtqE
