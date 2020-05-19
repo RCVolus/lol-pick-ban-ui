@@ -14,8 +14,8 @@ class TickManager {
   }
 
   startLoop(): void {
-    log.info(`Starting main loop with ${1/this.tickRate} ticks/s!`);
-    this.timeout = setInterval(() => this.runLoop(), 1000/this.tickRate);
+    log.info(`Starting main loop with ${1 / this.tickRate} ticks/s!`);
+    this.timeout = setInterval(() => this.runLoop(), 1000 / this.tickRate);
   }
 
   async runLoop(): Promise<void> {

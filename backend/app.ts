@@ -3,7 +3,7 @@ import http from 'http';
 
 import WebSocketServer from './websocket';
 import logger from './logging';
-import TickManager from './TickManager'
+import TickManager from './TickManager';
 import { AddressInfo } from 'net';
 import State from './state';
 import { getDataProvider } from './data/DataProviderService';
@@ -29,7 +29,8 @@ log.debug('Logging in debug mode!');
 
 GlobalContext.commandLine = {
   data: argv['data'],
-  record: argv['record']
+  record: argv['record'],
+  leaguePath: argv['leaguePath'] || '',
 };
 log.info('Configuration: ' + JSON.stringify(GlobalContext.commandLine));
 

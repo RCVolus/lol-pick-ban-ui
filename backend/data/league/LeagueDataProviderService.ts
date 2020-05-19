@@ -1,27 +1,29 @@
-import LCUConnector from "lcu-connector";
-import needle, { NeedleResponse } from "needle";
+import LCUConnector from 'lcu-connector';
+import needle, { NeedleResponse } from 'needle';
 
-import logger from "../../logging";
-import { Session, Cell, Summoner } from "../../types/lcu";
+import logger from '../../logging';
+import { Session, Cell, Summoner } from '../../types/lcu';
 
-import { CurrentState } from "../CurrentState";
-import { EventEmitter } from "events";
-import DataProviderService from "../DataProviderService";
-import Recorder from "../../recording/Recorder";
-import GlobalContext from "../../GlobalContext";
-const log = logger("LCUDataProviderService");
+import { CurrentState } from '../CurrentState';
+import { EventEmitter } from 'events';
+import DataProviderService from '../DataProviderService';
+import Recorder from '../../recording/Recorder';
+import GlobalContext from '../../GlobalContext';
+const log = logger('LCUDataProviderService');
+
+console.log(GlobalContext.commandLine.leaguePath);
 
 class LeagueDataProviderService extends EventEmitter
   implements DataProviderService {
-  connector = new LCUConnector("");
+  connector = new LCUConnector(GlobalContext.commandLine.leaguePath);
   connectionInfo!: ConnectionInfo;
   recorder!: Recorder;
 
   requestConfig = {
     json: true,
     rejectUnauthorized: false,
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   };
 
   summoners: Array<Summoner> = [];
@@ -35,22 +37,32 @@ class LeagueDataProviderService extends EventEmitter
 
     if (GlobalContext.commandLine.record) {
       this.recorder = new Recorder(GlobalContext.commandLine.record);
-      log.info("Recording to " + GlobalContext.commandLine.record);
+      log.info('Recording to ' + GlobalContext.commandLine.record);
     }
 
-    this.connector.on("connect", this.onLeagueConnected);
-    this.connector.on("disconnect", this.onLeagueDisconnected);
+    this.connector.on('connect', this.onLeagueConnected);
+    this.connector.on('disconnect', this.onLeagueDisconnected);
+
+    if (GlobalContext.commandLine.leaguePath === '') {
+      log.info('Trying to detect league installation automatically.');
+    } else {
+      log.info(
+        'Using manually configured league installation: ' +
+          GlobalContext.commandLine.leaguePath
+      );
+    }
+
     this.connector.start();
-    log.info("Waiting for LeagueClient to connect");
+    log.info('Waiting for LeagueClient to connect');
   }
 
   async getCurrentData(): Promise<CurrentState> {
     if (!this.connectionInfo) {
-      log.debug("Not connected to LCU, but tried to get data.");
+      log.debug('Not connected to LCU, but tried to get data.');
     }
 
     const response = await needle(
-      "get",
+      'get',
       `https://127.0.0.1:${this.connectionInfo.port}/lol-champ-select/v1/session`,
       this.requestConfig
     );
@@ -75,7 +87,7 @@ class LeagueDataProviderService extends EventEmitter
     ): Array<Promise<NeedleResponse>> =>
       team.map((cell) =>
         needle(
-          "get",
+          'get',
           `https://127.0.0.1:${this.connectionInfo.port}/lol-summoner/v1/summoners/${cell.summonerId}`,
           this.requestConfig
         )
@@ -102,22 +114,22 @@ class LeagueDataProviderService extends EventEmitter
   }
 
   onLeagueConnected(e: ConnectionInfo): void {
-    log.info("LeagueClient connected");
+    log.info('LeagueClient connected');
     this.connectionInfo = e;
     this.requestConfig.username = this.connectionInfo.username;
     this.requestConfig.password = this.connectionInfo.password;
 
-    this.emit("connected");
+    this.emit('connected');
   }
 
   onLeagueDisconnected(): void {
-    log.info("LeagueClient disconnected");
+    log.info('LeagueClient disconnected');
 
     if (this.recorder) {
       this.recorder.save();
     }
 
-    this.emit("disconnected");
+    this.emit('disconnected');
   }
 }
 
