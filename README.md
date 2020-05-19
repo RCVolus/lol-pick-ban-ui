@@ -4,7 +4,7 @@ UI to display the league of legends champion selection in esports tournaments.
 ## Rough Architecture:
 ![Architecture](Architecture.png)
 
-## In Action / Who uses this?
+## Who used this?
 It is most convincing to see the tool directly in action. Have you used it in any of your productions or projects? Feel free to send a pull request adding your project to this list along our way.
 
 - Red Bull Itemania 2019 (aired on https://twitch.tv/redbull)
