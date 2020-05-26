@@ -56,6 +56,7 @@ While you are in a replay, you can focus the window and press "p" on your keyboa
 
 ### Installation of simple layout
 Please note that for simple layout, you need to edit the two files "overlay.png" and "underlay.png" in the folder layouts/layout-simple. We have provided some example, however you need to do it on your own.
+
 7. Open up another terminal in the project root folder, using `Shift + Rightclick -> Open Powershell`.
 8. You only need to execute the following command once: `npm install -g serve`
 9. Now start the local web server, using the simple command `serve`
