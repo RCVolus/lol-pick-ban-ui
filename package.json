@@ -12,10 +12,12 @@
     "electron-dev": "npm run build && electron ."
   },
   "dependencies": {
+    "@types/fs-extra": "^9.0.1",
     "cli-progress": "^3.3.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "fs-extra": "^9.0.0",
     "lcu-connector": "^2.1.2",
     "minimist": "^1.2.3",
     "morgan": "~1.9.1",
@@ -29,7 +31,7 @@
     "@types/express": "^4.17.1",
     "@types/minimist": "^1.2.0",
     "@types/needle": "^2.0.4",
-    "@types/node": "^12.7.7",
+    "@types/node": "12.12.42",
     "@types/ws": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^2.3.2",
     "@typescript-eslint/parser": "^2.3.2",

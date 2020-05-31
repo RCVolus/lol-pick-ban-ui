@@ -1,4 +1,3 @@
-import LCUConnector from 'lcu-connector';
 import needle, { NeedleResponse } from 'needle';
 
 import logger from '../../logging';
@@ -9,13 +8,16 @@ import { EventEmitter } from 'events';
 import DataProviderService from '../DataProviderService';
 import Recorder from '../../recording/Recorder';
 import GlobalContext from '../../GlobalContext';
+import Connector, {
+  ConnectionInfo,
+  LibraryConnector,
+  ExperimentalConnector,
+} from './connector';
 const log = logger('LCUDataProviderService');
-
-console.log(GlobalContext.commandLine.leaguePath);
 
 class LeagueDataProviderService extends EventEmitter
   implements DataProviderService {
-  connector = new LCUConnector(GlobalContext.commandLine.leaguePath);
+  connector: Connector;
   connectionInfo!: ConnectionInfo;
   recorder!: Recorder;
 
@@ -31,6 +33,16 @@ class LeagueDataProviderService extends EventEmitter
   constructor() {
     super();
 
+    if (GlobalContext.commandLine.experimentalConnector) {
+      this.connector = new ExperimentalConnector({
+        leaguePath: GlobalContext.commandLine.leaguePath,
+      });
+    } else {
+      this.connector = new LibraryConnector({
+        leaguePath: GlobalContext.commandLine.leaguePath,
+      });
+    }
+
     this.onLeagueConnected = this.onLeagueConnected.bind(this);
     this.onLeagueDisconnected = this.onLeagueDisconnected.bind(this);
     this.getCurrentData = this.getCurrentData.bind(this);
@@ -43,6 +55,7 @@ class LeagueDataProviderService extends EventEmitter
     this.connector.on('connect', this.onLeagueConnected);
     this.connector.on('disconnect', this.onLeagueDisconnected);
 
+    // TODO move this to the connector
     if (GlobalContext.commandLine.leaguePath === '') {
       log.info('Trying to detect league installation automatically.');
     } else {
@@ -131,12 +144,6 @@ class LeagueDataProviderService extends EventEmitter
 
     this.emit('disconnected');
   }
-}
-
-class ConnectionInfo {
-  port!: number;
-  username!: string;
-  password!: string;
 }
 
 export default LeagueDataProviderService;

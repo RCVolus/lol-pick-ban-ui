@@ -2,7 +2,7 @@ import express from 'express';
 import http from 'http';
 
 import WebSocketServer from './websocket';
-import logger from './logging';
+import logger, { setLogLevel } from './logging';
 import TickManager from './TickManager';
 import { AddressInfo } from 'net';
 import State from './state';
@@ -15,6 +15,18 @@ import './Console';
 
 const argv = minimist(process.argv.slice(2));
 
+// Needs to be done before logging is initialized, in order to set log level correctly
+GlobalContext.commandLine = {
+  data: argv['data'],
+  record: argv['record'],
+  leaguePath: argv['leaguePath'] || '',
+  experimentalConnector: argv['experimentalConnector'],
+  debug: argv['debug'],
+};
+if (GlobalContext.commandLine.debug) {
+  setLogLevel('debug');
+}
+
 const log = logger('main');
 const app = express();
 
@@ -26,12 +38,6 @@ log.info(' |_____\\___/|_____| |_|   \\___/\\/____/   \\___/|___|');
 log.info('                                                   ');
 
 log.debug('Logging in debug mode!');
-
-GlobalContext.commandLine = {
-  data: argv['data'],
-  record: argv['record'],
-  leaguePath: argv['leaguePath'] || '',
-};
 log.info('Configuration: ' + JSON.stringify(GlobalContext.commandLine));
 
 const state = new State();

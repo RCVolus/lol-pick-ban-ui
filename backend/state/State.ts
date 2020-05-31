@@ -1,6 +1,6 @@
-import EventEmitter from "events";
-import * as fs from "fs";
-import { Config, StateData, Team } from "../types/dto";
+import EventEmitter from 'events';
+import * as fs from 'fs';
+import { Config, StateData, Team } from '../types/dto';
 
 class State extends EventEmitter {
   data: StateData;
@@ -9,13 +9,13 @@ class State extends EventEmitter {
     super();
 
     this.data = new StateData();
-    this.data.config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
+    this.data.config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
   }
 
   champselectStarted(): void {
-    this.data.config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
+    this.data.config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
-    this.emit("champSelectStarted");
+    this.emit('champSelectStarted');
 
     this.data.champSelectActive = true;
     this.triggerUpdate();
@@ -27,7 +27,7 @@ class State extends EventEmitter {
     this.data.timer = 0;
     this.data.champSelectActive = false;
 
-    this.emit("champSelectEnded");
+    this.emit('champSelectEnded');
 
     this.triggerUpdate();
   }
@@ -66,7 +66,7 @@ class State extends EventEmitter {
   }
 
   newAction(action: any): void {
-    this.emit("newAction", action);
+    this.emit('newAction', action);
   }
 
   leagueConnected(): void {
@@ -80,7 +80,7 @@ class State extends EventEmitter {
   }
 
   triggerUpdate(): void {
-    this.emit("stateUpdate", this.data);
+    this.emit('stateUpdate', this.data);
   }
 
   getVersionCDN(): string {
