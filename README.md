@@ -10,6 +10,7 @@ It is most convincing to see the tool directly in action. Have you used it in an
 - Red Bull Itemania 2019 (aired on https://twitch.tv/redbull)
 - Logitech G LoL Cup 2020 (aired on https://twitch.tv/myinsanitytv)
 - Swisscom Hero League Season 3 (aired on https://twitch.tv/eslswiss)
+- Intel Arabian Cup (IAC) (airing on https://www.twitch.tv/lolarabia)
 
 ## Features
 - Connects to the League Client and fetches information about the current champ select in real time
