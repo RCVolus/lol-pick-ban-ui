@@ -40,6 +40,9 @@ In order to play a replay that simulates a full tournament draft, please issue t
 
 While you are in a replay, you can focus the window and press "p" on your keyboard once, to pause or unpause the replay. This will freeze the current state, so you can adapt your design without having to hurry.
 
+## Configuration
+You can configure the variable values, like team names, team scores, coach names and even the colors used. Just open up the file config.json in the project root with any texteditor, like notepad. Any changes you do inside this file will be reflected immediately and do not require a restart or reload.
+
 ## Installation (Development purposes)
 1. Download and install Node.JS for Windows (or any other operating system): https://nodejs.org/dist/v10.16.3/node-v10.16.3-x64.msi
 2. Download or clone this Git-Repository to your local machine.
