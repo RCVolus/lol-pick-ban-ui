@@ -53,13 +53,8 @@ class WebSocketServer {
   }
 
   handleConnection(socket: WebSocket, request: http.IncomingMessage): void {
-    if (request.url && request.url === "/example") {
-      log.debug("New example client connected!");
-      this.exampleClients.push(socket);
-    } else {
-      this.clients.push(socket);
-      socket.send(JSON.stringify(new NewStateEvent(this.state.data)));
-    }
+    this.clients.push(socket);
+    socket.send(JSON.stringify(new NewStateEvent(this.state.data)));
   }
 
   sendEvent(event: PBEvent): void {
@@ -77,12 +72,6 @@ class WebSocketServer {
     const heartbeatSerialized = JSON.stringify(heartbeatEvent);
 
     this.clients.forEach((client: WebSocket) => {
-      client.send(heartbeatSerialized);
-    });
-
-    const exampleData = fs.readFileSync("./example.json", "utf8");
-    this.exampleClients.forEach((client: WebSocket) => {
-      client.send(JSON.stringify(new NewStateEvent(JSON.parse(exampleData))));
       client.send(heartbeatSerialized);
     });
   }
