@@ -1,3 +1,3 @@
-import state from './state';
+import State from './State';
 
-export default state;
+export default State;

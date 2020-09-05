@@ -1,7 +1,7 @@
 import {Action, ActionType, Cell, Timer} from '../types/lcu';
 import {Ban, Champion, Pick, Team} from '../types/dto';
 import DataProviderService from '../data/DataProviderService';
-import DataDragon from '../data/league/datadragon';
+import DataDragon from '../data/league/DataDragon';
 import {CurrentState} from '../data/CurrentState';
 import RecordingDatapoint from '../recording/RecordingDatapoint';
 

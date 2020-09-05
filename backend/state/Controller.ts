@@ -2,8 +2,8 @@ import { EventEmitter } from "events";
 import convertState from "./converter";
 import { CurrentState } from "../data/CurrentState";
 import DataProviderService from "../data/DataProviderService";
-import State from "./state";
-import DataDragon from "../data/league/datadragon";
+import State from "./State";
+import DataDragon from "../data/league/DataDragon";
 import logger from "../logging/logger";
 
 const log = logger("Controller");
