@@ -127,7 +127,7 @@ class LeagueDataProviderService extends EventEmitter
   }
 
   onLeagueConnected(e: ConnectionInfo): void {
-    log.info('LeagueClient connected');
+    log.info(`LeagueClient connected: ${JSON.stringify(e)}`);
     this.connectionInfo = e;
     this.requestConfig.username = this.connectionInfo.username;
     this.requestConfig.password = this.connectionInfo.password;
