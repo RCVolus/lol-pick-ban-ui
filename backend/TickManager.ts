@@ -1,6 +1,6 @@
 import logger from './logging/logger';
 import Timeout = NodeJS.Timeout;
-import Controller from './state/controller';
+import Controller from './state/Controller';
 
 const log = logger('tick');
 

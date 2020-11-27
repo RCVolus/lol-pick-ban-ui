@@ -31,6 +31,7 @@ function App() {
         });
 
         Window.PB.on('heartbeat', hb => {
+            console.info(`Got new config: ${JSON.stringify(hb.config)}`);
             setConfig(hb.config);
         });
 
@@ -38,12 +39,22 @@ function App() {
     }, []);
 
     console.log(globalState);
+    console.log(config);
 
-    return (
-        <div className="App">
-            <Overlay state={convertState(globalState, Window.PB.backend)} config={config}/>
-        </div>
-    );
+    if (config) {
+
+        return (
+            <div className="App">
+                <Overlay state={convertState(globalState, Window.PB.backend)} config={config}/>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                Loading config...
+            </div>
+        )
+    }
 }
 
 export default App;
