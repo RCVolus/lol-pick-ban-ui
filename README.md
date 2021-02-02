@@ -74,15 +74,9 @@ alt="Demo Video" width="240" height="180" border="10" /></a>
 ## Creating your own design
 Please refer to [CUSTOM_THEME](CUSTOM_THEME.md).
 
-## Support
-If you have any inquiry, you can always write an email to pick-ban(ät)lars.ninja.
-Please note that this project is developed in freetime, and support may not be available at all times.
-
 ## Contributors / Maintainers
 - Development: Lars "Larce" Bärtschi
 - Design (Europe): Elias "Elilift" Inäbnit
-
-Please feel free to contact me via Twitter and let me know if you used this project! I'm also happy to help out if any questions or inquiries or feedback appear regarding this! [@LarsBaertschi](https://twitter.com/LarsBaertschi)
 
 ## Legal disclaimer
 lol-pick-ban-ui was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games. Riot Games does not endorse or sponsor this project.
