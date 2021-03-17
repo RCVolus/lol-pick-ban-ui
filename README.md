@@ -44,6 +44,8 @@ While you are in a replay, you can focus the window and press "p" on your keyboa
 You can configure the variable values, like team names, team scores, coach names and even the colors used. Just open up the file config.json in the project root with any texteditor, like notepad. Any changes you do inside this file will be reflected immediately and do not require a restart or reload.
 
 ## Installation (Development purposes)
+Please note: if you're looking for an easier installation, have a look at this project: https://github.com/FearNixx/vigilant-bans (the linked project is not associated or affiliated with the Riot Community Volunteers, and we can provide no warranty for the linked project)
+
 1. Download and install Node.JS for Windows (or any other operating system): https://nodejs.org/dist/v10.16.3/node-v10.16.3-x64.msi
 2. Download or clone this Git-Repository to your local machine.
 3. Inside the downloaded folder, open up a command prompt (Windows: Shift + Rightclick -> Open Powershell / Commandline Window here)
