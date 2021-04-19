@@ -61,7 +61,8 @@ Please note: if you're looking for an easier installation, have a look at this p
 11. The application will now be accessible under http://localhost:3000?backend=ws://localhost:8999
 
 ### Installation of simple layout
-Please note that for simple layout, you need to edit the two files "overlay.png" and "underlay.png" in the folder layouts/layout-simple. We have provided some example, however you need to do it on your own.
+Please note that the simple layout cannot be directly used out of the box, it is more like an example of how you can create your own overlay. It is created as simple as possible from code perspective, thus it's name, but it is not simple to install and use.
+You also need to edit the two files "overlay.png" and "underlay.png" in the folder layouts/layout-simple. We have provided some example, however you need to do it on your own.
 
 7. Open up another terminal in the project root folder, using `Shift + Rightclick -> Open Powershell`.
 8. You only need to execute the following command once: `npm install -g serve`
