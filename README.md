@@ -1,3 +1,6 @@
+# Fork changes
+I've changed the logo to the Westlake logo and changed the theme colours.
+
 # lol-champselect-ui
 UI to display the league of legends champion selection in esports tournaments.
 
