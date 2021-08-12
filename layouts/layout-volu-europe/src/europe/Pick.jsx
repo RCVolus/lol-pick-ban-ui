@@ -1,9 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 
-import css from './style/index.less';
+import css from './style/index.module.scss';
 
-export default props => (
+const Pick = props => (
     <div className={cx(css.Pick, { [css.Active]: props.isActive })}>
         {props.spell1 && props.spell2 && props.config.frontend.spellsEnabled && props.champion.name && !props.isActive && <div className={cx(css.SummonerSpells)}>
             <img src={props.spell1.icon} alt="" />
@@ -19,3 +19,5 @@ export default props => (
         </div>
     </div>
 );
+
+export default Pick;

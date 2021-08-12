@@ -21,7 +21,9 @@ class TickManager {
   async runLoop(): Promise<void> {
     const newState = await this.controller.dataProvider.getCurrentData();
 
-    this.controller.applyNewState(newState);
+    if (newState !== null) {
+      this.controller.applyNewState(newState);
+    }
   }
 }
 

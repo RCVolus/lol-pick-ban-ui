@@ -37,7 +37,7 @@
     "@typescript-eslint/parser": "^2.3.2",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
-    "eslint": "^6.5.1",
+    "eslint": "^6.1.0",
     "eslint-plugin-import": "^2.18.2"
   }
 }

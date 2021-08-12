@@ -1,0 +1,147 @@
+.Picks {
+  width: 100%;
+  height: var(--box-pick-height);
+  display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .Pick {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #0a0a0a;
+    border-left: solid var(--border-between-color) 1px;
+
+    &.Active {
+      .PlayerName {
+        height: calc(2 * var(--pick-name-height)) !important;
+        margin-top: calc(-1 * var(--pick-name-height));
+        line-height: calc(2 * var(--pick-name-height));
+      }
+    }
+
+    &:first-child {
+      border: none;
+    }
+
+    .PlayerName {
+      transition: height 1s, font-size 1s, margin-top 1s, background-color 0.3s, color 0.3s;
+      height: var(--pick-name-height);
+      color: white;
+      background-color: black;
+      text-align: center;
+      font-size: calc(0.5 * var(--pick-name-height));
+      line-height: var(--pick-name-height);
+    }
+
+    .SummonerSpells {
+      position: absolute;
+      top: calc(var(--box-pick-height) - 30px - var(--summoner-spell-size));
+      right: 0;
+      z-index: 10;
+
+      img {
+        height: var(--summoner-spell-size);
+        width: var(--summoner-spell-size);
+      }
+    }
+
+    .PickImage {
+      position: relative;
+      height: calc(100% - var(--pick-name-height));
+
+      img {
+        width: calc(100% + calc(2 * var(--pick-image-crop)));
+        height: 100%;
+        object-fit: cover;
+        object-position: calc(-1 * var(--pick-image-crop)) calc(-1 * var(--pick-image-crop));
+      }
+
+      &.Active::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        // height: calc(100% - var(--pick-name-height));
+        height: calc(100% + var(--pick-name-height));
+        opacity: 0.5;
+        animation: pulsate-pick 1.5s infinite;
+        transition: height 1s;
+
+        // z-index: 20;
+      }
+    }
+  }
+}
+
+&.TeamBlue .Picks .Pick {
+  &:last-child {
+     border-right: solid var(--border-between-color) 1px;
+   }
+  &:first-child {
+    border: none;
+  }
+  &.Active {
+    .PlayerName {
+      position: relative;
+      background-color: white;
+      color: black;
+    }
+    .PlayerName::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      background-color: var(--color-blue);
+    }
+    span {
+      position: relative;
+      z-index: 10;
+      font-size: 18px;
+    }
+  }
+}
+&.TeamRed .Picks .Pick {
+  &:first-child {
+    border-left: solid var(--border-between-color) 1px;
+  }
+  &.Active {
+    .PlayerName {
+      position: relative;
+      background-color: white;
+      color: black;
+    }
+    .PlayerName::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      background-color: var(--color-red);
+    }
+    span {
+      position: relative;
+      z-index: 10;
+      font-size: 18px;
+    }
+  }
+}
+
+@keyframes pulsate-pick {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

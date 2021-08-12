@@ -72,10 +72,12 @@ const putPlaceholders = (team,  backendUrl) => {
   }
 };
 
-export default (state, backendUrl) => {
+const convertState = (state, backendUrl) => {
   if (Object.keys(state).length !== 0) {
     putPlaceholders(state.blueTeam, backendUrl);
     putPlaceholders(state.redTeam, backendUrl);
   }
   return state;
 }
+
+export default convertState;
