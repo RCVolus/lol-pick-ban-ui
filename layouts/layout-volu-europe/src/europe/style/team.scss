@@ -1,0 +1,109 @@
+.Team {
+  position: absolute;
+  width: var(--box-team-width);
+  height: var(--box-height);
+
+  bottom: var(--champselect-margin-bot);
+
+  .TeamName {
+    font-size: 40px;
+    color: white;
+    font-family: 'Saira Condensed', sans-serif;
+    margin-top: -15px;
+
+    &.WithoutCoaches {
+      font-size: 60px;
+      margin-top: -20px;
+    }
+  }
+
+  .CoachName {
+    font-size: 20px;
+    margin-top: -20px;
+  }
+
+  .TeamScore {
+    font-size: 60px;
+    margin-top: -20px;
+    color: white;
+    font-family: 'Saira Condensed', sans-serif;
+    width: var(--box-ban-height);
+    text-align: center;
+    height: calc(100% + 23px);
+  }
+
+  @import "./picks";
+  @import "./bans";
+
+  &.TeamBlue {
+    right: calc(50% + calc(var(--box-width) / 2));
+
+    .TeamScore {
+      border-right: 3px solid black;
+    }
+
+    .Bans {
+      justify-content: flex-end;
+      background-color: var(--color-blue);
+      border: solid var(--color-blue) var(--border-width);
+      float: right;
+
+      .Ban {
+        border-left: solid var(--color-blue) var(--border-width);
+
+        .BanImage.Active::before {
+          background-image: linear-gradient(to left, var(--color-blue) 0%, rgba(0, 0, 0, 0) 50%, var(--color-blue) 100%);
+        }
+      }
+    }
+
+    .Picks {
+      .Pick {
+        .PickImage.Active::before {
+          background-image: linear-gradient(to left, var(--color-blue) 0%, rgba(0, 0, 0, 0) 50%, var(--color-blue) 100%);
+        }
+      }
+    }
+
+    .TeamName {
+      margin-right: auto;
+      margin-left: 15px;
+    }
+  }
+
+  &.TeamRed {
+    left: calc(50% + calc(var(--box-width) / 2));
+
+    .TeamScore {
+      border-left: 3px solid black;
+    }
+
+    .Bans {
+      background-color: var(--color-red);
+      border: solid var(--color-red) var(--border-width);
+      float: left;
+
+      .Ban {
+        border-right: solid var(--color-red) var(--border-width);
+
+        .BanImage.Active::before {
+          background-image: linear-gradient(to left, var(--color-red) 0%, rgba(0, 0, 0, 0) 50%, var(--color-red) 100%);
+        }
+      }
+    }
+
+    .Picks {
+      .Pick {
+        .PickImage.Active::before {
+          background-image: linear-gradient(to left, var(--color-red) 0%, rgba(0, 0, 0, 0) 50%, var(--color-red) 100%);
+        }
+      }
+    }
+
+    .TeamName {
+      margin-left: auto;
+      text-align: right;
+      margin-right: 15px;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@import "./fonts";
+
+body {
+    // background: black;
+    // font-family: 'Nova Flat', sans-serif;
+    font-family: Amarello;
+
+    // background: url("https://dotesports-media.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2019/06/14131635/LEC-Summer-2019.jpg");
+    background-size: cover;
+
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@import "./variables";
+@import "./animation";
+
+.Europe {
+    .MiddleBox {
+        position: absolute;
+        color: white;
+        width: var(--box-width);
+        height: calc(var(--box-pick-height) + var(--box-ban-height));
+
+        bottom: var(--champselect-margin-bot);
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+    }
+
+    .Patch {
+        height: var(--box-patch-height);
+        font-size: 25px;
+        text-align: center;
+        color: white;
+        /* border-left: darkgrey 1px solid;
+        border-right: darkgrey 1px solid; */
+        /* background-color: black; */
+
+        z-index: 10;
+    }
+
+    .Logo {
+        width: 100%;
+        height: var(--box-logo-height);
+        /* border-left: darkgrey 1px solid;
+        border-right: darkgrey 1px solid; */
+        /* background-color: black; */
+
+        z-index: 10;
+
+        img {
+            width: 80%;
+            height: 80%;
+            margin: 0 auto;
+            padding-top: 10%;
+            display: block;
+            object-fit: contain;
+        }
+    }
+
+    @import "./timer";
+    @import "./team";
+}

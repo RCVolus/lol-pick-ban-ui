@@ -1,0 +1,74 @@
+.Timer {
+  position: relative;
+  width: 100%;
+  // height: var(--box-timer-height);
+  font-size: 50px;
+  text-align: center;
+  overflow: hidden;
+
+  height: 338px;
+  margin-top: -260px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: -10;
+  }
+
+  .Background {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: left 1s;
+
+    &.Blue {
+      background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, var(--color-blue) 100%);
+      left: -100%;
+    }
+
+    &.Red {
+      background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, var(--color-red) 100%);
+      left: 100%;
+    }
+  }
+
+  &.Blue {
+    .Background.Blue {
+      left: 0;
+    }
+  }
+
+  &.Red {
+    .Background.Red {
+      left: 0;
+    }
+  }
+
+  &.Both {
+    background: linear-gradient(to right, var(--color-blue) 0%, var(--color-red) 100%)
+  }
+
+  .TimerChars {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 260px;
+
+    .TimerChar {
+      width: 30px;
+      margin: 0 2px;
+      text-align: right;
+
+      &:nth-child(2) {
+        text-align: left;
+      }
+    }
+  }
+}

@@ -59,9 +59,10 @@ class LeagueDataProviderService extends EventEmitter
     log.info('Waiting for LeagueClient to connect');
   }
 
-  async getCurrentData(): Promise<CurrentState> {
-    if (!this.connectionInfo) {
+  async getCurrentData(): Promise<CurrentState | null> {
+    if (!this.connectionInfo || !this.connectionInfo.port) {
       log.debug('Not connected to LCU, but tried to get data.');
+      return null
     }
 
     const response = await needle(

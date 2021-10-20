@@ -9,7 +9,7 @@ It is most convincing to see the tool directly in action. Have you used it in an
 
 - Red Bull Itemania 2019 (aired on https://twitch.tv/redbull)
 - Logitech G LoL Cup 2020 (aired on https://twitch.tv/myinsanitytv)
-- Swisscom Hero League Season 3 (aired on https://twitch.tv/eslswiss)
+- Swisscom Hero League Season 3-6 (aired on https://twitch.tv/eslswiss)
 - Intel Arabian Cup (IAC) (airing on https://www.twitch.tv/lolarabia)
 
 ## Features
@@ -34,27 +34,27 @@ transitions
 ### Replays (Playing a recorded champ select)
 Replays are available. They are pretty useful to test your overlay with, since it mocks the data sources and simulates a draft phase, that has already passed. There are some recordings of replays in the "recordings" folder.
 
-In order to play a replay that simulates a full tournament draft, please issue the following command to start the backend (the root project):
+In order to play a replay that simulates a full tournament draft, please issue the following command to start the backend:
 
-`npm start -- --data recordings/tournament-draft`
+`npm start -- --data ../recordings/tournament-draft`
 
 While you are in a replay, you can focus the window and press "p" on your keyboard once, to pause or unpause the replay. This will freeze the current state, so you can adapt your design without having to hurry.
 
 ## Configuration
-You can configure the variable values, like team names, team scores, coach names and even the colors used. Just open up the file config.json in the project root with any texteditor, like notepad. Any changes you do inside this file will be reflected immediately and do not require a restart or reload.
+You can configure the variable values, like team names, team scores, coach names and even the colors used. Just open up the file config.json in the folder `backend` with any texteditor, like notepad. Any changes you do inside this file will be reflected immediately and do not require a restart or reload.
 
 ## Installation (Development purposes)
 Please note: if you're looking for an easier installation, have a look at this project: https://github.com/FearNixx/vigilant-bans (the linked project is not associated or affiliated with the Riot Community Volunteers, and we can provide no warranty for the linked project)
 
-1. Download and install Node.JS for Windows (or any other operating system): https://nodejs.org/dist/v10.16.3/node-v10.16.3-x64.msi
+1. Download and install Node.JS for Windows (or any other operating system): https://nodejs.org/dist/v14.17.5/node-v14.17.5-x64.msi (please really install the linked version, 14.17.5, as otherwise you may run into issues)
 2. Download or clone this Git-Repository to your local machine.
-3. Inside the downloaded folder, open up a command prompt (Windows: Shift + Rightclick -> Open Powershell / Commandline Window here)
+3. Inside the downloaded folder, open the `backend` folder, and open up a command prompt there (Windows: Shift + Rightclick -> Open Powershell / Commandline Window here)
 4. Install all required dependencies for the backend using the command `npm install`
 5. Start the backend using the command `npm start`
 6. The backend should now launch on localhost:8999
 
 ### Installation of europe layout
-7. Open up the folder `layouts/layout-volu-europe`, keep the backend open & running!
+7. Open up the folder `layouts/layout-volu-europe`, keep the backend (terminal) open & running!
 8. Also open the terminal here (like in step 3)
 9. Also issue `npm install` (like in step 4)
 10. Also start the frontend using `npm start` (like in step 5)
@@ -73,7 +73,7 @@ You also need to edit the two files "overlay.png" and "underlay.png" in the fold
 Before you create an issue on GitHub, please check if your problem is listed below, and can be solved that way:
 
 ### Connection to League Client failed (Unhandled PromiseRejectionWarning: TypeError: Cannot read property "port" of undefined)
-The above outlined error happens, if a connection to the League Client cannot be established. So make sure that your League Client is running. We noticed that for some servers (mainly ones not run by Riot Games) the Client process runs as administrator, and therefore you also need to execute this tool as administrator, as otherwise the LeagueClient cannot be accessed. So when you open up the powershell, instead of doing the Shift + rightclick thingy, open it directly (search for Powershell) but rightclick it and select "Open as Administrator". Then, navigate to the folder where you have the files in using the command `cd {folder}`. Then try again to start it, using `npm start`.
+The above outlined error happens, if a connection to the League Client cannot be established. So make sure that your League Client is running. We noticed that for some servers (mainly ones not run by Riot Games) the Client process runs as administrator, and therefore you also need to execute this tool as administrator, as otherwise the LeagueClient cannot be accessed. So when you open up the powershell, instead of doing the Shift + Rightclick thingy, open it directly (search for Powershell) but rightclick it and select "Open as Administrator". Then, navigate to the folder where you have the files in using the command `cd {folder}`. Then try again to start it, using `npm start`.
 
 ### SyntaxError: failed to construct 'WebSocket': The URL 'undefined' is invalid
 This window may pop up when you start the europe layout. But there is nothing to worry, just close it and make sure you open up the correct link: http://localhost:3000?backend=ws://localhost:8999 (the ?backend part in the link is important, if you leave it out you get said error message!)

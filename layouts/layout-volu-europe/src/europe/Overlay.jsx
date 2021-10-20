@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import Pick from "./Pick";
 
-import css from './style/index.less';
+import css from './style/index.module.scss';
 import Ban from "./Ban";
 
 import logo from '../assets/Logo_Itemania_2019.png';
