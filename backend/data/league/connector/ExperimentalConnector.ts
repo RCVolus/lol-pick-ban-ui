@@ -40,34 +40,18 @@ export default class ExperimentalConnector extends EventEmitter
       return;
     }
 
-    if (this.options.leaguePath) {
-      const leaguePath = path.normalize(this.options.leaguePath)
-      log.debug(`Using configured league path: ${leaguePath}`)
-    } else {
-      log.debug('Trying to detect league path automatically.')
-    }
-
-    const INSTALL_REGEX_WIN = /"--install-directory=(.*?)"/;
-    const command = `WMIC PROCESS WHERE name='LeagueClientUx.exe' GET commandline`;
-
-    cp.exec(command, async (err, stdout, stderr) => {
-      if (err || !stdout || stderr) {
-        log.debug(
-          'Failed to find the league process. Is the LeagueClient running?', err
-        );
-        return;
-      }
-
-      const parts = stdout.match(INSTALL_REGEX_WIN) || [];
-      const leaguePath = parts[1];
-      log.debug('Found LeagueClient installation path: ' + leaguePath);
-
+    const readLockfile = async (leaguePath: string): Promise<void> => {
       // Read lockfile
+      const lockFilePath = path.join(leaguePath, 'lockfile')
+      if (!fs.existsSync(lockFilePath)) {
+        log.info(`Failed to find lock file at ${lockFilePath}. Is the League Client running and the location correct?`)
+        return
+      }
       const lockfile = await fs.readFile(
-        path.join(leaguePath, 'lockfile'),
+        lockFilePath,
         'utf8'
       );
-      log.debug('Found lockfile: ' + lockfile);
+      log.debug('Found lockfile at: ' + lockFilePath);
       const splitted = lockfile.split(':');
 
       if (!this.isConnected) {
@@ -81,6 +65,32 @@ export default class ExperimentalConnector extends EventEmitter
 
         this.emit('connect', connectionInfo);
       }
-    });
+    }
+
+    if (this.options.leaguePath) {
+      const leaguePath = path.normalize(this.options.leaguePath)
+      log.debug(`Using configured league path: ${leaguePath}`)
+      readLockfile(leaguePath)
+    } else {
+      log.debug('Trying to detect league path automatically.')
+
+      const INSTALL_REGEX_WIN = /"--install-directory=(.*?)"/;
+      const command = `WMIC PROCESS WHERE name='LeagueClientUx.exe' GET commandline`;
+
+      cp.exec(command, async (err, stdout, stderr) => {
+        if (err || !stdout || stderr) {
+          log.debug(
+            'Failed to find the league process. Is the LeagueClient running?', err
+          );
+          return;
+        }
+
+        const parts = stdout.match(INSTALL_REGEX_WIN) || [];
+        const leaguePath = parts[1];
+        log.debug('Found LeagueClient installation path: ' + leaguePath);
+
+        readLockfile(leaguePath)
+      });
+    }
   }
 }
