@@ -55,16 +55,6 @@ class LeagueDataProviderService extends EventEmitter
     this.connector.on('connect', this.onLeagueConnected);
     this.connector.on('disconnect', this.onLeagueDisconnected);
 
-    // TODO move this to the connector
-    if (GlobalContext.commandLine.leaguePath === '') {
-      log.info('Trying to detect league installation automatically.');
-    } else {
-      log.info(
-        'Using manually configured league installation: ' +
-          GlobalContext.commandLine.leaguePath
-      );
-    }
-
     this.connector.start();
     log.info('Waiting for LeagueClient to connect');
   }
