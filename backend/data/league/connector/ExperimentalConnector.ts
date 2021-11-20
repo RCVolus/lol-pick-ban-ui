@@ -27,14 +27,14 @@ export default class ExperimentalConnector extends EventEmitter
     );
   }
 
-  start() {
+  start(): void {
     log.info('ExperimentalConnector started');
     this.update();
 
     setInterval(() => this.update(), 5000)
   }
 
-  update() {
+  update(): void {
     if (this.isConnected) {
       log.debug('Already connected, not checking.')
       return;
@@ -75,7 +75,7 @@ export default class ExperimentalConnector extends EventEmitter
       log.debug('Trying to detect league path automatically.')
 
       const INSTALL_REGEX_WIN = /"--install-directory=(.*?)"/;
-      const command = `WMIC PROCESS WHERE name='LeagueClientUx.exe' GET commandline`;
+      const command = 'WMIC PROCESS WHERE name=\'LeagueClientUx.exe\' GET commandline';
 
       cp.exec(command, async (err, stdout, stderr) => {
         if (err || !stdout || stderr) {
