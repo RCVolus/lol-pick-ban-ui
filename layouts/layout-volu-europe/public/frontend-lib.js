@@ -59,6 +59,8 @@ const getQueryVariable = variable => {
 const PB = {};
 eventify(PB);
 
+PB.getQueryVariable = getQueryVariable;
+
 
 PB.toAbsoluteUrl = (convertUrl, baseUrl) => {
     baseUrl = baseUrl || getQueryVariable('backend');
