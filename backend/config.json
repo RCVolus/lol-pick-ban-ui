@@ -4,18 +4,18 @@
     "spellsEnabled": true,
     "coachesEnabled": true,
     "blueTeam": {
-      "name": "Team Blue",
-      "score": 2,
-      "coach": "Coach Blue",
-      "color": "rgb(0,151,196)"
+      "name": "Team Ocean",
+      "score": 0,
+      "coach": "Coach Ocean",
+      "color": "#004cff"
     },
     "redTeam": {
-      "name": "Team Red",
-      "score": 1,
-      "coach": "Coach Red",
-      "color": "rgb(222,40,70)"
+      "name": "Team Inferno",
+      "score": 0,
+      "coach": "Coach Inferno",
+      "color": "#ff0041"
     },
-    "patch": "9.19"
+    "patch": ""
   },
   "contentPatch": "latest",
   "contentCdn": "https://ddragon.leagueoflegends.com/cdn"
