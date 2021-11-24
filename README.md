@@ -46,7 +46,7 @@ You can configure the variable values, like team names, team scores, coach names
 ## Installation (Development purposes)
 Please note: if you're looking for an easier installation, have a look at this project: https://github.com/FearNixx/vigilant-bans (the linked project is not associated or affiliated with the Riot Community Volunteers, and we can provide no warranty for the linked project)
 
-1. Download and install Node.JS for Windows (or any other operating system): https://nodejs.org/dist/v14.17.5/node-v14.17.5-x64.msi (please really install the linked version, 14.17.5, as otherwise you may run into issues)
+1. Download and install Node.JS for Windows (or any other operating system): https://nodejs.org/download/release/v16.7.0/node-v16.7.0-x64.msi (please really install the linked version, 16.7.0, as otherwise you may run into issues)
 2. Download or clone this Git-Repository to your local machine.
 3. Inside the downloaded folder, open the `backend` folder, and open up a command prompt there (Windows: Shift + Rightclick -> Open Powershell / Commandline Window here)
 4. Install all required dependencies for the backend using the command `npm install`
