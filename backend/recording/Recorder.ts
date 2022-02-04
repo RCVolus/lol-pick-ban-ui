@@ -24,7 +24,7 @@ export default class Recorder {
   }
 
   save(): void {
-    const recordingsPath = './recordings';
+    const recordingsPath = '../recordings';
 
     if (!fs.existsSync(recordingsPath)) {
       fs.mkdirSync(recordingsPath);
@@ -47,6 +47,6 @@ export default class Recorder {
     });
 
     fs.writeFileSync(recordingsPath + '/' + this.name + '.json', jsonString);
-    log.info(`Recording ${this.name} saved!`);
+    log.debug(`Recording ${this.name} saved!`);
   }
 }

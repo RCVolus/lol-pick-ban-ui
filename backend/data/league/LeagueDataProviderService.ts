@@ -77,6 +77,7 @@ class LeagueDataProviderService extends EventEmitter
 
     if (this.recorder) {
       this.recorder.addDataPoint(currentState);
+      this.recorder.save();
     }
 
     return currentState;
