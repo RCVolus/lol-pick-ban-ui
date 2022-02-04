@@ -87,7 +87,7 @@ alt="Demo Video" width="240" height="180" border="10" /></a>
 Please refer to [CUSTOM_THEME](CUSTOM_THEME.md).
 
 ## Contributors / Maintainers
-- Development: Lars "Larce" Bärtschi
+- Development: Lara "Laraka" Bärtschi
 - Design (Europe): Elias "Elilift" Inäbnit
 
 ## Legal disclaimer
