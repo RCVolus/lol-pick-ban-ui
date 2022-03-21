@@ -71,7 +71,9 @@ class DataDragon {
 
     extendChampion(champion: Champion): Champion {
       champion.splashImg = `${this.state.getCDN()}/img/champion/splash/${champion.id}_0.jpg`;
-      champion.splashCenteredImg = `https://cdn.communitydragon.org/${this.state.getVersion()}/champion/${champion.id}/splash-art/centered`;
+      // champion.splashCenteredImg = `https://cdn.communitydragon.org/${this.state.getVersion()}/champion/${champion.id}/splash-art/centered`;
+      // Data Dragon CDN broken workaround
+      champion.splashCenteredImg = `https://raw.communitydragon.org/${this.state.getMajorMinorVersion()}/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${champion.key}/${champion.key}000.jpg`;
       champion.squareImg = `${this.state.getVersionCDN()}/img/champion/${champion.id}.png`;
       champion.loadingImg = `${this.state.getCDN()}/img/champion/loading/${champion.id}_0.jpg`;
       return champion;

@@ -95,6 +95,10 @@ class State extends EventEmitter {
     return this.data.meta.cdn;
   }
 
+  getMajorMinorVersion(): string {
+    return this.data.meta.version.champion.split('.').slice(0, 2).join('.');
+  }
+
   getConfig(): Config {
     return this.data.config;
   }
