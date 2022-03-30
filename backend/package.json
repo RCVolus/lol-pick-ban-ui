@@ -19,7 +19,7 @@
     "express": "~4.16.1",
     "fs-extra": "^9.0.0",
     "lcu-connector": "^2.1.2",
-    "minimist": "^1.2.3",
+    "minimist": "^1.2.6",
     "morgan": "~1.9.1",
     "needle": "^2.4.0",
     "typescript": "^3.6.3",
