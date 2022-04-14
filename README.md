@@ -75,7 +75,9 @@ Before you create an issue on GitHub, please check if your problem is listed bel
 ### Connection to League Client failed (Unhandled PromiseRejectionWarning: TypeError: Cannot read property "port" of undefined)
 The above outlined error happens, if a connection to the League Client cannot be established. So make sure that your League Client is running. We noticed that for some servers (mainly ones not run by Riot Games) the Client process runs as administrator, and therefore you also need to execute this tool as administrator, as otherwise the LeagueClient cannot be accessed. So when you open up the powershell, instead of doing the Shift + Rightclick thingy, open it directly (search for Powershell) but rightclick it and select "Open as Administrator". Then, navigate to the folder where you have the files in using the command `cd {folder}`. Then try again to start it, using `npm start`.
 
-### SyntaxError: failed to construct 'WebSocket': The URL 'undefined' is invalid
+### error: failed to read backend url query param. make sure you set ?backend=ws://[ip]:[port] as query parameter 
+Error message on older versions: `SyntaxError: failed to construct 'WebSocket': The URL 'undefined' is invalid`
+
 This window may pop up when you start the europe layout. But there is nothing to worry, just close it and make sure you open up the correct link: http://localhost:3000?backend=ws://localhost:8999 (the ?backend part in the link is important, if you leave it out you get said error message!)
 
 ## Demo (YouTube)
