@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events';
+import { RequestOptions, Response } from 'league-connect';
 
 export class ConnectionInfo {
   port!: number;
@@ -17,5 +18,7 @@ declare interface Connector extends EventEmitter {
 
   on(event: 'disconnect', listener: () => void): this;
   on(event: 'connect', listener: (info: ConnectionInfo) => void): this;
+
+  request(args: RequestOptions): Promise<Response<any> | undefined>;
 }
 export default Connector;

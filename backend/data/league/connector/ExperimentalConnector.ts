@@ -4,6 +4,8 @@ import fs from 'fs-extra';
 import path from 'path';
 import logger from '../../../logging';
 import Connector, { ConnectorOptions, ConnectionInfo } from './Connector';
+import { RequestOptions, Response } from 'league-connect';
+import needle from 'needle';
 
 const log = logger('ExperimentalConnector');
 
@@ -12,6 +14,7 @@ class ExperimentalConnectorOptions extends ConnectorOptions {}
 export default class ExperimentalConnector extends EventEmitter
   implements Connector {
   options: ExperimentalConnectorOptions;
+  connectionInfo?: ConnectionInfo
 
   isConnected = false;
 
@@ -32,6 +35,14 @@ export default class ExperimentalConnector extends EventEmitter
     this.update();
 
     setInterval(() => this.update(), 5000)
+  }
+
+  async request(args: RequestOptions<any>): Promise<Response<any> | undefined> {
+    if (!this.connectionInfo) return
+    return await needle(
+      'get',
+      `https://127.0.0.1:${this.connectionInfo.port}${args.url}`
+    ) as unknown as Response<any>
   }
 
   update(): void {
@@ -62,6 +73,8 @@ export default class ExperimentalConnector extends EventEmitter
           port: parseInt(splitted[2], 10),
           password: splitted[3],
         };
+
+        this.connectionInfo = connectionInfo
 
         this.emit('connect', connectionInfo);
       }
