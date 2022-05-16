@@ -18,6 +18,13 @@ export default class ExperimentalConnector extends EventEmitter
 
   isConnected = false;
 
+  requestConfig = {
+    json: true,
+    rejectUnauthorized: false,
+    username: '',
+    password: '',
+  };
+
   constructor(options: ExperimentalConnectorOptions) {
     super();
 
@@ -41,7 +48,8 @@ export default class ExperimentalConnector extends EventEmitter
     if (!this.connectionInfo) return
     return await needle(
       'get',
-      `https://127.0.0.1:${this.connectionInfo.port}${args.url}`
+      `https://127.0.0.1:${this.connectionInfo.port}${args.url}`,
+      this.requestConfig
     ) as unknown as Response<any>
   }
 
@@ -75,6 +83,9 @@ export default class ExperimentalConnector extends EventEmitter
         };
 
         this.connectionInfo = connectionInfo
+
+        this.requestConfig.password = splitted[3]
+        this.requestConfig.username = 'riot'
 
         this.emit('connect', connectionInfo);
       }
