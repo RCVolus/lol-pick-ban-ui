@@ -14,13 +14,13 @@ function App() {
                 name: "Team Blue",
                 score: 0,
                 coach: "",
-                color: "rgb(0,151,196)"
+                color: "white"
             },
             redTeam: {
                 name: "Team Red",
                 score: 0,
                 coach: "",
-                color: "rgb(222,40,70)"
+                color: "white"
             },
             patch: ""
         }

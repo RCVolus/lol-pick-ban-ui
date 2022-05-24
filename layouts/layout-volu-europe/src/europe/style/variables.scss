@@ -1,26 +1,28 @@
 :root {
-  --box-width: 160px;
-  --box-height: calc(var(--box-pick-height) + var(--box-ban-height));
-  --box-logo-height: calc(100% - calc(var(--box-ban-height) + var(--box-patch-height)));
+  --box-width: 171px;
+  --box-height: calc(var(--box-pick-height) + var(--box-ban-height) + 20px);
+  --box-logo-height: calc(100% - calc(var(--box-ban-height) + var(--box-patch-height)) - 20px);
   --box-timer-height: var(--box-ban-height);
   --box-patch-height: 40px;
 
   --box-team-width: calc(5 * var(--box-width));
   --box-pick-height: 260px;
-  --box-ban-height: 59px;
+  --box-ban-height: 50px;
   --box-ban-spacer: calc(var(--box-ban-height) / 2);
 
-  --pick-name-height: 30px;
+  --pick-name-height: 50px;
   --pick-image-crop: 8px;
 
   --ban-image-crop: 6px;
   --summoner-spell-size: 40px;
 
-  --champselect-margin-bot: 50px;
+  --champselect-margin-bot: 20px;
 
-  --color-red: rgb(222,40,70);
-  --color-blue: rgb(0,151,196);
+  --color-red: white;
+  --color-blue: white;
+  --color-green: rgb(57, 163, 67);
+  --color-green-animation: rgb(148, 231, 156);
 
-  --border-between-color: darkgray;
-  --border-width: 3px;
+  --border-between-color: black;
+  --border-width: 2px;
 }

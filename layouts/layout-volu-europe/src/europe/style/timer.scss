@@ -16,7 +16,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: white;
     z-index: -10;
   }
 
@@ -59,12 +59,13 @@
     display: flex;
     justify-content: center;
 
-    margin-top: 260px;
+    margin-top: 270px;
 
     .TimerChar {
       width: 30px;
       margin: 0 2px;
       text-align: right;
+      font-weight: bold;
 
       &:nth-child(2) {
         text-align: left;

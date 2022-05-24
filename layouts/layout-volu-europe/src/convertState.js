@@ -1,4 +1,4 @@
-import banImg from "./assets/ban_placeholder.svg";
+import banImg from "./assets/logo_ban_todo.png";
 import topSplash from "./assets/top_splash_placeholder.svg";
 import jungSplash from "./assets/jung_splash_placeholder.svg";
 import midSplash from "./assets/mid_splash_placeholder.svg";
@@ -26,7 +26,8 @@ const putPlaceholders = (team,  backendUrl) => {
       // Does not exists, push
       team.picks.push({
         champion: {
-          loadingImg: pickSplashes[i]
+          loadingImg: pickSplashes[i],
+          id: 0
         }
       });
     } else {
@@ -34,7 +35,8 @@ const putPlaceholders = (team,  backendUrl) => {
       const pick = team.picks[i];
       if (!pick.champion || !pick.champion.loadingImg) {
         pick.champion = {
-          loadingImg: pickSplashes[i]
+          loadingImg: pickSplashes[i],
+          id: 0
         };
         // pick.spell1 = null;
         // pick.spell2 = null;
@@ -56,14 +58,16 @@ const putPlaceholders = (team,  backendUrl) => {
       // Does not exist
       team.bans.push({
         champion: {
-          squareImg: banImg
+          squareImg: banImg,
+          id: 0
         }
       });
     } else {
       const ban = team.bans[i];
       if (!ban.champion || !ban.champion.squareImg) {
         ban.champion = {
-          squareImg: banImg
+          squareImg: banImg,
+          id: 0
         }
       }
 
@@ -77,6 +81,7 @@ const convertState = (state, backendUrl) => {
     putPlaceholders(state.blueTeam, backendUrl);
     putPlaceholders(state.redTeam, backendUrl);
   }
+  if (state.state) { state.state = state.state.split('')[0] + state.state.toLowerCase().substring(1) };
   return state;
 }
 

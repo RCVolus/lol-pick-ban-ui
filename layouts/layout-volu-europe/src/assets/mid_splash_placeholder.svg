@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 308 560"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#666;}</style></defs><title>mid_splash_placeholder</title><g id="Top"><polygon class="cls-1" points="180 157 115 222 115 240 133 240 198 175 198 157 180 157"/><polygon class="cls-2" points="127 200.89 127 169 158.89 169 170.89 157 115 157 115 212.89 127 200.89"/><polygon class="cls-2" points="186 196.11 186 228 154.11 228 142.11 240 198 240 198 184.11 186 196.11"/></g></svg>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20.762 7.06667L27.832 0H0V27.832L7.06667 20.7653V7.06667H20.762Z" fill="#94E79C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M19.238 32.928L12.168 40H40V12.168L32.93 19.238V32.93H19.238V32.928Z" fill="#94E79C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M33.428 0L0 33.428V40H6.572L40 6.572V0H33.428Z" fill="black"/>
+</svg>

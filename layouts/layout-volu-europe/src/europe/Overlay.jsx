@@ -5,7 +5,7 @@ import Pick from "./Pick";
 import css from './style/index.module.scss';
 import Ban from "./Ban";
 
-import logo from '../assets/Logo_Itemania_2019.png';
+import logo from '../assets/Logo_banning.png';
 
 export default class Overlay extends React.Component {
     state = {
