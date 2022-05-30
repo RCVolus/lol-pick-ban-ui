@@ -4,7 +4,7 @@ import cx from 'classnames';
 import css from './style/index.module.scss';
 
 const Pick = props => (
-    <div className={cx(css.Pick, { [css.Active]: props.isActive })}>
+    <div className={cx(css.Pick, { [css.Active]: props.isActive, [css.Picked]: props.champion.id !== 0 && !props.isActive })}>
         {props.spell1 && props.spell2 && props.config.frontend.spellsEnabled && props.champion.name && !props.isActive && <div className={cx(css.SummonerSpells)}>
             <img src={props.spell1.icon} alt="" />
             <img src={props.spell2.icon} alt="" />

@@ -14,13 +14,9 @@
     border-left: solid var(--border-between-color) 2px;
     border-bottom: solid var(--border-between-color) 2px;
 
-    /* &.Active {
-      .PlayerName {
-        height: calc(2 * var(--pick-name-height)) !important;
-        margin-top: calc(-1 * var(--pick-name-height));
-        line-height: calc(2 * var(--pick-name-height));
-      }
-    } */
+    &.Picked .PlayerName {
+      color: white;
+    }
 
     .PlayerName {
       transition: height 1s, font-size 1s, margin-top 1s, background-color 0.3s, color 0.3s;
@@ -32,23 +28,26 @@
       line-height: var(--pick-name-height);
       font-weight: bold;
       margin-left: 20px;
+      margin-top: calc(-1 * var(--pick-name-height));
+      position: absolute;
     }
 
     .SummonerSpells {
       position: absolute;
-      top: calc(var(--box-pick-height) - 52px - var(--summoner-spell-size));
-      right: 0;
+      top: calc(var(--box-pick-height) - 45px - var(--summoner-spell-size));
+      left: 20px;
       z-index: 10;
 
       img {
         height: var(--summoner-spell-size);
         width: var(--summoner-spell-size);
+        margin-right: 5px;
       }
     }
 
     .PickImage {
       position: relative;
-      height: calc(100% - var(--pick-name-height));
+      height: 100%;
 
       img {
         width: calc(100% + calc(2 * var(--pick-image-crop)));
@@ -93,9 +92,10 @@
   }
   &.Active {
     .PlayerName {
-      position: relative;
+      // position: relative;
       // background-color: white;
       // color: black;
+      color: #94E79C;
     }
     .PlayerName::after {
       content: "";
@@ -123,6 +123,7 @@
       position: relative;
       // background-color: white;
       // color: black;
+      color: #94E79C;
     }
     .PlayerName::after {
       content: "";

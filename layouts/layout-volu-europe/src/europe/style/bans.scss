@@ -10,6 +10,7 @@
     height: calc(var(--box-ban-height) - calc(2 * var(--border-width)) - 4px);
     overflow: hidden;
     position: relative;
+    margin: 0 7px;
 
     &:first-child {
       border: none;
