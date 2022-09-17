@@ -10,9 +10,9 @@
     width: 20%;
     height: 100%;
     overflow: hidden;
-    background-color: white;
-    border-left: solid var(--border-between-color) 2px;
-    border-bottom: solid var(--border-between-color) 2px;
+    // background-color: white;
+    // border-left: solid var(--border-between-color) 2px;
+    // border-bottom: solid var(--border-between-color) 2px;
 
     &.Picked .PlayerName {
       color: white;
@@ -21,21 +21,23 @@
     .PlayerName {
       transition: height 1s, font-size 1s, margin-top 1s, background-color 0.3s, color 0.3s;
       height: var(--pick-name-height);
-      color: var(--color-green);
+      color: white;
       // background-color: white;
       text-align: left;
-      font-size: 18px;
+      font-size: 14px;
+      letter-spacing: 0;
       line-height: var(--pick-name-height);
       font-weight: bold;
-      margin-left: 20px;
-      margin-top: calc(-1 * var(--pick-name-height));
+      margin-left: 5px;
+      // margin-top: calc(-1 * var(--pick-name-height));
       position: absolute;
+      text-transform: uppercase;
     }
 
     .SummonerSpells {
       position: absolute;
-      top: calc(var(--box-pick-height) - 45px - var(--summoner-spell-size));
-      left: 20px;
+      top: calc(var(--box-pick-height) - 31px - var(--summoner-spell-size));
+      left: 8px;
       z-index: 10;
 
       img {
@@ -47,7 +49,7 @@
 
     .PickImage {
       position: relative;
-      height: 100%;
+      height: calc(100% - var(--pick-name-height));
 
       img {
         width: calc(100% + calc(2 * var(--pick-image-crop)));
@@ -72,7 +74,7 @@
         left: 0;
         width: 100%;
         // height: calc(100% - var(--pick-name-height));
-        height: calc(100% + var(--pick-name-height));
+        height: 100%;
         opacity: 0.5;
         animation: pulsate-pick 1.5s infinite;
         transition: height 1s;
@@ -85,7 +87,7 @@
 
 &.TeamBlue .Picks .Pick {
   &:last-child {
-     border-right: solid var(--border-between-color) 2px;
+     // border-right: solid var(--border-between-color) 2px;
    }
   &:first-child {
     border-left: none;
@@ -95,7 +97,7 @@
       // position: relative;
       // background-color: white;
       // color: black;
-      color: #94E79C;
+      // color: #94E79C;
     }
     .PlayerName::after {
       content: "";
@@ -116,14 +118,14 @@
 }
 &.TeamRed .Picks .Pick {
   &:first-child {
-    border-left: solid var(--border-between-color) 2px;
+    // border-left: solid var(--border-between-color) 2px;
   }
   &.Active {
     .PlayerName {
       position: relative;
       // background-color: white;
       // color: black;
-      color: #94E79C;
+      // color: #94E79C;
     }
     .PlayerName::after {
       content: "";

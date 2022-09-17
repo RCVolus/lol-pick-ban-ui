@@ -1,5 +1,5 @@
 :root {
-  --box-width: 171px;
+  --box-width: 169.5px; // 171px;
   --box-height: calc(var(--box-pick-height) + var(--box-ban-height) + 20px);
   --box-logo-height: calc(100% - calc(var(--box-ban-height) + var(--box-patch-height)) - 20px);
   --box-timer-height: var(--box-ban-height);
@@ -7,21 +7,21 @@
 
   --box-team-width: calc(5 * var(--box-width));
   --box-pick-height: 260px;
-  --box-ban-height: 50px;
-  --box-ban-spacer: calc(var(--box-ban-height) / 2);
+  --box-ban-height: 45px; // 50px;
+  --box-ban-spacer: 41px;; // calc(var(--box-ban-height) / 2);
 
-  --pick-name-height: 50px;
+  --pick-name-height: 24px;
   --pick-image-crop: 8px;
 
   --ban-image-crop: 6px;
   --summoner-spell-size: 25px;
 
-  --champselect-margin-bot: 20px;
+  --champselect-margin-bot: 26px;
 
   --color-red: white;
   --color-blue: white;
   --color-green: rgb(57, 163, 67);
-  --color-green-animation: rgb(148, 231, 156);
+  --color-green-animation: rgb(255, 255, 255);
 
   --border-between-color: black;
   --border-width: 2px;

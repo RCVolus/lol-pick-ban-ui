@@ -9,7 +9,7 @@ const Bans = props => (
             [css.Active]: props.isActive,
             [css.Done]: props.champion.id !== 0 && !props.isActive
         })}>
-            <img className={cx({ [css.Todo]: props.champion.id === 0 })} src={props.champion.squareImg} alt="" />
+            <img className={cx({ /* [css.Todo]: props.champion.id === 0 */ })} src={props.champion.squareImg} alt="" />
         </div>
     </div>
 );

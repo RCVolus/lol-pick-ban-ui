@@ -58,7 +58,7 @@ const putPlaceholders = (team,  backendUrl) => {
       // Does not exist
       team.bans.push({
         champion: {
-          squareImg: banImg,
+          squareImg: 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', // banImg,
           id: 0
         }
       });
@@ -66,7 +66,7 @@ const putPlaceholders = (team,  backendUrl) => {
       const ban = team.bans[i];
       if (!ban.champion || !ban.champion.squareImg) {
         ban.champion = {
-          squareImg: banImg,
+          squareImg: 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', // banImg,
           id: 0
         }
       }

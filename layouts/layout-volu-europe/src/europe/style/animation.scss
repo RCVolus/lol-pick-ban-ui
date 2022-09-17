@@ -21,6 +21,9 @@
   .Logo, .Patch {
     opacity: 0;
   }
+  .Background {
+    width: 0 !important;
+  }
 }
 
 @keyframes timer {

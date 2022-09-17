@@ -6,11 +6,12 @@
   bottom: var(--champselect-margin-bot);
 
   .TeamName {
-    font-size: 35px;
-    color: black;
+    font-size: 33px;
+    color: white;
     // font-family: 'Saira Condensed', sans-serif;
-    margin-top: 6px;
+    margin-top: 0;
     font-weight: bold;
+    text-transform: uppercase;
 
     &.WithoutCoaches {
       font-size: 60px;
@@ -20,7 +21,7 @@
 
   .CoachName {
     font-size: 20px;
-    margin-top: -4px;
+    margin-top: -8px;
     font-weight: normal;
   }
 
@@ -48,12 +49,16 @@
 
     .Bans {
       justify-content: flex-end;
-      background-color: var(--color-blue);
-      border: solid var(--color-blue) var(--border-width);
+      // background-color: var(--color-blue);
+      // border: solid var(--color-blue) var(--border-width);
       float: right;
 
       .Ban {
-        border-left: solid var(--color-blue) var(--border-width);
+        //border-left: solid var(--color-blue) var(--border-width);
+
+        &:first-child {
+          margin-right: 0;
+        }
 
         .BanImage.Active::before {
           background-image: linear-gradient(to left, var(--color-green-animation) 0%, rgba(0, 0, 0, 0) 50%, var(--color-green-animation) 100%);
@@ -71,7 +76,7 @@
 
     .TeamName {
       margin-right: auto;
-      margin-left: 15px;
+      margin-left: 8px;
     }
   }
 
@@ -83,12 +88,16 @@
     }
 
     .Bans {
-      background-color: var(--color-red);
-      border: solid var(--color-red) var(--border-width);
+      // background-color: var(--color-red);
+      // border: solid var(--color-red) var(--border-width);
       float: left;
 
       .Ban {
-        border-right: solid var(--color-red) var(--border-width);
+        // border-right: solid var(--color-red) var(--border-width);
+
+        &:first-child {
+          margin-left: 0;
+        }
 
         .BanImage.Active::before {
           background-image: linear-gradient(to left, var(--color-green-animation) 0%, rgba(0, 0, 0, 0) 50%, var(--color-green-animation) 100%);
@@ -97,6 +106,7 @@
     }
 
     .Picks {
+      margin-left: 1px;
       .Pick {
         .PickImage.Active::before {
           background-image: linear-gradient(to left, var(--color-green-animation) 0%, rgba(0, 0, 0, 0) 50%, var(--color-green-animation) 100%);
@@ -107,7 +117,7 @@
     .TeamName {
       margin-left: auto;
       text-align: right;
-      margin-right: 15px;
+      margin-right: 8px;
     }
   }
 }

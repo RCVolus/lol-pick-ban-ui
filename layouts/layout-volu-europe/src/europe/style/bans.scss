@@ -6,11 +6,12 @@
 
   .Ban {
     display: block;
-    width: calc(var(--box-ban-height) - calc(2 * var(--border-width)) - 2px);
-    height: calc(var(--box-ban-height) - calc(2 * var(--border-width)) - 4px);
+    width: calc(var(--box-ban-height) - calc(2 * var(--border-width)) + 2px);
+    height: calc(var(--box-ban-height) - calc(2 * var(--border-width)) + 1px);
     overflow: hidden;
     position: relative;
-    margin: 0 7px;
+    margin: 0 10.5px;
+    z-index: 100;
 
     &:first-child {
       border: none;
@@ -43,7 +44,7 @@
         animation: pulsate-ban 1.5s infinite;
       }
 
-      &.Done::before {
+      /* &.Done::before {
         content: "";
         position: absolute;
         top: 0;
@@ -52,7 +53,7 @@
         height: 100%;
         background-size: contain;
         background-image: url(../../assets/logo_ban_done.png)
-      }
+      } */
     }
   }
 
@@ -71,7 +72,9 @@
 
 .BansBox {
   display: flex;
-  margin-top: 10px;
+  margin-left: 1px;
+  margin-right: 0.5px;
+  margin-top: 12px;
   margin-bottom: 10px;
 }
 

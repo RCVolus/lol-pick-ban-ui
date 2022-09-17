@@ -4,6 +4,7 @@ body {
     // background: black;
     // font-family: 'Nova Flat', sans-serif;
     font-family: Amarello;
+    letter-spacing: -1px;
 
     // background: url("https://dotesports-media.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2019/06/14131635/LEC-Summer-2019.jpg");
     // background-size: cover;
@@ -19,9 +20,26 @@ body {
 @import "./animation";
 
 .Europe {
+    .BackgroundWrapper {
+        position: absolute;
+        height: 325px;
+        width: 100vw;
+        bottom: var(--champselect-margin-bot);
+        .Background {
+            background-image: url(../../assets/pick-ban-background.png);
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            transition: width 1s linear;
+        }
+    }
+
     .MiddleBox {
         position: absolute;
-        color: black;
+        color: white;
         width: calc(var(--box-width) + 1px);
         height: calc(var(--box-pick-height) + var(--box-ban-height) + 20px);
 
@@ -35,12 +53,16 @@ body {
         height: var(--box-patch-height);
         font-size: 25px;
         text-align: center;
-        color: black;
-        font-weight: bold;
+        letter-spacing: 0;
+        // color: black;
+        // font-weight: bold;
         // text-transform: capitalize;
         /* border-left: darkgrey 1px solid;
         border-right: darkgrey 1px solid; */
         /* background-color: black; */
+
+        text-transform: uppercase;
+        margin-top: 11px;
 
         z-index: 10;
     }
@@ -51,12 +73,13 @@ body {
         /* border-left: darkgrey 1px solid;
         border-right: darkgrey 1px solid; */
         /* background-color: black; */
+        padding-top: 20px;
 
         z-index: 10;
 
         img {
-            width: 80%;
-            height: 80%;
+            width: 70%;
+            height: 70%;
             margin: 0 auto;
             padding-top: 10%;
             display: block;

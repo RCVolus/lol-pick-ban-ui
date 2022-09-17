@@ -84,6 +84,7 @@ export default class Overlay extends React.Component {
                 {Object.keys(state).length !== 0 &&
                 <div className={cx(css.ChampSelect)}>
                     {!state.leagueConnected && <div className={cx(css.infoBox)}>Not connected to client!</div> }
+                    <div className={cx(css.BackgroundWrapper)}><div className={cx(css.Background)} /></div>
                     <div className={cx(css.MiddleBox)}>
                         <div className={cx(css.Logo)}>
                             <img src={logo} alt="" />
@@ -96,8 +97,8 @@ export default class Overlay extends React.Component {
                             [css.Blue]: state.blueTeam.isActive,
                             [css.Red]: state.redTeam.isActive
                         })}>
-                            <div className={cx(css.Background, css.Blue)} />
-                            <div className={cx(css.Background, css.Red)} />
+                            { /* <div className={cx(css.Background, css.Blue)} />
+                            <div className={cx(css.Background, css.Red)} /> */ }
                             {state.timer < 100 && <div className={cx(css.TimerChars)}>
                                 {state.timer.toString().split('').map((char, idx) => <div key={`div-${idx}`}
                                     className={cx(css.TimerChar)}>{char}</div>)}

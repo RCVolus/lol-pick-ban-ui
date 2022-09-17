@@ -12,7 +12,7 @@ const Pick = props => (
         <div className={cx(css.PickImage, {
             [css.Active]: props.isActive
         })}>
-            <img className={cx({ [css.Placeholder]: props.champion.id === 0 })} src={props.champion.loadingImg} alt="" />
+            { props.champion.id !== 0 && <img className={cx({ [css.Placeholder]: props.champion.id === 0 })} src={props.champion.loadingImg} alt="" /> }
         </div>
         <div className={cx(css.PlayerName)}>
             <span>{props.displayName}</span>
