@@ -1,16 +1,16 @@
 {
   "frontend": {
-    "scoreEnabled": false,
+    "scoreEnabled": true,
     "spellsEnabled": true,
-    "coachesEnabled": true,
+    "coachesEnabled": false,
     "blueTeam": {
-      "name": "Team Blue",
+      "name": "Team Ocean",
       "score": 2,
       "coach": "Coach Blue",
       "color": "white"
     },
     "redTeam": {
-      "name": "Team Red",
+      "name": "Team Inferno",
       "score": 1,
       "coach": "Coach Red",
       "color": "white"

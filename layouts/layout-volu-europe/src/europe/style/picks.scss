@@ -28,7 +28,10 @@
       letter-spacing: 0;
       line-height: var(--pick-name-height);
       font-weight: bold;
-      margin-left: 5px;
+      margin-left: 8px;
+      margin-right: 8px;
+      width: calc(100% - 16px);
+      margin-top: 2px;
       // margin-top: calc(-1 * var(--pick-name-height));
       position: absolute;
       text-transform: uppercase;
@@ -86,11 +89,18 @@
 }
 
 &.TeamBlue .Picks .Pick {
+  .SummonerSpells {
+    left: unset;
+    right: 8px;
+  }
   &:last-child {
      // border-right: solid var(--border-between-color) 2px;
    }
   &:first-child {
     border-left: none;
+  }
+  .PlayerName {
+    text-align: right;
   }
   &.Active {
     .PlayerName {

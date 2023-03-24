@@ -44,7 +44,7 @@
         animation: pulsate-ban 1.5s infinite;
       }
 
-      /* &.Done::before {
+      &.Done::before {
         content: "";
         position: absolute;
         top: 0;
@@ -53,7 +53,7 @@
         height: 100%;
         background-size: contain;
         background-image: url(../../assets/logo_ban_done.png)
-      } */
+      }
     }
   }
 
@@ -74,7 +74,7 @@
   display: flex;
   margin-left: 1px;
   margin-right: 0.5px;
-  margin-top: 12px;
+  margin-top: 13px;
   margin-bottom: 10px;
 }
 

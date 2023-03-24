@@ -14,8 +14,8 @@
     text-transform: uppercase;
 
     &.WithoutCoaches {
-      font-size: 60px;
-      margin-top: -20px;
+      font-size: 40px;
+      margin-top: 2px;
     }
   }
 
@@ -27,9 +27,9 @@
 
   .TeamScore {
     font-size: 40px;
-    margin-top: -4px;
-    padding-top: 18px;
-    color: black;
+    margin-top: 2px;
+    padding-top: 0;
+    color: white;
     // font-family: 'A', sans-serif;
     width: calc(var(--box-ban-height) + 20px);
     text-align: center;
@@ -43,25 +43,28 @@
   &.TeamBlue {
     right: calc(50% + calc(var(--box-width) / 2));
 
-    .TeamScore {
+    /* .TeamScore {
       border-right: 2px solid black;
-    }
+    } */
 
-    .Bans {
-      justify-content: flex-end;
-      // background-color: var(--color-blue);
-      // border: solid var(--color-blue) var(--border-width);
-      float: right;
-
-      .Ban {
-        //border-left: solid var(--color-blue) var(--border-width);
-
-        &:first-child {
-          margin-right: 0;
-        }
-
-        .BanImage.Active::before {
-          background-image: linear-gradient(to left, var(--color-green-animation) 0%, rgba(0, 0, 0, 0) 50%, var(--color-green-animation) 100%);
+    .BansWrapper {
+      margin-right: -3px;
+      .Bans {
+        justify-content: flex-end;
+        // background-color: var(--color-blue);
+        // border: solid var(--color-blue) var(--border-width);
+        float: right;
+  
+        .Ban {
+          //border-left: solid var(--color-blue) var(--border-width);
+  
+          &:first-child {
+            margin-right: 0;
+          }
+  
+          .BanImage.Active::before {
+            background-image: linear-gradient(to left, var(--color-green-animation) 0%, rgba(0, 0, 0, 0) 50%, var(--color-green-animation) 100%);
+          }
         }
       }
     }
@@ -76,31 +79,34 @@
 
     .TeamName {
       margin-right: auto;
-      margin-left: 8px;
+      margin-left: 16px;
     }
   }
 
   &.TeamRed {
     left: calc(50% + calc(var(--box-width) / 2));
 
-    .TeamScore {
+    /* .TeamScore {
       border-left: 2px solid black;
-    }
+    } */
 
-    .Bans {
-      // background-color: var(--color-red);
-      // border: solid var(--color-red) var(--border-width);
-      float: left;
+    .BansWrapper {
+      margin-left: -3px;
+      .Bans {
+        // background-color: var(--color-red);
+        // border: solid var(--color-red) var(--border-width);
+        float: left;
 
-      .Ban {
-        // border-right: solid var(--color-red) var(--border-width);
+        .Ban {
+          // border-right: solid var(--color-red) var(--border-width);
 
-        &:first-child {
-          margin-left: 0;
-        }
+          &:first-child {
+            margin-left: 0;
+          }
 
-        .BanImage.Active::before {
-          background-image: linear-gradient(to left, var(--color-green-animation) 0%, rgba(0, 0, 0, 0) 50%, var(--color-green-animation) 100%);
+          .BanImage.Active::before {
+            background-image: linear-gradient(to left, var(--color-green-animation) 0%, rgba(0, 0, 0, 0) 50%, var(--color-green-animation) 100%);
+          }
         }
       }
     }
@@ -117,7 +123,7 @@
     .TeamName {
       margin-left: auto;
       text-align: right;
-      margin-right: 8px;
+      margin-right: 16px;
     }
   }
 }

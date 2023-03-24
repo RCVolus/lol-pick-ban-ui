@@ -1,6 +1,6 @@
 :root {
   --box-width: 169.5px; // 171px;
-  --box-height: calc(var(--box-pick-height) + var(--box-ban-height) + 20px);
+  --box-height: calc(var(--box-pick-height) + var(--box-ban-height) + 23px);
   --box-logo-height: calc(100% - calc(var(--box-ban-height) + var(--box-patch-height)) - 20px);
   --box-timer-height: var(--box-ban-height);
   --box-patch-height: 40px;

@@ -22,7 +22,7 @@ body {
 .Europe {
     .BackgroundWrapper {
         position: absolute;
-        height: 325px;
+        height: 338px;
         width: 100vw;
         bottom: var(--champselect-margin-bot);
         .Background {
@@ -51,9 +51,10 @@ body {
 
     .Patch {
         height: var(--box-patch-height);
-        font-size: 25px;
+        font-size: 20px;
         text-align: center;
-        letter-spacing: 0;
+        letter-spacing: 1px;
+        font-weight: regular;
         // color: black;
         // font-weight: bold;
         // text-transform: capitalize;
@@ -62,7 +63,7 @@ body {
         /* background-color: black; */
 
         text-transform: uppercase;
-        margin-top: 11px;
+        margin-top: 10px;
 
         z-index: 10;
     }
@@ -76,6 +77,8 @@ body {
         padding-top: 20px;
 
         z-index: 10;
+
+        visibility: hidden;
 
         img {
             width: 70%;
