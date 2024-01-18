@@ -37,7 +37,7 @@ const convertTeam = (kwargs: { team: Array<Cell>; actions: Array<Action>; dataPr
 
     const summoner = kwargs.dataProvider.getSummonerById(cell.summonerId);
     if (summoner) {
-      pick.displayName = summoner.displayName;
+      pick.displayName = summoner.gameName;
     }
 
     if (currentAction && currentAction.type === ActionType.PICK && currentAction.actorCellId === cell.cellId && !currentAction.completed) {
