@@ -2,6 +2,7 @@ import logger from '../../logging';
 import { Session, Cell, Summoner } from '../../types/lcu';
 
 import { CurrentState } from '../CurrentState';
+import { state } from '../../app';
 import { EventEmitter } from 'events';
 import DataProviderService from '../DataProviderService';
 import Recorder from '../../recording/Recorder';
@@ -11,6 +12,7 @@ import Connector, {
   LibraryConnector,
   ExperimentalConnector,
 } from './connector';
+import fs from 'fs';
 import { Response } from 'league-connect';
 const log = logger('LCUDataProviderService');
 
@@ -47,8 +49,12 @@ class LeagueDataProviderService extends EventEmitter
     this.getCurrentData = this.getCurrentData.bind(this);
 
     if (GlobalContext.commandLine.record) {
-      this.recorder = new Recorder(GlobalContext.commandLine.record);
-      log.info('Recording to ' + GlobalContext.commandLine.record);
+      if (fs.existsSync('../recordings' + '/' + GlobalContext.commandLine.record + '.json') && !state.data.config.overwriteRecording) {
+        log.error('Recording ' + GlobalContext.commandLine.record + ' already exists. Will not overwrite and therefore not perform recording.')
+      } else {
+        this.recorder = new Recorder(GlobalContext.commandLine.record);
+        log.info('Recording to ' + GlobalContext.commandLine.record);
+      }
     }
 
     this.connector.on('connect', this.onLeagueConnected);

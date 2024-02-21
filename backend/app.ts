@@ -40,7 +40,7 @@ log.info('                                                   ');
 log.debug('Logging in debug mode!');
 log.info('Configuration: ' + JSON.stringify(GlobalContext.commandLine));
 
-const state = new State();
+export const state = new State();
 const ddragon = new DataDragon(state);
 const dataProvider = getDataProvider();
 const controller = new Controller({ dataProvider, state, ddragon });
@@ -50,7 +50,7 @@ const main = async (): Promise<void> => {
   await ddragon.init();
 
   const server = http.createServer(app);
-  app.use('/cache', express.static(__dirname + '/../cache'));
+  app.use('/cache', express.static('./cache'));
   const wsServer = new WebSocketServer(server, state);
   wsServer.startHeartbeat();
 

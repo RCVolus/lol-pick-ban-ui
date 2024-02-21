@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "main": "electron-main.js",
+  "bin": "./backend-build/app.js",
+  "pkg": {
+    "assets": ["node_modules/league-connect/riotgames.pem"]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
