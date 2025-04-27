@@ -3,17 +3,25 @@
     "scoreEnabled": true,
     "spellsEnabled": true,
     "coachesEnabled": true,
+    "phaseLabels": {
+      "phase1": "BAN PHASE 1",
+      "phase2": "BAN PHASE 2",
+      "pickPhase1": "PICK PHASE 1",
+      "pickPhase2": "PICK PHASE 2"
+    },
     "blueTeam": {
       "name": "Team Blue",
       "score": 2,
       "coach": "Coach Blue",
-      "color": "rgb(0,151,196)"
+      "color": "rgb(0,151,196)",
+      "teamPrefix": "BLU"
     },
     "redTeam": {
       "name": "Team Red",
       "score": 1,
       "coach": "Coach Red",
-      "color": "rgb(222,40,70)"
+      "color": "rgb(222,40,70)",
+      "teamPrefix": "RED"
     },
     "patch": "9.19"
   },

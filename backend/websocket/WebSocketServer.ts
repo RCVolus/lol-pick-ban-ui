@@ -1,6 +1,6 @@
-import * as ws from "ws";
-import * as fs from "fs";
-import * as http from "http";
+import { Server as WebServer } from "ws";
+import { existsSync, readFileSync } from "fs";
+import { Server as HttpServer, IncomingMessage } from "http";
 
 import logger from "../logging";
 import { StateData } from "../types/dto";
@@ -15,15 +15,15 @@ import NewActionEvent from "../types/events/NewActionEvent";
 const log = logger("websocket");
 
 class WebSocketServer {
-  server: ws.Server;
+  server: WebServer;
   state: State;
   clients: Array<WebSocket> = [];
   exampleClients: Array<WebSocket> = [];
   heartbeatInterval?: NodeJS.Timeout;
   config: any;
 
-  constructor(server: http.Server, state: State) {
-    this.server = new ws.Server({ server });
+  constructor(server: HttpServer, state: State) {
+    this.server = new WebServer({ server });
     this.state = state;
 
     this.sendHeartbeat = this.sendHeartbeat.bind(this);
@@ -52,7 +52,7 @@ class WebSocketServer {
     this.heartbeatInterval = setInterval(this.sendHeartbeat, 1000);
   }
 
-  handleConnection(socket: WebSocket, request: http.IncomingMessage): void {
+  handleConnection(socket: WebSocket, request: IncomingMessage): void {
     this.clients.push(socket);
     socket.send(JSON.stringify(new NewStateEvent(this.state.data)));
   }
@@ -67,7 +67,11 @@ class WebSocketServer {
   }
 
   sendHeartbeat(): void {
-    this.config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
+    if (existsSync("./config.override.json")) {
+      this.config = JSON.parse(readFileSync("./config.override.json", "utf8"));
+    } else {
+      this.config = JSON.parse(readFileSync("./config.json", "utf8"));
+    }
     const heartbeatEvent = new HeartbeatEvent(this.config);
     const heartbeatSerialized = JSON.stringify(heartbeatEvent);
 

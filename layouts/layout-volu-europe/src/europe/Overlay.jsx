@@ -89,7 +89,11 @@ export default class Overlay extends React.Component {
                             <img src={logo} alt="" />
                         </div>
                         <div className={cx(css.Patch)}>
-                            {state.state}
+                            {state.state === 'BAN PHASE 1' ? (config.frontend.phaseLabels?.phase1 || state.state) :
+                             state.state === 'BAN PHASE 2' ? (config.frontend.phaseLabels?.phase2 || state.state) :
+                             state.state === 'PICK PHASE 1' ? (config.frontend.phaseLabels?.pickPhase1 || state.state) :
+                             state.state === 'PICK PHASE 2' ? (config.frontend.phaseLabels?.pickPhase2 || state.state) :
+                             state.state}
                         </div>
                         <div className={cx(css.Timer, {
                             [`${css.Red} ${css.Blue}`]: !state.blueTeam.isActive && !state.redTeam.isActive,
