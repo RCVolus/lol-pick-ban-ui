@@ -35,7 +35,13 @@ PB.on('newState', newState => {
     document.getElementById('score').innerText = config.blueTeam.score + ' - ' + config.redTeam.score;
 
     // Update phase
-    document.getElementById('phase').innerText = state.state;
+    const phaseText = state.state;
+    const customPhaseText = phaseText === 'BAN PHASE 1' ? config.phaseLabels?.phase1 || phaseText :
+        phaseText === 'BAN PHASE 2' ? config.phaseLabels?.phase2 || phaseText :
+            phaseText === 'PICK PHASE 1' ? config.phaseLabels?.pickPhase1 || phaseText :
+                phaseText === 'PICK PHASE 2' ? config.phaseLabels?.pickPhase2 || phaseText :
+                    phaseText;
+    document.getElementById('phase').innerText = customPhaseText;
 
     // Update picks
     const updatePicks = team => {

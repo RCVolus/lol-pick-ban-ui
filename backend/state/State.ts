@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import * as fs from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { Config, StateData, Team } from '../types/dto';
 
 class State extends EventEmitter {
@@ -9,11 +9,19 @@ class State extends EventEmitter {
     super();
 
     this.data = new StateData();
-    this.data.config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+    if (existsSync("./config.override.json")) {
+      this.data.config = JSON.parse(readFileSync("./config.override.json", "utf8"));
+    } else {
+      this.data.config = JSON.parse(readFileSync("./config.json", "utf8"));
+    }
   }
 
   champselectStarted(): void {
-    this.data.config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+    if (existsSync("./config.override.json")) {
+      this.data.config = JSON.parse(readFileSync("./config.override.json", "utf8"));
+    } else {
+      this.data.config = JSON.parse(readFileSync("./config.json", "utf8"));
+    }
 
     this.emit('champSelectStarted');
 

@@ -15,7 +15,7 @@ export default class Recorder {
   }
 
   addDataPoint(state: CurrentState): void {
-    const dataPoint = new RecordingDatapoint(state.isChampSelectActive, state.session, new Date());
+    const dataPoint = new RecordingDatapoint(state.isChampSelectActive, state.session, new Date(), state.config);
     this.dataPoints.push(dataPoint);
   }
 

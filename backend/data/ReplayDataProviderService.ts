@@ -51,7 +51,7 @@ export default class ReplayDataProviderService extends EventEmitter implements D
     }
 
     if (!nextPoint) {
-      return new CurrentState(false, new Session());
+      return new CurrentState(false, new Session(), {});
     }
 
     return nextPoint;

@@ -44,6 +44,8 @@ While you are in a replay, you can focus the window and press "p" on your keyboa
 ## Configuration
 You can configure the variable values, like team names, team scores, coach names and even the colors used. Just open up the file config.json in the folder `backend` with any texteditor, like notepad. Any changes you do inside this file will be reflected immediately and do not require a restart or reload.
 
+For development purposes, you can also create a `config.override.json` file in the `backend` folder. This file will override any settings from `config.json` but won't be committed to version control.
+
 ## Installation (Development purposes)
 Please note: if you're looking for an easier installation, have a look at this project: https://github.com/FearNixx/vigilant-bans (the linked project is not associated or affiliated with the Riot Community Volunteers, and we can provide no warranty for the linked project)
 

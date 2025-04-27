@@ -12,7 +12,7 @@ import Connector, {
   LibraryConnector,
   ExperimentalConnector,
 } from './connector';
-import fs from 'fs';
+import { existsSync } from 'fs';
 import { Response } from 'league-connect';
 const log = logger('LCUDataProviderService');
 
@@ -49,7 +49,7 @@ class LeagueDataProviderService extends EventEmitter
     this.getCurrentData = this.getCurrentData.bind(this);
 
     if (GlobalContext.commandLine.record) {
-      if (fs.existsSync('../recordings' + '/' + GlobalContext.commandLine.record + '.json') && !state.data.config.overwriteRecording) {
+      if (existsSync('../recordings' + '/' + GlobalContext.commandLine.record + '.json') && !state.data.config.overwriteRecording) {
         log.error('Recording ' + GlobalContext.commandLine.record + ' already exists. Will not overwrite and therefore not perform recording.')
       } else {
         this.recorder = new Recorder(GlobalContext.commandLine.record);
@@ -77,7 +77,8 @@ class LeagueDataProviderService extends EventEmitter
 
     const currentState = new CurrentState(
       response?.ok ?? false,
-      await response?.json()
+      await response?.json(),
+      state.getConfig()
     );
 
     if (this.recorder) {
@@ -109,8 +110,14 @@ class LeagueDataProviderService extends EventEmitter
 
     const completedJobs = await Promise.all(jobs);
 
+    // Clear existing summoners to ensure we have fresh data
+    this.summoners = [];
+
     completedJobs.forEach(async (job) => {
-      this.summoners.push(await job?.json());
+      const summonerData = await job?.json();
+      if (summonerData) {
+        this.summoners.push(summonerData);
+      }
     });
 
     if (this.recorder) {

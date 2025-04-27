@@ -1,11 +1,19 @@
-import {Action, ActionType, Cell, Timer} from '../types/lcu';
-import {Ban, Champion, Pick, Team} from '../types/dto';
+import { Action, ActionType, Cell, Timer } from '../types/lcu';
+import { Ban, Pick, Team } from '../types/dto';
 import DataProviderService from '../data/DataProviderService';
 import DataDragon from '../data/league/DataDragon';
-import {CurrentState} from '../data/CurrentState';
+import { CurrentState } from '../data/CurrentState';
 import RecordingDatapoint from '../recording/RecordingDatapoint';
+import { Session } from '../types/lcu';
 
-const convertTeam = (kwargs: { team: Array<Cell>; actions: Array<Action>; dataProvider: DataProviderService; ddragon: DataDragon }): Team => {
+const convertTeam = (kwargs: {
+  team: Array<Cell>;
+  actions: Array<Action>;
+  dataProvider: DataProviderService;
+  ddragon: DataDragon;
+  session: Session;
+  config: any;
+}): Team => {
   const newTeam = new Team();
   newTeam.picks = kwargs.team.map((cell: Cell) => {
     const currentAction = kwargs.actions.find((action) => !action.completed);
@@ -37,7 +45,10 @@ const convertTeam = (kwargs: { team: Array<Cell>; actions: Array<Action>; dataPr
 
     const summoner = kwargs.dataProvider.getSummonerById(cell.summonerId);
     if (summoner) {
-      pick.displayName = summoner.gameName;
+      const teamPrefix = kwargs.team === kwargs.session.myTeam ?
+        (kwargs.config.frontend.blueTeam.teamPrefix ? `${kwargs.config.frontend.blueTeam.teamPrefix} ` : '') :
+        (kwargs.config.frontend.redTeam.teamPrefix ? `${kwargs.config.frontend.redTeam.teamPrefix} ` : '');
+      pick.displayName = `${teamPrefix}${summoner.displayName || summoner.gameName}`;
     }
 
     if (currentAction && currentAction.type === ActionType.PICK && currentAction.actorCellId === cell.cellId && !currentAction.completed) {
@@ -58,7 +69,16 @@ const convertTeam = (kwargs: { team: Array<Cell>; actions: Array<Action>; dataPr
       isBanDetermined = true;
       ban.isActive = true;
       newTeam.isActive = true;
-      ban.champion = new Champion();
+      const champion = kwargs.ddragon.getChampionById(action.championId);
+      ban.champion = {
+        id: action.championId,
+        name: champion ? champion.name : '',
+        idName: champion ? champion.id.toString() : '',
+        loadingImg: champion ? champion.loadingImg : '',
+        splashImg: champion ? champion.splashImg : '',
+        splashCenteredImg: champion ? champion.splashCenteredImg : '',
+        squareImg: champion ? champion.squareImg : '',
+      };
       return ban;
     }
 
@@ -125,8 +145,22 @@ const convertState = (state: CurrentState, dataProvider: DataProviderService, dd
     flattenedActions.push(...actionGroup);
   });
 
-  const blueTeam = convertTeam({ team: lcuSession.myTeam, actions: flattenedActions, dataProvider, ddragon });
-  const redTeam = convertTeam({ team: lcuSession.theirTeam, actions: flattenedActions, dataProvider, ddragon });
+  const blueTeam = convertTeam({
+    team: lcuSession.myTeam,
+    actions: flattenedActions,
+    dataProvider,
+    ddragon,
+    session: lcuSession,
+    config: state.config
+  });
+  const redTeam = convertTeam({
+    team: lcuSession.theirTeam,
+    actions: flattenedActions,
+    dataProvider,
+    ddragon,
+    session: lcuSession,
+    config: state.config
+  });
 
   const timer = convertTimer(lcuSession.timer, currentDate);
   const stateName = convertStateName(flattenedActions);
